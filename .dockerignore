@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.env
+.git/
+.gitignore
+*.md
+.vscode/
+.gemini/
+
+# Frontend source (already built in stage 1)
+frontend/node_modules/
+
+# Data files (will be created at runtime)
+ai_stock/data/*.json
+
+# IDE
+.idea/
+*.swp
+*.swo
