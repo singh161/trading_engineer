@@ -1,0 +1,369 @@
+"""
+Background Task Manager for Stock Analysis
+Handles periodic analysis and real-time updates
+"""
+import asyncio
+import logging
+from typing import Dict, List, Optional, Callable
+from datetime import datetime
+from collections import deque
+import json
+
+from database import DatabaseManager
+from data_fetcher import StockDataFetcher
+from indicators import TechnicalIndicators
+from signals import SignalAnalyzer
+from ai_recommender import AIStockRecommender
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+
+class BackgroundTaskManager:
+    """Manages background stock analysis tasks"""
+    
+    def __init__(self):
+        self.data_fetcher = StockDataFetcher()
+        self.ai_recommender = AIStockRecommender()
+        self.analysis_cache = {}
+        self.stocks_list = []  # BASE STOCK LIST CACHE
+        self.update_callbacks = []
+        self.is_running = False
+        self.current_task = None
+        self.is_preloaded = False
+
+    async def preload_stocks(self):
+        """Load all stocks from NSE API into memory cache at startup"""
+        try:
+            logger.info("⚡ Loading stocks from NSE API...")
+            # Async fetch from NSE — no MySQL needed
+            stocks = await DatabaseManager.fetch_stocks_from_nse()
+            
+            if not stocks:
+                logger.warning("⚠️  NSE returned no stocks. Retrying in 10s...")
+                await asyncio.sleep(10)
+                stocks = await DatabaseManager.fetch_stocks_from_nse()
+
+            # Normalize and store in memory
+            normalized_stocks = []
+            for stock in stocks:
+                symbol = stock.get('symbol')
+                if symbol:
+                    stock_info = {
+                        "symbol": symbol.upper(),
+                        "name": stock.get('name', symbol.upper()),
+                        "industry": stock.get('industry', ''),
+                        "sector": stock.get('sector', '')
+                    }
+                    normalized_stocks.append(stock_info)
+            
+            self.stocks_list = normalized_stocks
+            self.is_preloaded = True
+            logger.info(f"✅ Preloaded {len(self.stocks_list)} stocks from NSE into memory")
+            
+            # Trigger FIRST analysis immediately in background
+            if self.stocks_list:
+                symbols = [s['symbol'] for s in self.stocks_list]
+                asyncio.create_task(self.analyze_all_stocks(symbols, mode='swing', chunk_size=20))
+                
+        except Exception as e:
+            logger.error(f"❌ Failed to preload stocks from NSE: {e}")
+        
+    def add_update_callback(self, callback: Callable):
+        """Add callback for real-time updates"""
+        self.update_callbacks.append(callback)
+    
+    def remove_update_callback(self, callback: Callable):
+        """Remove callback"""
+        if callback in self.update_callbacks:
+            self.update_callbacks.remove(callback)
+    
+    async def _notify_update(self, symbol: str, analysis: Dict):
+        """Notify all callbacks of update"""
+        for callback in self.update_callbacks:
+            try:
+                await callback(symbol, analysis)
+            except Exception as e:
+                logger.error(f"Error in update callback: {e}")
+    
+    async def analyze_stock(self, symbol: str, mode: str = 'swing') -> Dict:
+        """Analyze a single stock"""
+        try:
+            # Fetch data
+            df = await self.data_fetcher.fetch_data(symbol, mode=mode)
+            if df is None or df.empty:
+                return None
+            
+            # Calculate indicators
+            indicators = TechnicalIndicators(df)
+            df_with_indicators = indicators.calculate_all()
+            indicators.df = df_with_indicators
+            
+            # Analyze signals
+            analyzer = SignalAnalyzer(indicators)
+            analysis = analyzer.analyze()
+            
+            # Get latest values from indicators
+            values = indicators.get_latest_values()
+            
+            # Fetch REAL-TIME price directly from NSE scraper
+            current_price = await self.data_fetcher.get_current_price(symbol)
+            final_price = current_price if current_price else values.get('price')
+            
+            # Prepare result
+            ema_20_val = round(values.get('ema_20'), 2) if values.get('ema_20') else None
+            ema_50_val = round(values.get('ema_50'), 2) if values.get('ema_50') else None
+            
+            # Calculate price change percentage
+            prev_price = values.get('prev_price')
+            price_change_pct = 0.0
+            if prev_price and prev_price > 0:
+                price_change_pct = round(((final_price - prev_price) / prev_price) * 100, 2)
+            
+            result = {
+                "symbol": symbol.upper(),
+                "mode": mode,
+                "price": final_price,
+                "price_change_pct": price_change_pct,
+                "rsi": round(values.get('rsi'), 2) if values.get('rsi') else None,
+                "macd": round(values.get('macd'), 4) if values.get('macd') else None,
+                "ema20": ema_20_val,
+                "ema50": ema_50_val,
+                "ema_20": ema_20_val,
+                "ema_50": ema_50_val,
+                "trend": analysis.get('trend'),
+                "volume_signal": analysis.get('volume_signal'),
+                "buy_signals": analysis.get('buy_signals', []),
+                "sell_signals": analysis.get('sell_signals', []),
+                "buy_count": analysis.get('buy_count', 0),
+                "sell_count": analysis.get('sell_count', 0),
+                "final_verdict": analysis.get('final_verdict'),
+                "buy_price": analysis.get('buy_price'),
+                "sell_price": analysis.get('sell_price'),
+                "open": values.get('open'),
+                "high": values.get('high'),
+                "low": values.get('low'),
+                "volume": values.get('volume'),
+                "macd_signal": round(values.get('macd_signal'), 4) if values.get('macd_signal') else None,
+                "macd_hist": round(values.get('macd_hist'), 4) if values.get('macd_hist') else None,
+                "timestamp": datetime.now().isoformat()
+            }
+            
+            # Add AI recommendation
+            ai_recommendation = self.ai_recommender.generate_recommendation(result, {})
+            result["ai_recommendation"] = ai_recommendation
+            
+            # Cache result
+            self.analysis_cache[symbol.upper()] = result
+            
+            return result
+            
+        except Exception as e:
+            logger.error(f"Error analyzing {symbol}: {e}")
+            return None
+    
+    async def analyze_all_stocks(self, symbols: List[str], mode: str = 'swing', 
+                                chunk_size: int = 20):
+        """Analyze all stocks using high-performance batch fetching"""
+        total = len(symbols)
+        processed = 0
+        
+        logger.info(f"Starting HIGH-SPEED analysis of {total} stocks (chunk size: {chunk_size})")
+        
+        for i in range(0, total, chunk_size):
+            chunk = symbols[i:i + chunk_size]
+            
+            # Fetch data in batch (much faster than individual calls)
+            batch_data = await self.data_fetcher.fetch_batch_data(chunk, mode=mode)
+            
+            # Process results one by one
+            for symbol in chunk:
+                df = batch_data.get(symbol)
+                if df is None or df.empty:
+                    continue
+                
+                try:
+                    # Calculate indicators (this is CPU bound)
+                    indicators = TechnicalIndicators(df)
+                    df_with_indicators = indicators.calculate_all()
+                    indicators.df = df_with_indicators
+                    
+                    # Analyze signals
+                    analyzer = SignalAnalyzer(indicators)
+                    analysis = analyzer.analyze()
+                    
+                    # Get results
+                    values = indicators.get_latest_values()
+                    
+                    # Fetch REAL-TIME price for batch symbols too
+                    current_price = await self.data_fetcher.get_current_price(symbol)
+                    final_price = current_price if current_price else values.get('price')
+                    
+                    # Calculate EMA values
+                    ema_20_val = round(values.get('ema_20'), 2) if values.get('ema_20') else None
+                    ema_50_val = round(values.get('ema_50'), 2) if values.get('ema_50') else None
+                    
+                    # Calculate price change percentage
+                    prev_price = values.get('prev_price')
+                    price_change_pct = 0.0
+                    if prev_price and prev_price > 0:
+                        price_change_pct = round(((final_price - prev_price) / prev_price) * 100, 2)
+                    
+                    result = {
+                        "symbol": symbol.upper(),
+                        "mode": mode,
+                        "price": final_price,
+                        "price_change_pct": price_change_pct,
+                        "rsi": round(values.get('rsi'), 2) if values.get('rsi') else None,
+                        "macd": round(values.get('macd'), 4) if values.get('macd') else None,
+                        "ema20": ema_20_val,
+                        "ema50": ema_50_val,
+                        "ema_20": ema_20_val,
+                        "ema_50": ema_50_val,
+                        "trend": analysis.get('trend'),
+                        "volume_signal": analysis.get('volume_signal'),
+                        "buy_signals": analysis.get('buy_signals', []),
+                        "sell_signals": analysis.get('sell_signals', []),
+                        "buy_count": analysis.get('buy_count', 0),
+                        "sell_count": analysis.get('sell_count', 0),
+                        "final_verdict": analysis.get('final_verdict'),
+                        "buy_price": analysis.get('buy_price'),
+                        "sell_price": analysis.get('sell_price'),
+                        "timestamp": datetime.now().isoformat()
+                    }
+                    
+                    # AI Recommendation (optional, can be slow)
+                    try:
+                        ai_rec = self.ai_recommender.generate_recommendation(result, {})
+                        result["ai_recommendation"] = ai_rec
+                    except:
+                        pass
+                    
+                    # Cache and Notify
+                    self.analysis_cache[symbol.upper()] = result
+                    await self._notify_update(symbol, result)
+                    processed += 1
+                except Exception as e:
+                    logger.error(f"Error processing {symbol} in batch: {e}")
+            
+            logger.info(f"Progress: {processed}/{total} stocks analyzed")
+            # Minimal sleep to keep event loop responsive
+            await asyncio.sleep(0.01)
+        
+        logger.info(f"Completed analysis of {processed}/{total} stocks")
+        return processed
+    
+    async def start_periodic_refresh(self, interval_minutes: int = 3):
+        """Start periodic refresh task"""
+        if self.is_running:
+            logger.warning("Background task already running")
+            return
+        
+        self.is_running = True
+        logger.info(f"Starting periodic refresh every {interval_minutes} minutes")
+        
+        while self.is_running:
+            try:
+                # Use cached stock list if available
+                if self.is_preloaded and self.stocks_list:
+                    symbols = [s['symbol'] for s in self.stocks_list]
+                else:
+                    # Fallback: re-fetch from NSE
+                    logger.info("Re-fetching stock list from NSE for refresh...")
+                    stocks = await DatabaseManager.fetch_stocks_from_nse()
+                    symbols = [s.get('symbol', '').upper() for s in stocks if s.get('symbol')]
+                
+                if symbols:
+                    logger.info(f"Refreshing {len(symbols)} stocks...")
+                    await self.analyze_all_stocks(symbols, mode='swing', chunk_size=15)
+                    logger.info("Refresh completed")
+                else:
+                    logger.warning("No symbols found for refresh")
+                
+            except Exception as e:
+                logger.error(f"Error in periodic refresh: {e}")
+            
+            # Wait for next interval
+            await asyncio.sleep(interval_minutes * 60)
+    
+    async def start_live_price_ticker(self, interval_seconds: int = 20):
+        """Ultra-fast real-time price tracker for NSE stocks"""
+        logger.info(f"Starting LIVE NSE price ticker every {interval_seconds} seconds")
+        while self.is_running:
+            try:
+                # Get all stocks from cache
+                symbols = list(self.analysis_cache.keys())
+                if not symbols:
+                    # Fallback to NSE fetch
+                    stocks = await DatabaseManager.fetch_stocks_from_nse()
+                    symbols = [s.get('symbol', '').upper() for s in stocks if s.get('symbol')]
+                
+                if symbols:
+                    logger.info(f"Ticker: Updating real-time prices for {len(symbols)} stocks")
+                    for symbol in symbols:
+                        try:
+                            # Direct scrape from NSE
+                            price = await self.data_fetcher.get_current_price(symbol)
+                            if price and symbol in self.analysis_cache:
+                                analysis = self.analysis_cache[symbol]
+                                if analysis.get('price') != price:
+                                    analysis['price'] = price
+                                    analysis['timestamp'] = datetime.now().isoformat()
+                                    # Notify frontend of price change
+                                    await self._notify_update(symbol, analysis)
+                            
+                            # Small delay between individual scrapes to avoid rate limit
+                            await asyncio.sleep(0.5) 
+                        except Exception as e:
+                            logger.error(f"Ticker error for {symbol}: {e}")
+                
+                # UPDATE INDICES TOO
+                indices = await self.data_fetcher.get_live_indices_data()
+                if indices:
+                    # Filter for core indices
+                    core_indices = ["NIFTY 50", "NIFTY BANK", "NIFTY NEXT 50", "NIFTY FIN SERVICE"]
+                    filtered_indices = [idx for idx in indices if idx['symbol'] in core_indices]
+                    
+                    if filtered_indices:
+                        await self._notify_update("MARKET_INDICES", {
+                            "type": "market_indices",
+                            "indices": filtered_indices,
+                            "timestamp": datetime.now().isoformat()
+                        })
+                        logger.info(f"Ticker: Updated {len(filtered_indices)} core indices")
+                
+            except Exception as e:
+                logger.error(f"Error in price ticker: {e}")
+            
+            await asyncio.sleep(interval_seconds)
+
+    def stop_periodic_refresh(self):
+        """Stop periodic refresh"""
+        self.is_running = False
+        logger.info("Stopped periodic refresh")
+    
+    def get_analysis(self, symbol: str) -> Optional[Dict]:
+        """Get cached analysis"""
+        return self.analysis_cache.get(symbol.upper())
+    
+    def get_all_analyses(self) -> Dict[str, Dict]:
+        """Get all cached analyses"""
+        return self.analysis_cache.copy()
+
+
+    async def get_cached_stocks(self) -> List[Dict]:
+        """Return all stocks with their latest analysis from memory cache"""
+        if not self.is_preloaded:
+            await self.preload_stocks()
+            
+        results = []
+        for stock_info in self.stocks_list:
+            symbol = stock_info['symbol']
+            # Merge base info with latest analysis cache
+            analysis = self.analysis_cache.get(symbol, {})
+            merged = {**stock_info, **analysis}
+            results.append(merged)
+        return results
+
+# Global instance
+task_manager = BackgroundTaskManager()

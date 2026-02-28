@@ -1,0 +1,2643 @@
+{
+  "status": "success",
+  "execution_time_seconds": 20.499093,
+  "stocks_analyzed": 15,
+  "ranking_results": {
+    "top_5_buy": [
+      {
+        "symbol": "AXISBANK",
+        "recommendation": "BUY",
+        "final_score": 70.71,
+        "technical_score": 90.0,
+        "sentiment_score": 50.0,
+        "fundamental_score": 40.0,
+        "momentum_score": 69.93,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849671",
+        "risk_adjusted_score": 70.71,
+        "original_score": 64.49,
+        "technical_analysis": {
+          "buy_signals": [
+            "EMA_STRONG_BUY",
+            "EMA_STRONG_BUY",
+            "MACD_BULLISH",
+            "BREAK_DAY_HIGH"
+          ],
+          "sell_signals": [
+            "BEARISH_CANDLE"
+          ],
+          "buy_count": 4,
+          "sell_count": 1,
+          "final_verdict": "BUY",
+          "trend": "NEUTRAL",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 1302.9,
+          "sell_price": 1418.3,
+          "price": 1383.9000244141,
+          "open": 1387.0,
+          "high": 1395.5,
+          "low": 1381.0,
+          "volume": 5840317.0,
+          "rsi": 62.31884057971014,
+          "ema_20": 1364.0248006314473,
+          "ema_50": 1343.7786556638505,
+          "macd": 16.65687084952333,
+          "macd_signal": 13.4055066604645,
+          "macd_hist": 3.2513641890588296,
+          "support": 1302.9000244141,
+          "resistance": 1418.3000488281,
+          "prev_price": 1395.5,
+          "prev_rsi": 66.72875002558894,
+          "prev_macd": 17.054733859419912,
+          "prev_macd_signal": 12.592665613199792,
+          "symbol": "AXISBANK",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "AXISBANK",
+          "revenue_growth": 0.057,
+          "earnings_growth": 0.038,
+          "roe": 0.13625,
+          "debt_to_equity": null,
+          "profit_margin": 0.3417,
+          "current_ratio": null,
+          "pe_ratio": 16.420267,
+          "pb_ratio": 2.075734,
+          "dividend_yield": 0.07,
+          "market_cap": 4298920165376,
+          "revenue": 768435683328,
+          "net_income": 262573506560,
+          "timestamp": "2026-02-28T18:56:13.371425",
+          "fundamental_score": 40.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 15/25",
+            "EPS Growth: 10/25",
+            "ROE: 15/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 1414.64,
+          "current_price": 1383.9,
+          "price_change_pct": 2.22,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:20.446185"
+        },
+        "current_price": 1383.9000244141,
+        "risk_analysis": {
+          "overall_risk": 29.25,
+          "risk_level": "LOW",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 0.0,
+          "earnings_risk": 50.0,
+          "correlation_risk": 57.5,
+          "timestamp": "2026-02-28T18:56:23.840491"
+        }
+      }
+    ],
+    "top_5_hold": [
+      {
+        "symbol": "SBIN",
+        "recommendation": "HOLD",
+        "final_score": 59.7,
+        "technical_score": 70.0,
+        "sentiment_score": 50.0,
+        "fundamental_score": 35.0,
+        "momentum_score": 53.98,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849726",
+        "risk_adjusted_score": 59.7,
+        "original_score": 53.85,
+        "technical_analysis": {
+          "buy_signals": [
+            "EMA_STRONG_BUY",
+            "EMA_STRONG_BUY",
+            "BREAK_DAY_HIGH"
+          ],
+          "sell_signals": [
+            "MACD_BEARISH",
+            "BEARISH_CANDLE"
+          ],
+          "buy_count": 3,
+          "sell_count": 2,
+          "final_verdict": "BUY",
+          "trend": "NEUTRAL",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 990.0,
+          "sell_price": 1234.7,
+          "price": 1201.6999511719,
+          "open": 1207.0,
+          "high": 1211.8000488281,
+          "low": 1198.5999755859,
+          "volume": 10700355.0,
+          "rsi": 67.7500995854721,
+          "ema_20": 1172.5208541403067,
+          "ema_50": 1121.860265913988,
+          "macd": 37.341395558397835,
+          "macd_signal": 37.966387836803996,
+          "macd_hist": -0.624992278406161,
+          "support": 990.0,
+          "resistance": 1234.6999511719,
+          "prev_price": 1209.5,
+          "prev_rsi": 81.2854781365073,
+          "prev_macd": 39.67913523678999,
+          "prev_macd_signal": 38.122635906405534,
+          "symbol": "SBIN",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "SBIN",
+          "revenue_growth": 0.145,
+          "earnings_growth": 0.093,
+          "roe": null,
+          "debt_to_equity": null,
+          "profit_margin": 0.22498,
+          "current_ratio": null,
+          "pe_ratio": 13.088988,
+          "pb_ratio": 1.8736717,
+          "dividend_yield": 1.32,
+          "market_cap": 11092432519168,
+          "revenue": 3700534018048,
+          "net_income": 832563642368,
+          "timestamp": "2026-02-28T18:56:13.689425",
+          "fundamental_score": 35.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 20/25",
+            "EPS Growth: 15/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 1259.41,
+          "current_price": 1201.7,
+          "price_change_pct": 4.8,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:21.812905"
+        },
+        "current_price": 1201.6999511719,
+        "risk_analysis": {
+          "overall_risk": 30.5,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 0.0,
+          "earnings_risk": 50.0,
+          "correlation_risk": 70.0,
+          "timestamp": "2026-02-28T18:56:23.840520"
+        }
+      },
+      {
+        "symbol": "LT",
+        "recommendation": "HOLD",
+        "final_score": 46.55,
+        "technical_score": 70.0,
+        "sentiment_score": 35.71,
+        "fundamental_score": 26.0,
+        "momentum_score": 40.17,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849699",
+        "risk_adjusted_score": 46.55,
+        "original_score": 45.95,
+        "technical_analysis": {
+          "buy_signals": [
+            "EMA_STRONG_BUY",
+            "EMA_STRONG_BUY",
+            "BREAK_DAY_HIGH"
+          ],
+          "sell_signals": [
+            "MACD_BEARISH",
+            "BEARISH_CANDLE"
+          ],
+          "buy_count": 3,
+          "sell_count": 2,
+          "final_verdict": "BUY",
+          "trend": "NEUTRAL",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 3825.0,
+          "sell_price": 4440.0,
+          "price": 4278.2998046875,
+          "open": 4288.8999023438,
+          "high": 4304.7001953125,
+          "low": 4254.3999023438,
+          "volume": 2357853.0,
+          "rsi": 62.9135786966275,
+          "ema_20": 4193.7385863680975,
+          "ema_50": 4032.9646490163473,
+          "macd": 109.29843525809792,
+          "macd_signal": 114.44228405668666,
+          "macd_hist": -5.143848798588735,
+          "support": 3825.0,
+          "resistance": 4440.0,
+          "prev_price": 4286.5,
+          "prev_rsi": 66.17778224666212,
+          "prev_macd": 116.07417393330616,
+          "prev_macd_signal": 115.72824625633383,
+          "symbol": "LT",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "ticker": "LT",
+          "total_news": 13,
+          "positive_count": 2,
+          "negative_count": 6,
+          "neutral_count": 5,
+          "avg_sentiment_score": -0.22300711624203975,
+          "avg_confidence": 0.8382141269170321,
+          "weighted_score": -2.8990925111465167
+        },
+        "fundamental_analysis": {
+          "symbol": "LT",
+          "revenue_growth": 0.111,
+          "earnings_growth": -0.043,
+          "roe": null,
+          "debt_to_equity": 111.847,
+          "profit_margin": 0.057490002,
+          "current_ratio": null,
+          "pe_ratio": 33.44512,
+          "pb_ratio": 5.8051066,
+          "dividend_yield": 0.79,
+          "market_cap": 5885278552064,
+          "revenue": 2827686510592,
+          "net_income": 171246305280,
+          "timestamp": "2026-02-28T18:56:15.120619",
+          "fundamental_score": 26.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 20/25",
+            "EPS Growth: 6/25",
+            "Debt/Equity: 0/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 4451.56,
+          "current_price": 4278.3,
+          "price_change_pct": 4.05,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:21.779276"
+        },
+        "current_price": 4278.2998046875,
+        "risk_analysis": {
+          "overall_risk": 48.0,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 65.0,
+          "leverage_risk": 40.0,
+          "earnings_risk": 80.0,
+          "correlation_risk": 70.0,
+          "timestamp": "2026-02-28T18:56:23.840506"
+        }
+      }
+    ],
+    "top_5_sell": [
+      {
+        "symbol": "INFY",
+        "recommendation": "SELL",
+        "final_score": 36.52,
+        "technical_score": 27.5,
+        "sentiment_score": 50.0,
+        "fundamental_score": 40.0,
+        "momentum_score": 36.89,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849562",
+        "risk_adjusted_score": 36.52,
+        "original_score": 37.66,
+        "technical_analysis": {
+          "buy_signals": [
+            "RSI_OVERSOLD",
+            "VOLUME_CONFIRMATION_BUY",
+            "GAP_UP"
+          ],
+          "sell_signals": [
+            "EMA_STRONG_SELL",
+            "EMA_STRONG_SELL",
+            "MACD_BEARISH",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 3,
+          "sell_count": 5,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "BUY",
+          "buy_price": 1264.1,
+          "sell_price": 1728.0,
+          "price": 1300.0999755859,
+          "open": 1326.3000488281,
+          "high": 1335.0,
+          "low": 1294.1999511719,
+          "volume": 23141724.0,
+          "rsi": 17.226483608594748,
+          "ema_20": 1408.5557196946445,
+          "ema_50": 1524.0263549825113,
+          "macd": -88.42527707718432,
+          "macd_signal": -81.38604248059593,
+          "macd_hist": -7.039234596588386,
+          "support": 1264.0999755859,
+          "resistance": 1728.0,
+          "prev_price": 1289.0999755859,
+          "prev_rsi": 13.618169402240724,
+          "prev_macd": -90.06473319912129,
+          "prev_macd_signal": -79.62623383144884,
+          "symbol": "INFY",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "INFY",
+          "revenue_growth": 0.032,
+          "earnings_growth": -0.053,
+          "roe": 0.32683,
+          "debt_to_equity": 10.531,
+          "profit_margin": 0.16153999,
+          "current_ratio": 1.812,
+          "pe_ratio": 18.551655,
+          "pb_ratio": 6.2600784,
+          "dividend_yield": 3.46,
+          "market_cap": 5259801919488,
+          "revenue": 19847000064,
+          "net_income": 3206000128,
+          "timestamp": "2026-02-28T18:56:14.348288",
+          "fundamental_score": 40.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 10/25",
+            "EPS Growth: 5/25",
+            "ROE: 25/25",
+            "Debt/Equity: 0/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 1154.54,
+          "current_price": 1300.1,
+          "price_change_pct": -11.2,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:18.980377"
+        },
+        "current_price": 1300.0999755859,
+        "risk_analysis": {
+          "overall_risk": 53.8,
+          "risk_level": "HIGH",
+          "volatility_risk": 50.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 40.0,
+          "earnings_risk": 80.0,
+          "correlation_risk": 68.0,
+          "timestamp": "2026-02-28T18:56:23.840427"
+        }
+      },
+      {
+        "symbol": "MARUTI",
+        "recommendation": "SELL",
+        "final_score": 36.48,
+        "technical_score": 0,
+        "sentiment_score": 50.0,
+        "fundamental_score": 60.0,
+        "momentum_score": 28.88,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849798",
+        "risk_adjusted_score": 36.48,
+        "original_score": 31.83,
+        "technical_analysis": {
+          "buy_signals": [],
+          "sell_signals": [
+            "EMA_STRONG_SELL",
+            "EMA_STRONG_SELL",
+            "MACD_BEARISH",
+            "VOLUME_CONFIRMATION_SELL",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 0,
+          "sell_count": 6,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "SELL",
+          "buy_price": 14058.0,
+          "sell_price": 15459.0,
+          "price": 14857.0,
+          "open": 15110.0,
+          "high": 15192.0,
+          "low": 14804.0,
+          "volume": 478164.0,
+          "rsi": 47.19517848864163,
+          "ema_20": 15056.62766474642,
+          "ema_50": 15107.014879918761,
+          "macd": -23.336208844993962,
+          "macd_signal": -17.047527331116562,
+          "macd_hist": -6.2886815138774,
+          "support": 14058.0,
+          "resistance": 15459.0,
+          "prev_price": 15213.0,
+          "prev_rsi": 55.93406593406593,
+          "prev_macd": -6.209782962076133,
+          "prev_macd_signal": -15.475356952647209,
+          "symbol": "MARUTI",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "MARUTI",
+          "revenue_growth": 0.287,
+          "earnings_growth": 0.041,
+          "roe": null,
+          "debt_to_equity": 0.1,
+          "profit_margin": 0.08693,
+          "current_ratio": null,
+          "pe_ratio": 31.250261,
+          "pb_ratio": 4.6830544,
+          "dividend_yield": 0.91,
+          "market_cap": 4671078924288,
+          "revenue": 1717736046592,
+          "net_income": 149315993600,
+          "timestamp": "2026-02-28T18:56:16.086732",
+          "fundamental_score": 60.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 25/25",
+            "EPS Growth: 10/25",
+            "Debt/Equity: 25/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 14635.57,
+          "current_price": 14857.0,
+          "price_change_pct": -1.49,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:22.555548"
+        },
+        "current_price": 14857.0,
+        "risk_analysis": {
+          "overall_risk": 34.5,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 80.0,
+          "leverage_risk": 0.0,
+          "earnings_risk": 50.0,
+          "correlation_risk": 50.0,
+          "timestamp": "2026-02-28T18:56:23.840567"
+        }
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "recommendation": "SELL",
+        "final_score": 36.11,
+        "technical_score": 30.0,
+        "sentiment_score": 50.0,
+        "fundamental_score": 19.0,
+        "momentum_score": 45.74,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849352",
+        "risk_adjusted_score": 36.11,
+        "original_score": 34.61,
+        "technical_analysis": {
+          "buy_signals": [
+            "EMA_STRONG_BUY",
+            "EMA_STRONG_BUY"
+          ],
+          "sell_signals": [
+            "MACD_BEARISH",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 2,
+          "sell_count": 3,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 887.0,
+          "sell_price": 1046.0,
+          "price": 995.9000244141,
+          "open": 1008.950012207,
+          "high": 1014.9000244141,
+          "low": 993.0999755859,
+          "volume": 8145772.0,
+          "rsi": 54.0983593692349,
+          "ema_20": 995.0163240316972,
+          "ema_50": 962.9167554930115,
+          "macd": 21.53924736902343,
+          "macd_signal": 23.718830040689177,
+          "macd_hist": -2.1795826716657487,
+          "support": 887.0,
+          "resistance": 1046.0,
+          "prev_price": 1012.950012207,
+          "prev_rsi": 61.16469583616207,
+          "prev_macd": 24.468592496894416,
+          "prev_macd_signal": 24.26372570860561,
+          "symbol": "BAJFINANCE",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "BAJFINANCE",
+          "revenue_growth": 0.064,
+          "earnings_growth": -0.068,
+          "roe": null,
+          "debt_to_equity": 310.294,
+          "profit_margin": 0.4368,
+          "current_ratio": null,
+          "pe_ratio": 34.36508,
+          "pb_ratio": 5.992611,
+          "dividend_yield": 0.44,
+          "market_cap": 6190858764288,
+          "revenue": 412833284096,
+          "net_income": 180323893248,
+          "timestamp": "2026-02-28T18:56:16.409679",
+          "fundamental_score": 19.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 15/25",
+            "EPS Growth: 4/25",
+            "Debt/Equity: 0/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 1013.4,
+          "current_price": 995.9,
+          "price_change_pct": 1.76,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:18.855276"
+        },
+        "current_price": 995.9000244141,
+        "risk_analysis": {
+          "overall_risk": 45.0,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 40.0,
+          "earnings_risk": 80.0,
+          "correlation_risk": 70.0,
+          "timestamp": "2026-02-28T18:56:23.840317"
+        }
+      },
+      {
+        "symbol": "HDFCBANK",
+        "recommendation": "SELL",
+        "final_score": 35.08,
+        "technical_score": 4.29,
+        "sentiment_score": 50.0,
+        "fundamental_score": 60.0,
+        "momentum_score": 16.52,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849589",
+        "risk_adjusted_score": 35.08,
+        "original_score": 31.48,
+        "technical_analysis": {
+          "buy_signals": [
+            "RSI_OVERSOLD"
+          ],
+          "sell_signals": [
+            "EMA_STRONG_SELL",
+            "EMA_STRONG_SELL",
+            "MACD_BEARISH",
+            "VOLUME_CONFIRMATION_SELL",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 1,
+          "sell_count": 6,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "SELL",
+          "buy_price": 885.0,
+          "sell_price": 994.0,
+          "price": 887.75,
+          "open": 898.5999755859,
+          "high": 898.950012207,
+          "low": 885.0,
+          "volume": 34620755.0,
+          "rsi": 28.8099182191078,
+          "ema_20": 917.2856063097292,
+          "ema_50": 923.3767308699719,
+          "macd": -7.805598631706516,
+          "macd_signal": -4.0467761979507735,
+          "macd_hist": -3.7588224337557428,
+          "support": 885.0,
+          "resistance": 994.0,
+          "prev_price": 898.5999755859,
+          "prev_rsi": 30.64661732710087,
+          "prev_macd": -5.984112398706884,
+          "prev_macd_signal": -3.1070705895118382,
+          "symbol": "HDFCBANK",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "HDFCBANK",
+          "revenue_growth": 0.264,
+          "earnings_growth": 0.115,
+          "roe": 0.14015001,
+          "debt_to_equity": null,
+          "profit_margin": 0.26187,
+          "current_ratio": null,
+          "pe_ratio": 19.802588,
+          "pb_ratio": 2.4184036,
+          "dividend_yield": 1.24,
+          "market_cap": 13660710764544,
+          "revenue": 2845330898944,
+          "net_income": 745100869632,
+          "timestamp": "2026-02-28T18:56:17.301531",
+          "fundamental_score": 60.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 25/25",
+            "EPS Growth: 20/25",
+            "ROE: 15/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 856.33,
+          "current_price": 887.75,
+          "price_change_pct": -3.54,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:20.087823"
+        },
+        "current_price": 887.75,
+        "risk_analysis": {
+          "overall_risk": 38.0,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 50.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 0.0,
+          "earnings_risk": 50.0,
+          "correlation_risk": 55.0,
+          "timestamp": "2026-02-28T18:56:23.840444"
+        }
+      },
+      {
+        "symbol": "KOTAKBANK",
+        "recommendation": "SELL",
+        "final_score": 33.83,
+        "technical_score": 0,
+        "sentiment_score": 50.0,
+        "fundamental_score": 35.0,
+        "momentum_score": 40.85,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849458",
+        "risk_adjusted_score": 33.83,
+        "original_score": 27.38,
+        "technical_analysis": {
+          "buy_signals": [],
+          "sell_signals": [
+            "EMA_SELL",
+            "MACD_BEARISH",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 0,
+          "sell_count": 4,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 404.1,
+          "sell_price": 434.9,
+          "price": 415.200012207,
+          "open": 420.5,
+          "high": 422.3500061035,
+          "low": 414.450012207,
+          "volume": 17806739.0,
+          "rsi": 38.1533364098335,
+          "ema_20": 421.0991558072056,
+          "ema_50": 416.4117943505783,
+          "macd": 2.6560000749855703,
+          "macd_signal": 3.5373018993941674,
+          "macd_hist": -0.8813018244085971,
+          "support": 404.1000061035,
+          "resistance": 434.8999938965,
+          "prev_price": 424.549987793,
+          "prev_rsi": 52.01833069505676,
+          "prev_macd": 3.616511544941261,
+          "prev_macd_signal": 3.757627355496316,
+          "symbol": "KOTAKBANK",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "KOTAKBANK",
+          "revenue_growth": 0.242,
+          "earnings_growth": 0.047,
+          "roe": null,
+          "debt_to_equity": null,
+          "profit_margin": 0.24558,
+          "current_ratio": null,
+          "pe_ratio": 21.979885,
+          "pb_ratio": 2.4567611,
+          "dividend_yield": 0.12,
+          "market_cap": 4129368571904,
+          "revenue": 765436690432,
+          "net_income": 187974991872,
+          "timestamp": "2026-02-28T18:56:17.688928",
+          "fundamental_score": 35.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 25/25",
+            "EPS Growth: 10/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 411.69,
+          "current_price": 415.2,
+          "price_change_pct": -0.85,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:18.886860"
+        },
+        "current_price": 415.200012207,
+        "risk_analysis": {
+          "overall_risk": 28.5,
+          "risk_level": "LOW",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 0.0,
+          "earnings_risk": 50.0,
+          "correlation_risk": 50.0,
+          "timestamp": "2026-02-28T18:56:23.840362"
+        }
+      }
+    ],
+    "all_ranked": [
+      {
+        "symbol": "AXISBANK",
+        "recommendation": "BUY",
+        "final_score": 70.71,
+        "technical_score": 90.0,
+        "sentiment_score": 50.0,
+        "fundamental_score": 40.0,
+        "momentum_score": 69.93,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849671",
+        "risk_adjusted_score": 70.71,
+        "original_score": 64.49,
+        "technical_analysis": {
+          "buy_signals": [
+            "EMA_STRONG_BUY",
+            "EMA_STRONG_BUY",
+            "MACD_BULLISH",
+            "BREAK_DAY_HIGH"
+          ],
+          "sell_signals": [
+            "BEARISH_CANDLE"
+          ],
+          "buy_count": 4,
+          "sell_count": 1,
+          "final_verdict": "BUY",
+          "trend": "NEUTRAL",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 1302.9,
+          "sell_price": 1418.3,
+          "price": 1383.9000244141,
+          "open": 1387.0,
+          "high": 1395.5,
+          "low": 1381.0,
+          "volume": 5840317.0,
+          "rsi": 62.31884057971014,
+          "ema_20": 1364.0248006314473,
+          "ema_50": 1343.7786556638505,
+          "macd": 16.65687084952333,
+          "macd_signal": 13.4055066604645,
+          "macd_hist": 3.2513641890588296,
+          "support": 1302.9000244141,
+          "resistance": 1418.3000488281,
+          "prev_price": 1395.5,
+          "prev_rsi": 66.72875002558894,
+          "prev_macd": 17.054733859419912,
+          "prev_macd_signal": 12.592665613199792,
+          "symbol": "AXISBANK",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "AXISBANK",
+          "revenue_growth": 0.057,
+          "earnings_growth": 0.038,
+          "roe": 0.13625,
+          "debt_to_equity": null,
+          "profit_margin": 0.3417,
+          "current_ratio": null,
+          "pe_ratio": 16.420267,
+          "pb_ratio": 2.075734,
+          "dividend_yield": 0.07,
+          "market_cap": 4298920165376,
+          "revenue": 768435683328,
+          "net_income": 262573506560,
+          "timestamp": "2026-02-28T18:56:13.371425",
+          "fundamental_score": 40.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 15/25",
+            "EPS Growth: 10/25",
+            "ROE: 15/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 1414.64,
+          "current_price": 1383.9,
+          "price_change_pct": 2.22,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:20.446185"
+        },
+        "current_price": 1383.9000244141,
+        "risk_analysis": {
+          "overall_risk": 29.25,
+          "risk_level": "LOW",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 0.0,
+          "earnings_risk": 50.0,
+          "correlation_risk": 57.5,
+          "timestamp": "2026-02-28T18:56:23.840491"
+        }
+      },
+      {
+        "symbol": "SBIN",
+        "recommendation": "HOLD",
+        "final_score": 59.7,
+        "technical_score": 70.0,
+        "sentiment_score": 50.0,
+        "fundamental_score": 35.0,
+        "momentum_score": 53.98,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849726",
+        "risk_adjusted_score": 59.7,
+        "original_score": 53.85,
+        "technical_analysis": {
+          "buy_signals": [
+            "EMA_STRONG_BUY",
+            "EMA_STRONG_BUY",
+            "BREAK_DAY_HIGH"
+          ],
+          "sell_signals": [
+            "MACD_BEARISH",
+            "BEARISH_CANDLE"
+          ],
+          "buy_count": 3,
+          "sell_count": 2,
+          "final_verdict": "BUY",
+          "trend": "NEUTRAL",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 990.0,
+          "sell_price": 1234.7,
+          "price": 1201.6999511719,
+          "open": 1207.0,
+          "high": 1211.8000488281,
+          "low": 1198.5999755859,
+          "volume": 10700355.0,
+          "rsi": 67.7500995854721,
+          "ema_20": 1172.5208541403067,
+          "ema_50": 1121.860265913988,
+          "macd": 37.341395558397835,
+          "macd_signal": 37.966387836803996,
+          "macd_hist": -0.624992278406161,
+          "support": 990.0,
+          "resistance": 1234.6999511719,
+          "prev_price": 1209.5,
+          "prev_rsi": 81.2854781365073,
+          "prev_macd": 39.67913523678999,
+          "prev_macd_signal": 38.122635906405534,
+          "symbol": "SBIN",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "SBIN",
+          "revenue_growth": 0.145,
+          "earnings_growth": 0.093,
+          "roe": null,
+          "debt_to_equity": null,
+          "profit_margin": 0.22498,
+          "current_ratio": null,
+          "pe_ratio": 13.088988,
+          "pb_ratio": 1.8736717,
+          "dividend_yield": 1.32,
+          "market_cap": 11092432519168,
+          "revenue": 3700534018048,
+          "net_income": 832563642368,
+          "timestamp": "2026-02-28T18:56:13.689425",
+          "fundamental_score": 35.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 20/25",
+            "EPS Growth: 15/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 1259.41,
+          "current_price": 1201.7,
+          "price_change_pct": 4.8,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:21.812905"
+        },
+        "current_price": 1201.6999511719,
+        "risk_analysis": {
+          "overall_risk": 30.5,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 0.0,
+          "earnings_risk": 50.0,
+          "correlation_risk": 70.0,
+          "timestamp": "2026-02-28T18:56:23.840520"
+        }
+      },
+      {
+        "symbol": "LT",
+        "recommendation": "HOLD",
+        "final_score": 46.55,
+        "technical_score": 70.0,
+        "sentiment_score": 35.71,
+        "fundamental_score": 26.0,
+        "momentum_score": 40.17,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849699",
+        "risk_adjusted_score": 46.55,
+        "original_score": 45.95,
+        "technical_analysis": {
+          "buy_signals": [
+            "EMA_STRONG_BUY",
+            "EMA_STRONG_BUY",
+            "BREAK_DAY_HIGH"
+          ],
+          "sell_signals": [
+            "MACD_BEARISH",
+            "BEARISH_CANDLE"
+          ],
+          "buy_count": 3,
+          "sell_count": 2,
+          "final_verdict": "BUY",
+          "trend": "NEUTRAL",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 3825.0,
+          "sell_price": 4440.0,
+          "price": 4278.2998046875,
+          "open": 4288.8999023438,
+          "high": 4304.7001953125,
+          "low": 4254.3999023438,
+          "volume": 2357853.0,
+          "rsi": 62.9135786966275,
+          "ema_20": 4193.7385863680975,
+          "ema_50": 4032.9646490163473,
+          "macd": 109.29843525809792,
+          "macd_signal": 114.44228405668666,
+          "macd_hist": -5.143848798588735,
+          "support": 3825.0,
+          "resistance": 4440.0,
+          "prev_price": 4286.5,
+          "prev_rsi": 66.17778224666212,
+          "prev_macd": 116.07417393330616,
+          "prev_macd_signal": 115.72824625633383,
+          "symbol": "LT",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "ticker": "LT",
+          "total_news": 13,
+          "positive_count": 2,
+          "negative_count": 6,
+          "neutral_count": 5,
+          "avg_sentiment_score": -0.22300711624203975,
+          "avg_confidence": 0.8382141269170321,
+          "weighted_score": -2.8990925111465167
+        },
+        "fundamental_analysis": {
+          "symbol": "LT",
+          "revenue_growth": 0.111,
+          "earnings_growth": -0.043,
+          "roe": null,
+          "debt_to_equity": 111.847,
+          "profit_margin": 0.057490002,
+          "current_ratio": null,
+          "pe_ratio": 33.44512,
+          "pb_ratio": 5.8051066,
+          "dividend_yield": 0.79,
+          "market_cap": 5885278552064,
+          "revenue": 2827686510592,
+          "net_income": 171246305280,
+          "timestamp": "2026-02-28T18:56:15.120619",
+          "fundamental_score": 26.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 20/25",
+            "EPS Growth: 6/25",
+            "Debt/Equity: 0/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 4451.56,
+          "current_price": 4278.3,
+          "price_change_pct": 4.05,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:21.779276"
+        },
+        "current_price": 4278.2998046875,
+        "risk_analysis": {
+          "overall_risk": 48.0,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 65.0,
+          "leverage_risk": 40.0,
+          "earnings_risk": 80.0,
+          "correlation_risk": 70.0,
+          "timestamp": "2026-02-28T18:56:23.840506"
+        }
+      },
+      {
+        "symbol": "INFY",
+        "recommendation": "SELL",
+        "final_score": 36.52,
+        "technical_score": 27.5,
+        "sentiment_score": 50.0,
+        "fundamental_score": 40.0,
+        "momentum_score": 36.89,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849562",
+        "risk_adjusted_score": 36.52,
+        "original_score": 37.66,
+        "technical_analysis": {
+          "buy_signals": [
+            "RSI_OVERSOLD",
+            "VOLUME_CONFIRMATION_BUY",
+            "GAP_UP"
+          ],
+          "sell_signals": [
+            "EMA_STRONG_SELL",
+            "EMA_STRONG_SELL",
+            "MACD_BEARISH",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 3,
+          "sell_count": 5,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "BUY",
+          "buy_price": 1264.1,
+          "sell_price": 1728.0,
+          "price": 1300.0999755859,
+          "open": 1326.3000488281,
+          "high": 1335.0,
+          "low": 1294.1999511719,
+          "volume": 23141724.0,
+          "rsi": 17.226483608594748,
+          "ema_20": 1408.5557196946445,
+          "ema_50": 1524.0263549825113,
+          "macd": -88.42527707718432,
+          "macd_signal": -81.38604248059593,
+          "macd_hist": -7.039234596588386,
+          "support": 1264.0999755859,
+          "resistance": 1728.0,
+          "prev_price": 1289.0999755859,
+          "prev_rsi": 13.618169402240724,
+          "prev_macd": -90.06473319912129,
+          "prev_macd_signal": -79.62623383144884,
+          "symbol": "INFY",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "INFY",
+          "revenue_growth": 0.032,
+          "earnings_growth": -0.053,
+          "roe": 0.32683,
+          "debt_to_equity": 10.531,
+          "profit_margin": 0.16153999,
+          "current_ratio": 1.812,
+          "pe_ratio": 18.551655,
+          "pb_ratio": 6.2600784,
+          "dividend_yield": 3.46,
+          "market_cap": 5259801919488,
+          "revenue": 19847000064,
+          "net_income": 3206000128,
+          "timestamp": "2026-02-28T18:56:14.348288",
+          "fundamental_score": 40.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 10/25",
+            "EPS Growth: 5/25",
+            "ROE: 25/25",
+            "Debt/Equity: 0/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 1154.54,
+          "current_price": 1300.1,
+          "price_change_pct": -11.2,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:18.980377"
+        },
+        "current_price": 1300.0999755859,
+        "risk_analysis": {
+          "overall_risk": 53.8,
+          "risk_level": "HIGH",
+          "volatility_risk": 50.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 40.0,
+          "earnings_risk": 80.0,
+          "correlation_risk": 68.0,
+          "timestamp": "2026-02-28T18:56:23.840427"
+        }
+      },
+      {
+        "symbol": "MARUTI",
+        "recommendation": "SELL",
+        "final_score": 36.48,
+        "technical_score": 0,
+        "sentiment_score": 50.0,
+        "fundamental_score": 60.0,
+        "momentum_score": 28.88,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849798",
+        "risk_adjusted_score": 36.48,
+        "original_score": 31.83,
+        "technical_analysis": {
+          "buy_signals": [],
+          "sell_signals": [
+            "EMA_STRONG_SELL",
+            "EMA_STRONG_SELL",
+            "MACD_BEARISH",
+            "VOLUME_CONFIRMATION_SELL",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 0,
+          "sell_count": 6,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "SELL",
+          "buy_price": 14058.0,
+          "sell_price": 15459.0,
+          "price": 14857.0,
+          "open": 15110.0,
+          "high": 15192.0,
+          "low": 14804.0,
+          "volume": 478164.0,
+          "rsi": 47.19517848864163,
+          "ema_20": 15056.62766474642,
+          "ema_50": 15107.014879918761,
+          "macd": -23.336208844993962,
+          "macd_signal": -17.047527331116562,
+          "macd_hist": -6.2886815138774,
+          "support": 14058.0,
+          "resistance": 15459.0,
+          "prev_price": 15213.0,
+          "prev_rsi": 55.93406593406593,
+          "prev_macd": -6.209782962076133,
+          "prev_macd_signal": -15.475356952647209,
+          "symbol": "MARUTI",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "MARUTI",
+          "revenue_growth": 0.287,
+          "earnings_growth": 0.041,
+          "roe": null,
+          "debt_to_equity": 0.1,
+          "profit_margin": 0.08693,
+          "current_ratio": null,
+          "pe_ratio": 31.250261,
+          "pb_ratio": 4.6830544,
+          "dividend_yield": 0.91,
+          "market_cap": 4671078924288,
+          "revenue": 1717736046592,
+          "net_income": 149315993600,
+          "timestamp": "2026-02-28T18:56:16.086732",
+          "fundamental_score": 60.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 25/25",
+            "EPS Growth: 10/25",
+            "Debt/Equity: 25/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 14635.57,
+          "current_price": 14857.0,
+          "price_change_pct": -1.49,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:22.555548"
+        },
+        "current_price": 14857.0,
+        "risk_analysis": {
+          "overall_risk": 34.5,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 80.0,
+          "leverage_risk": 0.0,
+          "earnings_risk": 50.0,
+          "correlation_risk": 50.0,
+          "timestamp": "2026-02-28T18:56:23.840567"
+        }
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "recommendation": "SELL",
+        "final_score": 36.11,
+        "technical_score": 30.0,
+        "sentiment_score": 50.0,
+        "fundamental_score": 19.0,
+        "momentum_score": 45.74,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849352",
+        "risk_adjusted_score": 36.11,
+        "original_score": 34.61,
+        "technical_analysis": {
+          "buy_signals": [
+            "EMA_STRONG_BUY",
+            "EMA_STRONG_BUY"
+          ],
+          "sell_signals": [
+            "MACD_BEARISH",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 2,
+          "sell_count": 3,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 887.0,
+          "sell_price": 1046.0,
+          "price": 995.9000244141,
+          "open": 1008.950012207,
+          "high": 1014.9000244141,
+          "low": 993.0999755859,
+          "volume": 8145772.0,
+          "rsi": 54.0983593692349,
+          "ema_20": 995.0163240316972,
+          "ema_50": 962.9167554930115,
+          "macd": 21.53924736902343,
+          "macd_signal": 23.718830040689177,
+          "macd_hist": -2.1795826716657487,
+          "support": 887.0,
+          "resistance": 1046.0,
+          "prev_price": 1012.950012207,
+          "prev_rsi": 61.16469583616207,
+          "prev_macd": 24.468592496894416,
+          "prev_macd_signal": 24.26372570860561,
+          "symbol": "BAJFINANCE",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "BAJFINANCE",
+          "revenue_growth": 0.064,
+          "earnings_growth": -0.068,
+          "roe": null,
+          "debt_to_equity": 310.294,
+          "profit_margin": 0.4368,
+          "current_ratio": null,
+          "pe_ratio": 34.36508,
+          "pb_ratio": 5.992611,
+          "dividend_yield": 0.44,
+          "market_cap": 6190858764288,
+          "revenue": 412833284096,
+          "net_income": 180323893248,
+          "timestamp": "2026-02-28T18:56:16.409679",
+          "fundamental_score": 19.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 15/25",
+            "EPS Growth: 4/25",
+            "Debt/Equity: 0/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 1013.4,
+          "current_price": 995.9,
+          "price_change_pct": 1.76,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:18.855276"
+        },
+        "current_price": 995.9000244141,
+        "risk_analysis": {
+          "overall_risk": 45.0,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 40.0,
+          "earnings_risk": 80.0,
+          "correlation_risk": 70.0,
+          "timestamp": "2026-02-28T18:56:23.840317"
+        }
+      },
+      {
+        "symbol": "HDFCBANK",
+        "recommendation": "SELL",
+        "final_score": 35.08,
+        "technical_score": 4.29,
+        "sentiment_score": 50.0,
+        "fundamental_score": 60.0,
+        "momentum_score": 16.52,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849589",
+        "risk_adjusted_score": 35.08,
+        "original_score": 31.48,
+        "technical_analysis": {
+          "buy_signals": [
+            "RSI_OVERSOLD"
+          ],
+          "sell_signals": [
+            "EMA_STRONG_SELL",
+            "EMA_STRONG_SELL",
+            "MACD_BEARISH",
+            "VOLUME_CONFIRMATION_SELL",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 1,
+          "sell_count": 6,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "SELL",
+          "buy_price": 885.0,
+          "sell_price": 994.0,
+          "price": 887.75,
+          "open": 898.5999755859,
+          "high": 898.950012207,
+          "low": 885.0,
+          "volume": 34620755.0,
+          "rsi": 28.8099182191078,
+          "ema_20": 917.2856063097292,
+          "ema_50": 923.3767308699719,
+          "macd": -7.805598631706516,
+          "macd_signal": -4.0467761979507735,
+          "macd_hist": -3.7588224337557428,
+          "support": 885.0,
+          "resistance": 994.0,
+          "prev_price": 898.5999755859,
+          "prev_rsi": 30.64661732710087,
+          "prev_macd": -5.984112398706884,
+          "prev_macd_signal": -3.1070705895118382,
+          "symbol": "HDFCBANK",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "HDFCBANK",
+          "revenue_growth": 0.264,
+          "earnings_growth": 0.115,
+          "roe": 0.14015001,
+          "debt_to_equity": null,
+          "profit_margin": 0.26187,
+          "current_ratio": null,
+          "pe_ratio": 19.802588,
+          "pb_ratio": 2.4184036,
+          "dividend_yield": 1.24,
+          "market_cap": 13660710764544,
+          "revenue": 2845330898944,
+          "net_income": 745100869632,
+          "timestamp": "2026-02-28T18:56:17.301531",
+          "fundamental_score": 60.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 25/25",
+            "EPS Growth: 20/25",
+            "ROE: 15/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 856.33,
+          "current_price": 887.75,
+          "price_change_pct": -3.54,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:20.087823"
+        },
+        "current_price": 887.75,
+        "risk_analysis": {
+          "overall_risk": 38.0,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 50.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 0.0,
+          "earnings_risk": 50.0,
+          "correlation_risk": 55.0,
+          "timestamp": "2026-02-28T18:56:23.840444"
+        }
+      },
+      {
+        "symbol": "KOTAKBANK",
+        "recommendation": "SELL",
+        "final_score": 33.83,
+        "technical_score": 0,
+        "sentiment_score": 50.0,
+        "fundamental_score": 35.0,
+        "momentum_score": 40.85,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849458",
+        "risk_adjusted_score": 33.83,
+        "original_score": 27.38,
+        "technical_analysis": {
+          "buy_signals": [],
+          "sell_signals": [
+            "EMA_SELL",
+            "MACD_BEARISH",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 0,
+          "sell_count": 4,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 404.1,
+          "sell_price": 434.9,
+          "price": 415.200012207,
+          "open": 420.5,
+          "high": 422.3500061035,
+          "low": 414.450012207,
+          "volume": 17806739.0,
+          "rsi": 38.1533364098335,
+          "ema_20": 421.0991558072056,
+          "ema_50": 416.4117943505783,
+          "macd": 2.6560000749855703,
+          "macd_signal": 3.5373018993941674,
+          "macd_hist": -0.8813018244085971,
+          "support": 404.1000061035,
+          "resistance": 434.8999938965,
+          "prev_price": 424.549987793,
+          "prev_rsi": 52.01833069505676,
+          "prev_macd": 3.616511544941261,
+          "prev_macd_signal": 3.757627355496316,
+          "symbol": "KOTAKBANK",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "KOTAKBANK",
+          "revenue_growth": 0.242,
+          "earnings_growth": 0.047,
+          "roe": null,
+          "debt_to_equity": null,
+          "profit_margin": 0.24558,
+          "current_ratio": null,
+          "pe_ratio": 21.979885,
+          "pb_ratio": 2.4567611,
+          "dividend_yield": 0.12,
+          "market_cap": 4129368571904,
+          "revenue": 765436690432,
+          "net_income": 187974991872,
+          "timestamp": "2026-02-28T18:56:17.688928",
+          "fundamental_score": 35.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 25/25",
+            "EPS Growth: 10/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 411.69,
+          "current_price": 415.2,
+          "price_change_pct": -0.85,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:18.886860"
+        },
+        "current_price": 415.200012207,
+        "risk_analysis": {
+          "overall_risk": 28.5,
+          "risk_level": "LOW",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 0.0,
+          "earnings_risk": 50.0,
+          "correlation_risk": 50.0,
+          "timestamp": "2026-02-28T18:56:23.840362"
+        }
+      },
+      {
+        "symbol": "HINDUNILVR",
+        "recommendation": "SELL",
+        "final_score": 33.69,
+        "technical_score": 6.67,
+        "sentiment_score": 50.0,
+        "fundamental_score": 37.0,
+        "momentum_score": 48.23,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849502",
+        "risk_adjusted_score": 33.69,
+        "original_score": 31.32,
+        "technical_analysis": {
+          "buy_signals": [
+            "MACD_BULLISH"
+          ],
+          "sell_signals": [
+            "EMA_STRONG_SELL",
+            "EMA_STRONG_SELL",
+            "VOLUME_CONFIRMATION_SELL",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 1,
+          "sell_count": 5,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "SELL",
+          "buy_price": 2275.6,
+          "sell_price": 2479.6,
+          "price": 2338.1000976562,
+          "open": 2369.3000488281,
+          "high": 2378.8999023438,
+          "low": 2330.6000976562,
+          "volume": 3053227.0,
+          "rsi": 38.203071406574985,
+          "ema_20": 2360.5598101130963,
+          "ema_50": 2376.982854342772,
+          "macd": -11.4181433242793,
+          "macd_signal": -13.006973212628694,
+          "macd_hist": 1.5888298883493945,
+          "support": 2275.6000976562,
+          "resistance": 2479.6000976562,
+          "prev_price": 2383.3000488281,
+          "prev_rsi": 44.56551640018061,
+          "prev_macd": -10.737931237805697,
+          "prev_macd_signal": -13.404180684716042,
+          "symbol": "HINDUNILVR",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "HINDUNILVR",
+          "revenue_growth": 0.039,
+          "earnings_growth": 1.214,
+          "roe": null,
+          "debt_to_equity": 3.611,
+          "profit_margin": 0.22292,
+          "current_ratio": null,
+          "pe_ratio": 54.34914,
+          "pb_ratio": 11.274309,
+          "dividend_yield": 1.84,
+          "market_cap": 5494377283584,
+          "revenue": 651000020992,
+          "net_income": 101139996672,
+          "timestamp": "2026-02-28T18:56:17.021322",
+          "fundamental_score": 37.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 10/25",
+            "EPS Growth: 25/25",
+            "Debt/Equity: 2/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 2307.85,
+          "current_price": 2338.1,
+          "price_change_pct": -1.29,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:18.914491"
+        },
+        "current_price": 2338.1000976562,
+        "risk_analysis": {
+          "overall_risk": 42.1,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 65.0,
+          "leverage_risk": 40.0,
+          "earnings_risk": 50.0,
+          "correlation_risk": 56.0,
+          "timestamp": "2026-02-28T18:56:23.840387"
+        }
+      },
+      {
+        "symbol": "ICICIBANK",
+        "recommendation": "SELL",
+        "final_score": 31.75,
+        "technical_score": 0,
+        "sentiment_score": 50.0,
+        "fundamental_score": 37.0,
+        "momentum_score": 32.65,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849753",
+        "risk_adjusted_score": 31.75,
+        "original_score": 26.65,
+        "technical_analysis": {
+          "buy_signals": [],
+          "sell_signals": [
+            "EMA_SELL",
+            "MACD_BEARISH",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 0,
+          "sell_count": 4,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 1329.1,
+          "sell_price": 1434.4,
+          "price": 1378.9000244141,
+          "open": 1400.0,
+          "high": 1402.1999511719,
+          "low": 1376.6999511719,
+          "volume": 15096898.0,
+          "rsi": 44.13744940124014,
+          "ema_20": 1393.715772971346,
+          "ema_50": 1382.623420809069,
+          "macd": 4.733405842078582,
+          "macd_signal": 7.981350813237328,
+          "macd_hist": -3.247944971158746,
+          "support": 1329.0999755859,
+          "resistance": 1434.4000244141,
+          "prev_price": 1404.9000244141,
+          "prev_rsi": 49.54615967056828,
+          "prev_macd": 6.840585374916827,
+          "prev_macd_signal": 8.793337056027013,
+          "symbol": "ICICIBANK",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "ICICIBANK",
+          "revenue_growth": 0.03,
+          "earnings_growth": -0.037,
+          "roe": 0.16798,
+          "debt_to_equity": null,
+          "profit_margin": 0.27513,
+          "current_ratio": null,
+          "pe_ratio": 18.832287,
+          "pb_ratio": 2.827724,
+          "dividend_yield": 0.8,
+          "market_cap": 9868770541568,
+          "revenue": 1924702535680,
+          "net_income": 529548541952,
+          "timestamp": "2026-02-28T18:56:12.971288",
+          "fundamental_score": 37.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 10/25",
+            "EPS Growth: 7/25",
+            "ROE: 20/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 1369.71,
+          "current_price": 1378.9,
+          "price_change_pct": -0.67,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:21.841564"
+        },
+        "current_price": 1378.9000244141,
+        "risk_analysis": {
+          "overall_risk": 33.0,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 0.0,
+          "earnings_risk": 80.0,
+          "correlation_risk": 50.0,
+          "timestamp": "2026-02-28T18:56:23.840537"
+        }
+      },
+      {
+        "symbol": "RELIANCE",
+        "recommendation": "SELL",
+        "final_score": 27.52,
+        "technical_score": 0,
+        "sentiment_score": 49.04,
+        "fundamental_score": 30.0,
+        "momentum_score": 28.7,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849618",
+        "risk_adjusted_score": 27.52,
+        "original_score": 24.07,
+        "technical_analysis": {
+          "buy_signals": [],
+          "sell_signals": [
+            "EMA_SELL",
+            "MACD_BEARISH",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 0,
+          "sell_count": 4,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 1335.5,
+          "sell_price": 1489.5,
+          "price": 1393.9000244141,
+          "open": 1398.0,
+          "high": 1410.4000244141,
+          "low": 1388.0999755859,
+          "volume": 12031440.0,
+          "rsi": 34.248509766191006,
+          "ema_20": 1418.0544605274968,
+          "ema_50": 1407.4643860328138,
+          "macd": 0.8923774111819966,
+          "macd_signal": 7.336743126748426,
+          "macd_hist": -6.44436571556643,
+          "support": 1335.5,
+          "resistance": 1489.5,
+          "prev_price": 1406.8000488281,
+          "prev_rsi": 39.661656507521776,
+          "prev_macd": 3.329836530819648,
+          "prev_macd_signal": 8.947834555640034,
+          "symbol": "RELIANCE",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "ticker": "RELIANCE",
+          "total_news": 1,
+          "positive_count": 1,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "avg_sentiment_score": 0.8005960135142551,
+          "avg_confidence": 0.8947603106498718,
+          "weighted_score": 0.8005960135142551
+        },
+        "fundamental_analysis": {
+          "symbol": "RELIANCE",
+          "revenue_growth": 0.104,
+          "earnings_growth": 0.006,
+          "roe": null,
+          "debt_to_equity": 35.651,
+          "profit_margin": 0.08122,
+          "current_ratio": null,
+          "pe_ratio": 22.676102,
+          "pb_ratio": 2.150682,
+          "dividend_yield": 0.39,
+          "market_cap": 18862913355776,
+          "revenue": 10245479858176,
+          "net_income": 832110002176,
+          "timestamp": "2026-02-28T18:56:15.535188",
+          "fundamental_score": 30.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 20/25",
+            "EPS Growth: 10/25",
+            "Debt/Equity: 0/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 1375.31,
+          "current_price": 1393.9,
+          "price_change_pct": -1.33,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:20.129303"
+        },
+        "current_price": 1393.9000244141,
+        "risk_analysis": {
+          "overall_risk": 38.5,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 40.0,
+          "earnings_risk": 50.0,
+          "correlation_risk": 50.0,
+          "timestamp": "2026-02-28T18:56:23.840461"
+        }
+      },
+      {
+        "symbol": "WIPRO",
+        "recommendation": "SELL",
+        "final_score": 27.51,
+        "technical_score": 6.67,
+        "sentiment_score": 50.0,
+        "fundamental_score": 38.0,
+        "momentum_score": 26.38,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849776",
+        "risk_adjusted_score": 27.51,
+        "original_score": 28.29,
+        "technical_analysis": {
+          "buy_signals": [
+            "RSI_OVERSOLD"
+          ],
+          "sell_signals": [
+            "EMA_STRONG_SELL",
+            "EMA_STRONG_SELL",
+            "MACD_BEARISH",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 1,
+          "sell_count": 5,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 199.12,
+          "sell_price": 259.89,
+          "price": 200.9600067138672,
+          "open": 204.0,
+          "high": 204.0,
+          "low": 200.0500030517578,
+          "volume": 13288519.0,
+          "rsi": 13.888901503626244,
+          "ema_20": 215.05608336798753,
+          "ema_50": 224.56097858089308,
+          "macd": -8.73481572083665,
+          "macd_signal": -6.900603059954337,
+          "macd_hist": -1.8342126608823133,
+          "support": 199.1199951171875,
+          "resistance": 259.8900146484375,
+          "prev_price": 201.0800018310547,
+          "prev_rsi": 13.712058064084658,
+          "prev_macd": -8.581213830986684,
+          "prev_macd_signal": -6.442049894733758,
+          "symbol": "WIPRO",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "WIPRO",
+          "revenue_growth": 0.055,
+          "earnings_growth": -0.072,
+          "roe": 0.15195,
+          "debt_to_equity": 22.031,
+          "profit_margin": 0.14594,
+          "current_ratio": 2.185,
+          "pe_ratio": 15.923931,
+          "pb_ratio": 2.3473346,
+          "dividend_yield": 8.46,
+          "market_cap": 2105358155776,
+          "revenue": 908918980608,
+          "net_income": 132651999232,
+          "timestamp": "2026-02-28T18:56:14.123033",
+          "fundamental_score": 38.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 15/25",
+            "EPS Growth: 3/25",
+            "ROE: 20/25",
+            "Debt/Equity: 0/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 183.81,
+          "current_price": 200.96,
+          "price_change_pct": -8.53,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:22.275521"
+        },
+        "current_price": 200.9600067138672,
+        "risk_analysis": {
+          "overall_risk": 52.6,
+          "risk_level": "HIGH",
+          "volatility_risk": 50.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 40.0,
+          "earnings_risk": 80.0,
+          "correlation_risk": 56.0,
+          "timestamp": "2026-02-28T18:56:23.840553"
+        }
+      },
+      {
+        "symbol": "TCS",
+        "recommendation": "SELL",
+        "final_score": 27.25,
+        "technical_score": 6.67,
+        "sentiment_score": 50.0,
+        "fundamental_score": 35.0,
+        "momentum_score": 29.62,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849534",
+        "risk_adjusted_score": 27.25,
+        "original_score": 28.03,
+        "technical_analysis": {
+          "buy_signals": [
+            "RSI_OVERSOLD"
+          ],
+          "sell_signals": [
+            "EMA_STRONG_SELL",
+            "EMA_STRONG_SELL",
+            "MACD_BEARISH",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 1,
+          "sell_count": 5,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 2561.3,
+          "sell_price": 3350.0,
+          "price": 2637.3999023438,
+          "open": 2681.6000976562,
+          "high": 2688.6000976562,
+          "low": 2626.1000976562,
+          "volume": 5083717.0,
+          "rsi": 24.039436070548092,
+          "ema_20": 2785.5166846302545,
+          "ema_50": 2947.00595684142,
+          "macd": -126.25574153323987,
+          "macd_signal": -117.80396606992021,
+          "macd_hist": -8.451775463319663,
+          "support": 2561.3000488281,
+          "resistance": 3350.0,
+          "prev_price": 2647.6999511719,
+          "prev_rsi": 25.298363244557024,
+          "prev_macd": -129.30657687280564,
+          "prev_macd_signal": -115.69102220409027,
+          "symbol": "TCS",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "TCS",
+          "revenue_growth": 0.049,
+          "earnings_growth": -0.139,
+          "roe": 0.42635,
+          "debt_to_equity": 9.444,
+          "profit_margin": 0.18295999,
+          "current_ratio": 2.525,
+          "pe_ratio": 20.0,
+          "pb_ratio": 8.4066725,
+          "dividend_yield": 2.39,
+          "market_cap": 9542343589888,
+          "revenue": 2608020062208,
+          "net_income": 477160013824,
+          "timestamp": "2026-02-28T18:56:16.696908",
+          "fundamental_score": 35.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 10/25",
+            "EPS Growth: 0/25",
+            "ROE: 25/25",
+            "Debt/Equity: 0/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 2428.74,
+          "current_price": 2637.4,
+          "price_change_pct": -7.91,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:18.948537"
+        },
+        "current_price": 2637.3999023438,
+        "risk_analysis": {
+          "overall_risk": 52.6,
+          "risk_level": "HIGH",
+          "volatility_risk": 50.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 40.0,
+          "earnings_risk": 80.0,
+          "correlation_risk": 56.0,
+          "timestamp": "2026-02-28T18:56:23.840408"
+        }
+      },
+      {
+        "symbol": "BHARTIARTL",
+        "recommendation": "SELL",
+        "final_score": 23.63,
+        "technical_score": 0,
+        "sentiment_score": 50.0,
+        "fundamental_score": 45.0,
+        "momentum_score": 19.04,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849644",
+        "risk_adjusted_score": 23.63,
+        "original_score": 26.61,
+        "technical_analysis": {
+          "buy_signals": [
+            "RSI_OVERSOLD"
+          ],
+          "sell_signals": [
+            "EMA_STRONG_SELL",
+            "EMA_STRONG_SELL",
+            "MACD_BEARISH",
+            "VOLUME_CONFIRMATION_SELL",
+            "BEARISH_CANDLE",
+            "GAP_DOWN",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 1,
+          "sell_count": 7,
+          "final_verdict": "STRONG SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "SELL",
+          "buy_price": 1870.1,
+          "sell_price": 2057.0,
+          "price": 1879.3000488281,
+          "open": 1910.0,
+          "high": 1915.0,
+          "low": 1870.0999755859,
+          "volume": 13754648.0,
+          "rsi": 22.594005541356466,
+          "ema_20": 1971.347308472134,
+          "ema_50": 1978.3041785078888,
+          "macd": -16.49005756469137,
+          "macd_signal": -1.9370656121746048,
+          "macd_hist": -14.552991952516765,
+          "support": 1870.0999755859,
+          "resistance": 2057.0,
+          "prev_price": 1929.5999755859,
+          "prev_rsi": 27.31442312877958,
+          "prev_macd": -9.737664010182925,
+          "prev_macd_signal": 1.701182375954586,
+          "symbol": "BHARTIARTL",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "BHARTIARTL",
+          "revenue_growth": 0.196,
+          "earnings_growth": -0.553,
+          "roe": 0.23125,
+          "debt_to_equity": 117.095,
+          "profit_margin": 0.14937,
+          "current_ratio": 0.45,
+          "pe_ratio": 37.177055,
+          "pb_ratio": 9.171075,
+          "dividend_yield": 0.85,
+          "market_cap": 11447703699456,
+          "revenue": 2034658050048,
+          "net_income": 303919005696,
+          "timestamp": "2026-02-28T18:56:15.330239",
+          "fundamental_score": 45.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 20/25",
+            "EPS Growth: 0/25",
+            "ROE: 25/25",
+            "Debt/Equity: 0/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 1788.4,
+          "current_price": 1879.3,
+          "price_change_pct": -4.84,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:20.175089"
+        },
+        "current_price": 1879.3000488281,
+        "risk_analysis": {
+          "overall_risk": 59.93,
+          "risk_level": "HIGH",
+          "volatility_risk": 50.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 70.0,
+          "earnings_risk": 80.0,
+          "correlation_risk": 54.29,
+          "timestamp": "2026-02-28T18:56:23.840478"
+        }
+      },
+      {
+        "symbol": "ITC",
+        "recommendation": "SELL",
+        "final_score": 23.05,
+        "technical_score": 0,
+        "sentiment_score": 4.43,
+        "fundamental_score": 40.0,
+        "momentum_score": 41.59,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-02-28T18:56:23.849821",
+        "risk_adjusted_score": 23.05,
+        "original_score": 17.35,
+        "technical_analysis": {
+          "buy_signals": [],
+          "sell_signals": [
+            "EMA_SELL",
+            "MACD_BEARISH",
+            "BEARISH_CANDLE",
+            "BREAK_DAY_LOW"
+          ],
+          "buy_count": 0,
+          "sell_count": 4,
+          "final_verdict": "SELL",
+          "trend": "NEUTRAL",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 295.8,
+          "sell_price": 334.25,
+          "price": 313.6000061035156,
+          "open": 316.0,
+          "high": 317.75,
+          "low": 312.6499938964844,
+          "volume": 13892595.0,
+          "rsi": 40.534999450558075,
+          "ema_20": 319.53727537356184,
+          "ema_50": 316.6306681876858,
+          "macd": 1.5891229847584327,
+          "macd_signal": 2.513611321464786,
+          "macd_hist": -0.9244883367063532,
+          "support": 295.8007075190383,
+          "resistance": 334.25,
+          "prev_price": 318.29998779296875,
+          "prev_rsi": 42.00426855454771,
+          "prev_macd": 2.405309771497798,
+          "prev_macd_signal": 2.744733405641374,
+          "symbol": "ITC",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "ticker": "ITC",
+          "total_news": 2,
+          "positive_count": 0,
+          "negative_count": 2,
+          "neutral_count": 0,
+          "avg_sentiment_score": -0.8504704783566588,
+          "avg_confidence": 0.9211450815200806,
+          "weighted_score": -1.7009409567133176
+        },
+        "fundamental_analysis": {
+          "symbol": "ITC",
+          "revenue_growth": 0.067,
+          "earnings_growth": 0.0,
+          "roe": null,
+          "debt_to_equity": 0.507,
+          "profit_margin": 0.43890998,
+          "current_ratio": null,
+          "pe_ratio": 19.310345,
+          "pb_ratio": 5.5301814,
+          "dividend_yield": 4.58,
+          "market_cap": 3929166577664,
+          "revenue": 798087184384,
+          "net_income": 203762597888,
+          "timestamp": "2026-02-28T18:56:14.799143",
+          "fundamental_score": 40.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 15/25",
+            "EPS Growth: 10/25",
+            "Debt/Equity: 15/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "target_price": {
+          "target_price": 309.19,
+          "current_price": 313.6,
+          "price_change_pct": -1.41,
+          "confidence": 0.4,
+          "model_used": "linear_fallback",
+          "timestamp": "2026-02-28T18:56:23.303007"
+        },
+        "current_price": 313.6000061035156,
+        "risk_analysis": {
+          "overall_risk": 31.0,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 20.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 10.0,
+          "earnings_risk": 50.0,
+          "correlation_risk": 50.0,
+          "timestamp": "2026-02-28T18:56:23.840583"
+        }
+      }
+    ],
+    "timestamp": "2026-02-28T18:56:23.849854",
+    "sector_analysis": {
+      "sector_analysis": {
+        "Financial Services": {
+          "average_score": 50.0,
+          "stock_count": 1,
+          "stocks": [
+            "BAJFINANCE"
+          ],
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0
+        },
+        "Banking": {
+          "average_score": 50.0,
+          "stock_count": 5,
+          "stocks": [
+            "KOTAKBANK",
+            "HDFCBANK",
+            "AXISBANK",
+            "SBIN",
+            "ICICIBANK"
+          ],
+          "buy_count": 0,
+          "hold_count": 5,
+          "sell_count": 0,
+          "buy_ratio": 0.0
+        },
+        "FMCG": {
+          "average_score": 50.0,
+          "stock_count": 2,
+          "stocks": [
+            "HINDUNILVR",
+            "ITC"
+          ],
+          "buy_count": 0,
+          "hold_count": 2,
+          "sell_count": 0,
+          "buy_ratio": 0.0
+        },
+        "IT & Software": {
+          "average_score": 50.0,
+          "stock_count": 3,
+          "stocks": [
+            "TCS",
+            "INFY",
+            "WIPRO"
+          ],
+          "buy_count": 0,
+          "hold_count": 3,
+          "sell_count": 0,
+          "buy_ratio": 0.0
+        },
+        "Energy & Power": {
+          "average_score": 50.0,
+          "stock_count": 1,
+          "stocks": [
+            "RELIANCE"
+          ],
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0
+        },
+        "Telecom & Media": {
+          "average_score": 50.0,
+          "stock_count": 1,
+          "stocks": [
+            "BHARTIARTL"
+          ],
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0
+        },
+        "Infrastructure & Cement": {
+          "average_score": 50.0,
+          "stock_count": 1,
+          "stocks": [
+            "LT"
+          ],
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0
+        },
+        "Automobile": {
+          "average_score": 50.0,
+          "stock_count": 1,
+          "stocks": [
+            "MARUTI"
+          ],
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0
+        }
+      },
+      "ranked_sectors": [
+        {
+          "sector": "Financial Services",
+          "rank": 1,
+          "average_score": 50.0,
+          "stock_count": 1,
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0,
+          "recommendation": "SELL",
+          "stocks": [
+            "BAJFINANCE"
+          ]
+        },
+        {
+          "sector": "Banking",
+          "rank": 2,
+          "average_score": 50.0,
+          "stock_count": 5,
+          "buy_count": 0,
+          "hold_count": 5,
+          "sell_count": 0,
+          "buy_ratio": 0.0,
+          "recommendation": "SELL",
+          "stocks": [
+            "KOTAKBANK",
+            "HDFCBANK",
+            "AXISBANK",
+            "SBIN",
+            "ICICIBANK"
+          ]
+        },
+        {
+          "sector": "FMCG",
+          "rank": 3,
+          "average_score": 50.0,
+          "stock_count": 2,
+          "buy_count": 0,
+          "hold_count": 2,
+          "sell_count": 0,
+          "buy_ratio": 0.0,
+          "recommendation": "SELL",
+          "stocks": [
+            "HINDUNILVR",
+            "ITC"
+          ]
+        },
+        {
+          "sector": "IT & Software",
+          "rank": 4,
+          "average_score": 50.0,
+          "stock_count": 3,
+          "buy_count": 0,
+          "hold_count": 3,
+          "sell_count": 0,
+          "buy_ratio": 0.0,
+          "recommendation": "SELL",
+          "stocks": [
+            "TCS",
+            "INFY",
+            "WIPRO"
+          ]
+        },
+        {
+          "sector": "Energy & Power",
+          "rank": 5,
+          "average_score": 50.0,
+          "stock_count": 1,
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0,
+          "recommendation": "SELL",
+          "stocks": [
+            "RELIANCE"
+          ]
+        },
+        {
+          "sector": "Telecom & Media",
+          "rank": 6,
+          "average_score": 50.0,
+          "stock_count": 1,
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0,
+          "recommendation": "SELL",
+          "stocks": [
+            "BHARTIARTL"
+          ]
+        },
+        {
+          "sector": "Infrastructure & Cement",
+          "rank": 7,
+          "average_score": 50.0,
+          "stock_count": 1,
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0,
+          "recommendation": "SELL",
+          "stocks": [
+            "LT"
+          ]
+        },
+        {
+          "sector": "Automobile",
+          "rank": 8,
+          "average_score": 50.0,
+          "stock_count": 1,
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0,
+          "recommendation": "SELL",
+          "stocks": [
+            "MARUTI"
+          ]
+        }
+      ],
+      "top_sector": "Financial Services",
+      "worst_sector": "Automobile",
+      "timestamp": "2026-02-28T18:56:23.846119"
+    }
+  },
+  "timestamp": "2026-02-28T18:56:23.851141",
+  "features": {
+    "risk_analysis": true,
+    "sector_analysis": true,
+    "news_decision": true,
+    "caching": true
+  },
+  "news_decisions": {}
+}
