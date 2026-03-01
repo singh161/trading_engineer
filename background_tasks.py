@@ -106,9 +106,8 @@ class BackgroundTaskManager:
             # Get latest values from indicators
             values = indicators.get_latest_values()
             
-            # Fetch REAL-TIME price directly from NSE scraper
-            current_price = await self.data_fetcher.get_current_price(symbol)
-            final_price = current_price if current_price else values.get('price')
+            # Use price from yfinance data (bulk ticker will update to real-time later)
+            final_price = values.get('price')
             
             # Prepare result
             ema_20_val = round(values.get('ema_20'), 2) if values.get('ema_20') else None
@@ -195,9 +194,8 @@ class BackgroundTaskManager:
                     # Get results
                     values = indicators.get_latest_values()
                     
-                    # Fetch REAL-TIME price for batch symbols too
-                    current_price = await self.data_fetcher.get_current_price(symbol)
-                    final_price = current_price if current_price else values.get('price')
+                    # Use price from yfinance data (bulk ticker will update to real-time later)
+                    final_price = values.get('price')
                     
                     # Calculate EMA values
                     ema_20_val = round(values.get('ema_20'), 2) if values.get('ema_20') else None
