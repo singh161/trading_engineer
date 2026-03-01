@@ -154,7 +154,12 @@ else:
 
 @app.get("/")
 async def root():
-    """Root endpoint"""
+    """Root endpoint — serve frontend if available, else API info"""
+    import os
+    frontend_index = os.path.join(os.path.dirname(__file__), "frontend", "dist", "index.html")
+    if os.path.isfile(frontend_index):
+        from fastapi.responses import FileResponse
+        return FileResponse(frontend_index)
     return {
         "message": "Stock Market Analysis API",
         "version": API_VERSION,
