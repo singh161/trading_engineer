@@ -97,7 +97,7 @@ async def lifespan(app: FastAPI):
         
         # Start ultra-fast live price ticker (Every 15-20 seconds)
         price_ticker_task = asyncio.create_task(
-            task_manager.start_live_price_ticker(interval_seconds=20)
+            task_manager.start_live_price_ticker(interval_seconds=60)
         )
         
         logger.info("Application started successfully — MySQL-free, NSE-direct!")

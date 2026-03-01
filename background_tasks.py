@@ -287,37 +287,50 @@ class BackgroundTaskManager:
             await asyncio.sleep(interval_minutes * 60)
     
     async def start_live_price_ticker(self, interval_seconds: int = 20):
-        """Ultra-fast real-time price tracker for NSE stocks"""
-        logger.info(f"Starting LIVE NSE price ticker every {interval_seconds} seconds")
+        """Bulk price ticker using index constituents API (avoids rate limiting)"""
+        from nse_scraper import NSEScraper
+        from config import NSE_INDICES
+        
+        logger.info(f"Starting BULK price ticker every {interval_seconds} seconds")
         while self.is_running:
             try:
-                # Get all stocks from cache
-                symbols = list(self.analysis_cache.keys())
-                if not symbols:
-                    # Fallback to NSE fetch
-                    stocks = await DatabaseManager.fetch_stocks_from_nse()
-                    symbols = [s.get('symbol', '').upper() for s in stocks if s.get('symbol')]
+                scraper = NSEScraper()
+                updated_count = 0
                 
-                if symbols:
-                    logger.info(f"Ticker: Updating real-time prices for {len(symbols)} stocks")
-                    for symbol in symbols:
-                        try:
-                            # Direct scrape from NSE
-                            price = await self.data_fetcher.get_current_price(symbol)
-                            if price and symbol in self.analysis_cache:
-                                analysis = self.analysis_cache[symbol]
-                                if analysis.get('price') != price:
-                                    analysis['price'] = price
-                                    analysis['timestamp'] = datetime.now().isoformat()
-                                    # Notify frontend of price change
-                                    await self._notify_update(symbol, analysis)
-                            
-                            # Small delay between individual scrapes to avoid rate limit
-                            await asyncio.sleep(0.5) 
-                        except Exception as e:
-                            logger.error(f"Ticker error for {symbol}: {e}")
+                # Fetch prices in BULK from index constituents (each call returns 50+ stock prices)
+                for index_name in NSE_INDICES:
+                    try:
+                        data = await scraper.get_index_constituents(index_name)
+                        if data and 'data' in data:
+                            for row in data['data']:
+                                symbol = row.get('symbol', '').strip().upper()
+                                if symbol and symbol in self.analysis_cache:
+                                    new_price = row.get('lastPrice')
+                                    if new_price:
+                                        new_price = float(new_price)
+                                        analysis = self.analysis_cache[symbol]
+                                        old_price = analysis.get('price')
+                                        if old_price != new_price:
+                                            analysis['price'] = new_price
+                                            # Update price change % too
+                                            change = row.get('pChange')
+                                            if change is not None:
+                                                analysis['price_change_pct'] = round(float(change), 2)
+                                            analysis['timestamp'] = datetime.now().isoformat()
+                                            await self._notify_update(symbol, analysis)
+                                            updated_count += 1
+                    except Exception as e:
+                        logger.error(f"Ticker error for index {index_name}: {e}")
+                    
+                    # Small delay between index fetches to avoid rate limiting
+                    await asyncio.sleep(2)
                 
-                # UPDATE INDICES TOO
+                await scraper.close()
+                
+                if updated_count > 0:
+                    logger.info(f"Ticker: Updated {updated_count} stock prices via bulk index API")
+                
+                # UPDATE MARKET INDICES TOO
                 indices = await self.data_fetcher.get_live_indices_data()
                 if indices:
                     # Filter for core indices
