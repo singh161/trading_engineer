@@ -35,7 +35,7 @@ function DashboardStats({ stocks, analyses }) {
             id: 'total',
             label: 'Total Analyzed',
             value: analyzedStocks,
-            change: analyzedStocks > 0 ? `${Math.round((analyzedStocks / totalStocks) * 100)}% coverage` : null,
+            change: analyzedStocks > 0 ? `${Math.min(100, Math.round((analyzedStocks / Math.max(totalStocks, 1)) * 100))}% coverage` : null,
             icon: BarChart3,
             color: 'blue',
             bgColor: 'bg-blue-accent/10',
