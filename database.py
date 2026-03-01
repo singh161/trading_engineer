@@ -82,6 +82,7 @@ class DatabaseManager:
         scraper = NSEScraper()
         seen_symbols = set()
         stocks = []
+        failed_indices = []
 
         for index_name in indices:
             try:
@@ -90,6 +91,7 @@ class DatabaseManager:
 
                 if not data or 'data' not in data:
                     logger.warning(f"⚠️  No data for index {index_name}")
+                    failed_indices.append(index_name)
                     continue
 
                 for row in data['data']:
@@ -107,6 +109,35 @@ class DatabaseManager:
                 logger.info(f"✅ Got {len(data['data'])} stocks from {index_name}")
             except Exception as e:
                 logger.error(f"Error fetching {index_name}: {e}")
+                failed_indices.append(index_name)
+            
+            # Delay between index fetches to avoid rate limiting
+            await asyncio.sleep(2)
+
+        # Retry failed indices once after a longer delay
+        if failed_indices:
+            logger.info(f"🔄 Retrying {len(failed_indices)} failed indices after 5s delay...")
+            await asyncio.sleep(5)
+            for index_name in failed_indices:
+                try:
+                    logger.info(f"🔄 Retry: Fetching {index_name}...")
+                    data = await scraper.get_index_constituents(index_name)
+                    if data and 'data' in data:
+                        for row in data['data']:
+                            symbol = row.get('symbol', '').strip().upper()
+                            if not symbol or symbol in seen_symbols:
+                                continue
+                            seen_symbols.add(symbol)
+                            stocks.append({
+                                "symbol": symbol,
+                                "name": row.get('meta', {}).get('companyName', symbol),
+                                "industry": row.get('meta', {}).get('industry', ''),
+                                "sector": row.get('meta', {}).get('sector', ''),
+                            })
+                        logger.info(f"✅ Retry success: Got stocks from {index_name}")
+                except Exception as e:
+                    logger.error(f"❌ Retry failed for {index_name}: {e}")
+                await asyncio.sleep(3)
 
         await scraper.close()
 

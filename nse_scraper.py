@@ -64,7 +64,7 @@ class NSEScraper:
             return None
 
     async def get_index_constituents(self, index_name: str) -> Optional[Dict[str, Any]]:
-        """Fetch index constituents from NSE (Async)"""
+        """Fetch index constituents from NSE (Async) with retry logic"""
         await self._ensure_session()
         if not self.cookies_fetched:
             await self._fetch_cookies()
@@ -74,21 +74,38 @@ class NSEScraper:
         encoded_index = quote(index_name)
         url = f"https://www.nseindia.com/api/equity-stockIndices?index={encoded_index}"
         
-        try:
-            async with self.session.get(url, timeout=10) as response:
-                if response.status == 200:
-                    data = await response.json()
-                    return data
-                elif response.status == 401:
-                    await self._fetch_cookies()
-                    async with self.session.get(url, timeout=10) as response_retry:
-                        if response_retry.status == 200:
-                            data = await response_retry.json()
-                            return data
-            return None
-        except Exception as e:
-            logger.error(f"Error scraping index constituents: {e}")
-            return None
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                async with self.session.get(url, timeout=15) as response:
+                    if response.status == 200:
+                        data = await response.json()
+                        return data
+                    elif response.status == 401:
+                        await self._fetch_cookies()
+                        async with self.session.get(url, timeout=15) as response_retry:
+                            if response_retry.status == 200:
+                                data = await response_retry.json()
+                                return data
+                    elif response.status == 429:
+                        # Rate limited — wait and retry
+                        wait_time = (attempt + 1) * 3  # 3s, 6s, 9s
+                        logger.warning(f"Rate limited on {index_name}, waiting {wait_time}s (attempt {attempt+1}/{max_retries})")
+                        await asyncio.sleep(wait_time)
+                        await self._fetch_cookies()  # Refresh cookies
+                        continue
+                    else:
+                        logger.warning(f"NSE returned {response.status} for {index_name}")
+                        
+            except asyncio.TimeoutError:
+                logger.warning(f"Timeout fetching {index_name} (attempt {attempt+1}/{max_retries})")
+                await asyncio.sleep(2)
+            except Exception as e:
+                logger.error(f"Error scraping index constituents {index_name}: {e}")
+                await asyncio.sleep(2)
+        
+        logger.error(f"Failed to fetch {index_name} after {max_retries} retries")
+        return None
 
     async def get_live_quote(self, symbol: str) -> Optional[Dict[str, Any]]:
         """Get live quote for a symbol (Async)"""

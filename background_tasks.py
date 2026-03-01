@@ -64,7 +64,7 @@ class BackgroundTaskManager:
             # Trigger FIRST analysis immediately in background
             if self.stocks_list:
                 symbols = [s['symbol'] for s in self.stocks_list]
-                asyncio.create_task(self.analyze_all_stocks(symbols, mode='swing', chunk_size=20))
+                asyncio.create_task(self.analyze_all_stocks(symbols, mode='swing', chunk_size=10))
                 
         except Exception as e:
             logger.error(f"❌ Failed to preload stocks from NSE: {e}")
@@ -163,7 +163,7 @@ class BackgroundTaskManager:
             return None
     
     async def analyze_all_stocks(self, symbols: List[str], mode: str = 'swing', 
-                                chunk_size: int = 20):
+                                chunk_size: int = 10):
         """Analyze all stocks using high-performance batch fetching"""
         total = len(symbols)
         processed = 0
@@ -247,8 +247,8 @@ class BackgroundTaskManager:
                     logger.error(f"Error processing {symbol} in batch: {e}")
             
             logger.info(f"Progress: {processed}/{total} stocks analyzed")
-            # Minimal sleep to keep event loop responsive
-            await asyncio.sleep(0.01)
+            # Delay between chunks to avoid rate limiting
+            await asyncio.sleep(1)
         
         logger.info(f"Completed analysis of {processed}/{total} stocks")
         return processed
@@ -275,7 +275,7 @@ class BackgroundTaskManager:
                 
                 if symbols:
                     logger.info(f"Refreshing {len(symbols)} stocks...")
-                    await self.analyze_all_stocks(symbols, mode='swing', chunk_size=15)
+                    await self.analyze_all_stocks(symbols, mode='swing', chunk_size=10)
                     logger.info("Refresh completed")
                 else:
                     logger.warning("No symbols found for refresh")
