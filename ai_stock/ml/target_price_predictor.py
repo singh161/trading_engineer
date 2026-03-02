@@ -242,8 +242,8 @@ class TargetPricePredictor:
     
     def _predict_fallback(self, technical_data: Dict) -> Dict:
         """
-        Fallback prediction using simple linear regression on EMAs/Price
-        Projects trend based on recent price vs EMAs
+        Refined fallback prediction using Mean Reversion + Momentum Logic
+        Projects realistic targets by accounting for over-extension risks.
         """
         current_price = technical_data.get('price', 0.0)
         if current_price <= 0:
@@ -251,38 +251,51 @@ class TargetPricePredictor:
 
         ema_20 = technical_data.get('ema_20', current_price)
         ema_50 = technical_data.get('ema_50', current_price)
+        rsi = technical_data.get('rsi', 50.0)
         
-        # Simple projection: momentum based on Price vs EMA20 vs EMA50
-        # If Price > EMA20 > EMA50, strong uptrend.
-        
+        # 1. Momentum Component (Price vs EMAs)
         momentum_factor = 0.0
         if ema_20 > 0:
-            momentum_factor += (current_price - ema_20) / ema_20
+            dist_20 = (current_price - ema_20) / ema_20
+            momentum_factor += dist_20
         if ema_50 > 0:
-            momentum_factor += (current_price - ema_50) / ema_50
+            dist_50 = (current_price - ema_50) / ema_50
+            momentum_factor += dist_50
             
-        # Dampen the momentum for projection (we don't expect it to continue linearly forever)
-        projected_change = momentum_factor * 0.5 
+        # 2. Mean Reversion Correction (Over-extension check)
+        # If price is > 10% from EMA20 or > 20% from EMA50, it's over-extended
+        extension_penalty = 1.0
+        if ema_20 > 0 and (current_price / ema_20) > 1.10:
+            extension_penalty = 0.5 # Extreme extension, reduce target
+        if rsi > 75:
+            extension_penalty *= 0.7 # Overbought, further reduce target
+            
+        # 3. Projection Logic
+        # More realistic projected change (weighted momentum * dampener * penalty)
+        projected_change = (momentum_factor * 0.3) * extension_penalty
         
-        # Cap projection
-        projected_change = max(-0.15, min(0.25, projected_change)) # Max -15% to +25%
-        
+        # 4. Target Calculation
         target_price = current_price * (1 + projected_change)
         
-        # Ensure target is at least slightly different if momentum is very low but trend is present
+        # 5. Trend-Based Fine Tuning
         trend = technical_data.get('trend', 'NEUTRAL')
-        if abs(projected_change) < 0.01:
-            if trend == 'UP':
-                target_price = current_price * 1.02
-            elif trend == 'DOWN':
-                target_price = current_price * 0.98
+        if abs(projected_change) < 0.005: # If nearly flat
+            if trend == 'UP' and rsi < 70:
+                target_price = current_price * 1.02 # 2% growth in healthy uptrend
+            elif trend == 'DOWN' and rsi > 30:
+                target_price = current_price * 0.98 # 2% drop in healthy downtrend
+        
+        # 6. Safety Checks
+        # Cap max move to ±15% to avoid absurd predictions
+        max_move = 0.15
+        target_price = max(current_price * (1 - max_move), min(current_price * (1 + max_move), target_price))
 
         return {
             "target_price": round(target_price, 2),
             "current_price": round(current_price, 2),
             "price_change_pct": round(((target_price - current_price) / current_price) * 100, 2),
-            "confidence": 0.4, # Lower confidence for fallback
-            "model_used": "linear_fallback",
+            "confidence": 0.45 if 40 <= rsi <= 60 else 0.35,
+            "model_used": "mean_reversion_fallback",
             "timestamp": datetime.now().isoformat()
         }
 

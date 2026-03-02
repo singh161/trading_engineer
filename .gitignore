@@ -31,3 +31,20 @@ Thumbs.db
 dist/
 build/
 *.egg-info/
+
+# Node
+node_modules/
+.npm
+/frontend/dist
+
+# AI Stock Data & Cache
+ai_stock/data/
+ai_stock/data/cache/
+*.json
+!package.json
+!tsconfig.json
+!project.json
+
+# Local env
+.env
+.env.*

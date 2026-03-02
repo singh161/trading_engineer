@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { aiStockAPI } from '../services/api';
+import { Trophy, TrendingUp, TrendingDown, Minus, Info, BarChart4, PieChart, Activity, Zap } from 'lucide-react';
 
 function SectorAnalysis() {
   const [sectorData, setSectorData] = useState({});
@@ -33,219 +34,152 @@ function SectorAnalysis() {
 
   useEffect(() => {
     loadSectorData();
-    
-    // Listen for analysis completion event
-    const handleAnalysisComplete = () => {
-      setTimeout(loadSectorData, 1000);
-    };
+    const handleAnalysisComplete = () => setTimeout(loadSectorData, 1000);
     window.addEventListener('ai-analysis-complete', handleAnalysisComplete);
-    
-    return () => {
-      window.removeEventListener('ai-analysis-complete', handleAnalysisComplete);
-    };
+    return () => window.removeEventListener('ai-analysis-complete', handleAnalysisComplete);
   }, []);
 
   const getScoreColor = (score) => {
-    if (score >= 70) return 'text-green-buy';
-    if (score >= 60) return 'text-yellow-neutral';
-    if (score >= 40) return 'text-orange-500';
-    return 'text-red-sell';
-  };
-
-  const getScoreBgColor = (score) => {
-    if (score >= 70) return 'bg-green-buy/20 border-green-buy/50';
-    if (score >= 60) return 'bg-yellow-neutral/20 border-yellow-neutral/50';
-    if (score >= 40) return 'bg-orange-500/20 border-orange-500/50';
-    return 'bg-red-sell/20 border-red-sell/50';
+    if (score >= 70) return 'text-emerald-400';
+    if (score >= 60) return 'text-blue-400';
+    if (score >= 40) return 'text-amber-400';
+    return 'text-rose-400';
   };
 
   const getRecommendation = (sector) => {
     const data = sectorData[sector];
     if (!data) return 'NEUTRAL';
-    
     const avgScore = data.average_score;
     const buyRatio = data.buy_ratio;
-    
     if (avgScore >= 70 && buyRatio >= 0.6) return 'STRONG BUY';
     if (avgScore >= 60 && buyRatio >= 0.4) return 'BUY';
     if (avgScore < 40 || buyRatio < 0.2) return 'SELL';
     return 'HOLD';
   };
 
-  const getRecommendationColor = (rec) => {
-    switch (rec) {
-      case 'STRONG BUY':
-      case 'BUY':
-        return 'text-green-buy';
-      case 'SELL':
-        return 'text-red-sell';
-      default:
-        return 'text-yellow-neutral';
-    }
-  };
-
-  if (loading) {
-    return (
-      <div className="text-center py-8">
-        <div className="text-4xl mb-4 animate-spin">⚙️</div>
-        <p className="text-dark-text">Loading sector analysis...</p>
+  if (loading) return (
+    <div className="flex flex-col items-center justify-center py-20 space-y-4">
+      <div className="p-4 bg-white/5 rounded-2xl animate-spin">
+        <Activity size={40} className="text-blue-500" />
       </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="text-center py-8">
-        <div className="text-4xl mb-4">⚠️</div>
-        <p className="text-red-sell mb-2">{error}</p>
-        <button
-          onClick={loadSectorData}
-          className="px-4 py-2 bg-blue-accent text-white rounded-lg hover:bg-blue-accent/80"
-        >
-          Retry
-        </button>
-      </div>
-    );
-  }
-
-  if (Object.keys(sectorData).length === 0) {
-    return (
-      <div className="text-center py-8">
-        <div className="text-4xl mb-4">📊</div>
-        <p className="text-dark-text mb-2">No sector analysis data available</p>
-        <p className="text-sm text-dark-text-secondary">
-          Run "Complete Analysis" to analyze sector performance
-        </p>
-      </div>
-    );
-  }
-
-  // Sort sectors by average score (descending)
-  const sortedSectors = Object.entries(sectorData).sort(
-    (a, b) => b[1].average_score - a[1].average_score
+      <p className="text-xs font-black text-slate-500 uppercase tracking-widest italic animate-pulse">Analyzing Sector Matrices...</p>
+    </div>
   );
 
+  if (error || Object.keys(sectorData).length === 0) return (
+    <div className="text-center py-20 rounded-3xl bg-white/[0.02] border border-white/5 border-dashed">
+      <div className="mb-4 inline-flex p-4 bg-white/5 rounded-full"><Info size={32} className="text-slate-600" /></div>
+      <h3 className="text-lg font-bold text-slate-300">Sector IQ Offline</h3>
+      <p className="text-sm text-slate-500 mt-2">No sector data currently mapped. Run complete scan to initiate.</p>
+    </div>
+  );
+
+  const sortedSectors = Object.entries(sectorData).sort((a, b) => b[1].average_score - a[1].average_score);
+
   return (
-    <div>
-      {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+    <div className="space-y-8 animate-in fade-in duration-700">
+      {/* Visual Header */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {topSector && sectorData[topSector] && (
-          <div className="bg-green-buy/20 border-2 border-green-buy/50 rounded-lg p-4">
-            <div className="text-sm text-dark-text-secondary mb-1">🏆 Top Performing Sector</div>
-            <div className="text-xl font-bold text-green-buy">{topSector}</div>
-            <div className="text-sm text-dark-text mt-2">
-              Avg Score: <span className="font-semibold">{sectorData[topSector].average_score.toFixed(1)}</span>
-            </div>
-            <div className="text-xs text-dark-text-secondary mt-1">
-              {sectorData[topSector].stock_count} stocks analyzed
+          <div className="relative group bg-emerald-500/10 border border-emerald-500/20 rounded-[2rem] p-6 overflow-hidden shadow-[0_20px_40px_rgba(52,211,153,0.1)] transition-all hover:-translate-y-1">
+            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity"><Trophy size={80} /></div>
+            <div className="relative z-10">
+              <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.2em]">Top Alpha Sector</span>
+              <h3 className="text-2xl font-black text-white mt-1 italic tracking-tight uppercase">{topSector}</h3>
+              <div className="flex items-center gap-6 mt-6">
+                <div className="flex flex-col">
+                  <span className="text-2xl font-black text-emerald-400 italic">#{sectorData[topSector].average_score.toFixed(1)}</span>
+                  <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Neural Score</span>
+                </div>
+                <div className="w-px h-8 bg-white/10"></div>
+                <div className="flex flex-col">
+                  <span className="text-2xl font-black text-white italic">{sectorData[topSector].stock_count}</span>
+                  <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Active Stocks</span>
+                </div>
+              </div>
             </div>
           </div>
         )}
+
         {worstSector && sectorData[worstSector] && (
-          <div className="bg-red-sell/20 border-2 border-red-sell/50 rounded-lg p-4">
-            <div className="text-sm text-dark-text-secondary mb-1">⚠️ Underperforming Sector</div>
-            <div className="text-xl font-bold text-red-sell">{worstSector}</div>
-            <div className="text-sm text-dark-text mt-2">
-              Avg Score: <span className="font-semibold">{sectorData[worstSector].average_score.toFixed(1)}</span>
-            </div>
-            <div className="text-xs text-dark-text-secondary mt-1">
-              {sectorData[worstSector].stock_count} stocks analyzed
+          <div className="relative group bg-rose-500/10 border border-rose-500/20 rounded-[2rem] p-6 overflow-hidden shadow-[0_20px_40px_rgba(251,113,133,0.1)] transition-all hover:-translate-y-1">
+            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity"><Zap size={80} /></div>
+            <div className="relative z-10">
+              <span className="text-[10px] font-black text-rose-500 uppercase tracking-[0.2em]">Underperforming Zone</span>
+              <h3 className="text-2xl font-black text-white mt-1 italic tracking-tight uppercase">{worstSector}</h3>
+              <div className="flex items-center gap-6 mt-6">
+                <div className="flex flex-col">
+                  <span className="text-2xl font-black text-rose-400 italic">#{sectorData[worstSector].average_score.toFixed(1)}</span>
+                  <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Neural Score</span>
+                </div>
+                <div className="w-px h-8 bg-white/10"></div>
+                <div className="flex flex-col">
+                  <span className="text-2xl font-black text-white italic">{sectorData[worstSector].stock_count}</span>
+                  <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Active Stocks</span>
+                </div>
+              </div>
             </div>
           </div>
         )}
       </div>
 
-      {/* Sector List */}
-      <div className="mb-4 p-4 bg-dark-bg border border-dark-border rounded-lg">
-        <h3 className="text-lg font-semibold text-dark-text mb-2">Sector Performance Breakdown</h3>
-        <p className="text-sm text-dark-text-secondary">
-          {sortedSectors.length} sectors analyzed
-        </p>
-      </div>
-
-      <div className="space-y-4">
+      {/* Main Grid View */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {sortedSectors.map(([sector, data]) => {
           const recommendation = getRecommendation(sector);
+          const scoreColor = getScoreColor(data.average_score);
+
           return (
-            <div
-              key={sector}
-              className={`bg-dark-bg border-2 rounded-lg p-4 ${getScoreBgColor(data.average_score)}`}
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-dark-text">{sector}</h3>
-                  <div className="flex items-center gap-3 mt-1">
-                    <span className={`text-sm font-semibold ${getRecommendationColor(recommendation)}`}>
+            <div key={sector} className="group relative bg-[#1e293b]/40 border border-white/5 hover:border-white/10 rounded-3xl p-5 transition-all duration-500 hover:bg-white/[0.04] backdrop-blur-sm overflow-hidden">
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex flex-col min-w-0">
+                  <h4 className="text-lg font-black text-slate-100 uppercase tracking-tight truncate group-hover:text-white">{sector}</h4>
+                  <div className="flex items-center gap-2 mt-1">
+                    <span className={`text-[9px] font-black uppercase tracking-widest bg-white/5 px-2 py-0.5 rounded-full border border-white/5 ${getScoreColor(data.average_score)}`}>
                       {recommendation}
                     </span>
-                    <span className="text-xs text-dark-text-secondary">
-                      {data.stock_count} stocks
-                    </span>
+                    <span className="text-[10px] text-slate-500 font-bold uppercase">{data.stock_count} Assets</span>
                   </div>
                 </div>
-                <div className="text-right">
-                  <div className={`text-2xl font-bold ${getScoreColor(data.average_score)}`}>
-                    {data.average_score.toFixed(1)}
-                  </div>
-                  <div className="text-xs text-dark-text-secondary">Avg Score</div>
+                <div className="text-right shrink-0">
+                  <div className={`text-xl font-black italic tracking-tighter ${scoreColor}`}>{data.average_score.toFixed(1)}</div>
+                  <div className="text-[8px] font-black text-slate-600 uppercase tracking-widest">Matrix IQ</div>
                 </div>
               </div>
 
-              {/* Score Bar */}
-              <div className="mb-4">
-                <div className="flex items-center justify-between text-xs text-dark-text-secondary mb-1">
-                  <span>Average Score</span>
-                  <span>{data.average_score.toFixed(1)}/100</span>
-                </div>
-                <div className="w-full bg-dark-card rounded-full h-3">
-                  <div
-                    className={`${getScoreColor(data.average_score)} h-3 rounded-full transition-all`}
-                    style={{ 
-                      width: `${Math.min(100, data.average_score)}%`,
-                      backgroundColor: data.average_score >= 70 ? '#10b981' : 
-                                     data.average_score >= 60 ? '#fbbf24' : 
-                                     data.average_score >= 40 ? '#f97316' : '#ef4444'
-                    }}
-                  ></div>
-                </div>
+              {/* Score Progress */}
+              <div className="w-full h-1.5 bg-white/5 rounded-full mb-6 overflow-hidden">
+                <div
+                  className={`h-full bg-gradient-to-r from-transparent to-${scoreColor.replace('text-', '')} transition-all duration-1000 shadow-[0_0_10px_rgba(255,255,255,0.1)]`}
+                  style={{ width: `${data.average_score}%`, backgroundColor: data.average_score >= 70 ? '#10b981' : data.average_score >= 40 ? '#fbbf24' : '#ef4444' }}
+                ></div>
               </div>
 
-              {/* Recommendation Breakdown */}
-              <div className="grid grid-cols-4 gap-3 mb-3">
-                <div className="bg-green-buy/20 p-2 rounded text-center">
-                  <div className="text-lg font-bold text-green-buy">{data.buy_count}</div>
-                  <div className="text-xs text-dark-text-secondary">BUY</div>
-                </div>
-                <div className="bg-yellow-neutral/20 p-2 rounded text-center">
-                  <div className="text-lg font-bold text-yellow-neutral">{data.hold_count}</div>
-                  <div className="text-xs text-dark-text-secondary">HOLD</div>
-                </div>
-                <div className="bg-red-sell/20 p-2 rounded text-center">
-                  <div className="text-lg font-bold text-red-sell">{data.sell_count}</div>
-                  <div className="text-xs text-dark-text-secondary">SELL</div>
-                </div>
-                <div className="bg-blue-accent/20 p-2 rounded text-center">
-                  <div className="text-lg font-bold text-blue-accent">{(data.buy_ratio * 100).toFixed(0)}%</div>
-                  <div className="text-xs text-dark-text-secondary">Buy Ratio</div>
-                </div>
-              </div>
-
-              {/* Stock List */}
-              {data.stocks && data.stocks.length > 0 && (
-                <div className="mt-3 pt-3 border-t border-dark-border">
-                  <div className="text-xs text-dark-text-secondary mb-2">Stocks in Sector:</div>
-                  <div className="flex flex-wrap gap-2">
-                    {data.stocks.map((stock) => (
-                      <span
-                        key={stock}
-                        className="px-2 py-1 bg-dark-card rounded text-xs text-dark-text"
-                      >
-                        {stock}
-                      </span>
-                    ))}
+              {/* Micro Stats */}
+              <div className="grid grid-cols-3 gap-2 mb-6">
+                {[
+                  { l: 'Buy', v: data.buy_count, c: 'emerald' },
+                  { l: 'Hold', v: data.hold_count, c: 'amber' },
+                  { l: 'Ratio', v: `${(data.buy_ratio * 100).toFixed(0)}%`, c: 'blue' }
+                ].map(s => (
+                  <div key={s.l} className="flex flex-col items-center bg-white/[0.02] p-2 rounded-xl border border-white/5">
+                    <span className={`text-xs font-black text-${s.c}-400 italic`}>{s.v}</span>
+                    <span className="text-[8px] font-bold text-slate-500 uppercase tracking-widest mt-1">{s.l}</span>
                   </div>
-                </div>
-              )}
+                ))}
+              </div>
+
+              {/* Stock Chips */}
+              <div className="flex flex-wrap gap-1.5 opacity-60 group-hover:opacity-100 transition-opacity">
+                {data.stocks?.slice(0, 4).map(s => (
+                  <span key={s} className="px-2 py-0.5 bg-white/5 border border-white/5 rounded-md text-[8px] font-bold text-slate-400 group-hover:text-slate-300 transition-colors">
+                    {s}
+                  </span>
+                ))}
+                {data.stocks?.length > 4 && (
+                  <span className="text-[8px] font-bold text-slate-600 pl-1">+{data.stocks.length - 4} more</span>
+                )}
+              </div>
             </div>
           );
         })}

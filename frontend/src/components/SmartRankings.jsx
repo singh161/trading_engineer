@@ -116,27 +116,27 @@ function SmartRankings({ onStockClick }) {
     const mom = stock.momentum_score || 0;
 
     if (stock.recommendation === 'BUY') {
-      if (tech > 80 && fund > 70) return '💎 Quality Breakout: Strong technicals & fundamentals.';
-      if (mom > 80) return '🚀 Momentum Surge: Heavy buying pressure detected.';
-      if (sent > 80) return '🔥 Sentiment King: Extremely positive market news.';
-      return '✅ Solid Entry: Balanced bullish indicators.';
+      if (tech > 80 && fund > 70) return '💎 Quality Breakout: Mast chart aur strong business basics, perfect for entry.';
+      if (mom > 80) return '🚀 Momentum Surge: Bhaari buying ho rahi hai, trend is very strong right now.';
+      if (sent > 80) return '🔥 Sentiment King: Market mein kaafi positive news hai is stock ko lekar.';
+      return '✅ Solid Entry: Technical signals sahi baith rahe hain, moderate risk.';
     }
 
     if (stock.recommendation === 'HOLD') {
-      if (fund > 75 && tech < 50) return '🐢 Value Play: Strong base, waiting for technical breakout.';
-      if (tech > 70 && fund < 50) return '⚡ Speculative Hold: Good chart, but weak fundamentals.';
-      if (tech > 40 && tech < 60) return '⚖️ Consolidation: Price is ranging in a tight zone.';
-      if (sent < 40) return '⚠️ News Drag: Good stock, but negative news pressure.';
-      return '⏳ Watching: Awaiting clearer directional bias.';
+      if (fund > 75 && tech < 50) return '🐢 Value Play: Company solid hai, bas sahi price breakout ka wait karein.';
+      if (tech > 70 && fund < 50) return '⚡ Speculative Hold: Chart toh accha hai, par fundamentals thode weak hain.';
+      if (tech > 40 && tech < 60) return '⚖️ Consolidation: Price ek hi range mein ghoom raha hai, breakout ka wait hai.';
+      if (sent < 40) return '⚠️ News Drag: Stock accha hai lekin market sentiment thoda bearish hai.';
+      return '⏳ Watching: Abhi hold karein, directional bias clear hone dein.';
     }
 
     if (stock.recommendation === 'SELL') {
-      if (tech < 30) return '📉 Critical Breakdown: Support levels breached.';
-      if (sent < 30) return '🚫 Toxic Sentiment: Heavy negative news flow.';
-      return '🔻 Risk Warning: Indicators suggest further decline.';
+      if (tech < 30) return '📉 Critical Breakdown: Support level toot gaya hai, risk zyada hai yahan.';
+      if (sent < 30) return '🚫 Toxic Sentiment: Negative news ka pressure kaafi high hai, avoid karein.';
+      return '🔻 Risk Warning: Indicators niche ki taraf ishara kar rahe hain, be careful.';
     }
 
-    return 'Neutral Outlook';
+    return 'Neutral Outlook: Stable zone mein hai.';
   };
 
   return (
@@ -181,44 +181,70 @@ function SmartRankings({ onStockClick }) {
               <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div className="flex-1 space-y-4">
                   <div className="flex items-center gap-4">
-                    <div className={`flex items-center justify-center w-12 h-12 rounded-xl bg-${colorClass}/10 border border-${colorClass}/20`}>
+                    <div className={`flex items-center justify-center w-12 h-12 rounded-xl bg-${colorClass}/10 border border-${colorClass}/20 shadow-[0_0_15px_rgba(0,0,0,0.2)]`}>
                       <span className={`text-xl font-black text-${colorClass}`}>#{index + 1}</span>
                     </div>
                     <div>
-                      <h3 className="text-2xl font-black text-dark-text tracking-tight group-hover:text-white transition-colors">
+                      <h3 className="text-2xl font-black text-dark-text tracking-tight group-hover:text-white transition-colors uppercase">
                         {stock.symbol}
                       </h3>
                       <div className="flex items-center gap-2 mt-0.5">
-                        <span className={`text-xs font-bold px-2 py-0.5 rounded uppercase ${getScoreBg(stock.final_score)} ${getScoreColor(stock.final_score)}`}>
+                        <span className={`text-[10px] font-black tracking-widest px-2 py-0.5 rounded uppercase ${getScoreBg(stock.final_score)} ${getScoreColor(stock.final_score)} ring-1 ring-${colorClass}/20`}>
                           {stock.recommendation}
                         </span>
-                        <span className="text-xs text-dark-text-secondary font-mono">
-                          Score: <span className="text-white font-bold">{stock.final_score?.toFixed(1)}</span>
+                        <span className="text-[10px] text-dark-text-secondary font-black uppercase tracking-widest">
+                          Signal Integrity: <span className="text-white">{(stock.final_score || 0).toFixed(0)}</span>
                         </span>
                       </div>
                     </div>
                   </div>
 
+                  {/* AI Accuracy Multipliers - New Segment */}
+                  {stock.ai_recommendation && (
+                    <div className="flex flex-wrap gap-2">
+                      <div className="flex items-center gap-1.5 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full">
+                        <span className="text-[9px] font-black text-blue-400 uppercase tracking-widest">AI Confidence</span>
+                        <span className="text-xs font-black text-white italic">{stock.ai_recommendation.confidence_score}%</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+                        <span className="text-[9px] font-black text-emerald-400 uppercase tracking-widest">Success Prob</span>
+                        <span className="text-xs font-black text-white italic">{stock.ai_recommendation.success_probability}%</span>
+                      </div>
+                      {stock.ai_recommendation.divergence_signal !== 'NONE' && (
+                        <div className="flex items-center gap-1.5 px-3 py-1 bg-rose-500/10 border border-rose-500/20 rounded-full animate-pulse">
+                          <span className="text-[9px] font-black text-rose-400 uppercase tracking-widest">⚠️ Divergence</span>
+                        </div>
+                      )}
+                      {stock.ai_recommendation.exhaustion_risk !== 'LOW' && stock.ai_recommendation.exhaustion_risk !== 'NONE' && (
+                        <div className="flex items-center gap-1.5 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full">
+                          <span className="text-[9px] font-black text-amber-400 uppercase tracking-widest">Exhaustion: {stock.ai_recommendation.exhaustion_risk}</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
                   {/* Strategic Insight Badge */}
-                  <div className="bg-white/5 border border-white/5 px-4 py-2.5 rounded-xl inline-block w-full">
-                    <p className="text-sm font-medium text-dark-text-secondary flex items-center gap-2">
+                  <div className="bg-white/[0.03] border border-white/5 px-4 py-3 rounded-2xl w-full group-hover:bg-white/[0.05] transition-colors">
+                    <p className="text-sm font-medium text-slate-300 flex items-center gap-3">
+                      <span className="shrink-0 text-lg opacity-80">{stock.recommendation === 'BUY' ? '💎' : stock.recommendation === 'SELL' ? '🔻' : '⏳'}</span>
                       {getStrategicInsight(stock)}
                     </p>
                   </div>
 
                   {/* Price and Target Section */}
-                  <div className="flex flex-wrap items-center gap-6 p-1">
+                  <div className="flex flex-wrap items-center gap-8 p-1">
                     <div className="space-y-1">
-                      <p className="text-[10px] uppercase tracking-widest text-dark-text-secondary font-bold">Current Price</p>
-                      <p className="text-xl font-black text-dark-text">₹{stock.current_price?.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</p>
+                      <p className="text-[10px] uppercase tracking-widest text-dark-text-secondary font-black">Entry Current</p>
+                      <p className="text-xl font-black text-dark-text tabular-nums italic">₹{stock.current_price?.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</p>
                     </div>
 
                     {stock.target_price?.target_price && (
-                      <div className="space-y-1 pl-6 border-l border-white/10">
-                        <p className="text-[10px] uppercase tracking-widest text-dark-text-secondary font-bold">AI Target</p>
-                        <div className="flex items-center gap-3">
-                          <p className="text-xl font-black text-green-buy">₹{stock.target_price.target_price?.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</p>
-                          <span className="text-sm font-black bg-green-buy/10 text-green-buy px-2 py-0.5 rounded-lg border border-green-buy/20">
+                      <div className="space-y-1 pl-8 border-l border-white/10 relative">
+                        <div className="absolute top-1/2 -left-3 animate-ping w-1.5 h-1.5 bg-green-500 rounded-full bg-opacity-40"></div>
+                        <p className="text-[10px] uppercase tracking-widest text-dark-text-secondary font-black">Neural Target</p>
+                        <div className="flex items-center gap-4">
+                          <p className="text-xl font-black text-green-buy tabular-nums italic">₹{stock.target_price.target_price?.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</p>
+                          <span className="text-[10px] font-black bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded-lg border border-emerald-500/20 shadow-lg shadow-emerald-500/5">
                             +{(
                               ((stock.target_price.target_price - stock.current_price) /
                                 stock.current_price) *
@@ -232,23 +258,29 @@ function SmartRankings({ onStockClick }) {
                 </div>
 
                 {/* Score Breakdown (Visual) */}
-                <div className="w-full md:w-64 space-y-3 bg-black/20 p-4 rounded-2xl border border-white/5">
-                  <p className="text-[10px] uppercase tracking-widest text-dark-text-secondary font-bold mb-1">Score Breakdown</p>
+                <div className="w-full md:w-64 space-y-4 bg-black/40 p-5 rounded-[2rem] border border-white/5 shadow-2xl backdrop-blur-md">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black">Core Vectors</p>
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+                  </div>
 
                   {[
-                    { label: 'Technical', val: stock.technical_score, color: 'blue-accent' },
-                    { label: 'Fundamental', val: stock.fundamental_score, color: 'purple-500' },
-                    { label: 'Sentiment', val: stock.sentiment_score, color: 'yellow-neutral' },
-                    { label: 'Momentum', val: stock.momentum_score, color: 'green-buy' }
+                    { label: 'Technical', val: stock.technical_score, color: 'blue-accent', icon: '📊' },
+                    { label: 'Fundamental', val: stock.fundamental_score, color: 'purple-500', icon: '🏢' },
+                    { label: 'Sentiment', val: stock.sentiment_score, color: 'yellow-neutral', icon: '📰' },
+                    { label: 'Momentum', val: stock.momentum_score, color: 'green-buy', icon: '⚡' }
                   ].map((item) => (
-                    <div key={item.label} className="space-y-1">
-                      <div className="flex justify-between text-[10px] font-bold">
-                        <span className="text-dark-text-secondary">{item.label}</span>
-                        <span className="text-dark-text">{item.val?.toFixed(0)}</span>
+                    <div key={item.label} className="space-y-1.5">
+                      <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest">
+                        <span className="text-slate-500 flex items-center gap-1.5">
+                          <span className="text-[12px] grayscale group-hover:grayscale-0 transition-all">{item.icon}</span>
+                          {item.label}
+                        </span>
+                        <span className={`text-${item.color} italic`}>{(item.val || 0).toFixed(0)}</span>
                       </div>
-                      <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                      <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden ring-1 ring-white/5">
                         <div
-                          className={`h-full bg-${item.color} rounded-full transition-all duration-1000`}
+                          className={`h-full bg-gradient-to-r from-transparent via-${item.color} to-${item.color} rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(255,255,255,0.1)]`}
                           style={{ width: `${item.val || 0}%` }}
                         />
                       </div>

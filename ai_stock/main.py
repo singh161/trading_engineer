@@ -41,6 +41,7 @@ try:
     from data_fetcher import StockDataFetcher
     from indicators import TechnicalIndicators
     from signals import SignalAnalyzer
+    from ai_recommender import AIStockRecommender
     EXISTING_SYSTEM_AVAILABLE = True
 except ImportError:
     EXISTING_SYSTEM_AVAILABLE = False
@@ -78,6 +79,7 @@ class AIStockResearchEngine:
         self.target_price_predictor = TargetPricePredictor()
         self.ranking_engine = RankingEngine()
         self.alert_system = AlertSystem()
+        self.ai_recommender = AIStockRecommender() if EXISTING_SYSTEM_AVAILABLE else None
         
         # Data directory - Initialize FIRST before using it
         self.data_dir = Path(__file__).parent / "data"
@@ -425,21 +427,64 @@ class AIStockResearchEngine:
                     })
                     
                     # Predict target price
-                    target_price = await self.predict_target_price(
+                    target_price_data = await self.predict_target_price(
                         ticker, technical_data, sentiment_data, fundamental_data
                     )
+                                     # Advanced Intelligence Recommendation (AI Accuracy Multiplier)
+                    ai_recommendation = {}
+                    if self.ai_recommender:
+                        try:
+                            # Use the advanced AI logic for accurate final check
+                            ai_recommendation = self.ai_recommender.generate_recommendation(technical_data)
+                        except Exception as e:
+                            logger.error(f"AI Recommender fail for {ticker}: {e}")
+
+                    # Calculate initial ranking data
+                    ranking_data = self.ranking_engine.calculate_final_score(
+                        technical_data, sentiment_data, fundamental_data
+                    )
                     
+                    # Update ranking data with AI Intelligence features
+                    if ai_recommendation:
+                        # Cross-verify Ranking vs AI Accuracy
+                        confidence = ai_recommendation.get('confidence_score', 50)
+                        prob = ai_recommendation.get('success_probability', 50)
+                        
+                        # Accuracy Filter: If AI detects divergence or exhaustion, penalize the final score
+                        if ai_recommendation.get('divergence_signal') != 'NONE':
+                            ranking_data['final_score'] *= 0.8
+                            logger.info(f"Penalty for {ticker}: Divergence detected.")
+                        
+                        if ai_recommendation.get('exhaustion_risk') != 'NONE':
+                            ranking_data['final_score'] *= 0.85
+                            logger.info(f"Penalty for {ticker}: Trend exhaustion risk.")
+
                     # Get news-based decision if available
-                    news_decision = news_decisions.get(ticker, {})
+                    current_news_decision = news_decisions.get(ticker, {})
+
+                    # Get risk analysis if available
+                    risk_data = {}
+                    if self.risk_analyzer:
+                        risk_data = self.risk_analyzer.calculate_overall_risk(
+                            technical_data, fundamental_data
+                        )
                     
-                    # Combine all data
+                    # Get sector analysis if available (this is usually done for all stocks together)
+                    # For individual stock, we'll just pass an empty dict or placeholder
+                    sector_data = {}
+
                     stock_data = {
                         "symbol": ticker,
                         "technical_analysis": technical_data,
                         "sentiment_analysis": sentiment_data,
                         "fundamental_analysis": fundamental_data,
-                        "target_price": target_price,
-                        "news_decision": news_decision if news_decision else None
+                        "risk_analysis": risk_data,
+                        "sector_analysis": sector_data, # Placeholder, actual sector analysis is batched
+                        "news_decisions": current_news_decision,
+                        "ai_recommendation": ai_recommendation, # Add new AI logic output
+                        "final_score": ranking_data, # This now holds the final score and recommendation
+                        "target_price": target_price_data,
+                        "timestamp": datetime.now().isoformat()
                     }
                     
                     return stock_data
@@ -472,20 +517,11 @@ class AIStockResearchEngine:
                     if i < len(ticker_list) - 1:
                         await asyncio.sleep(0.1)  # Reduced from 0.5 to 0.1
             
-            # Step 5: Risk Analysis (if available)
-            if self.risk_analyzer:
-                logger.info("=" * 60)
-                logger.info("STEP 5A: Risk Analysis...")
-                logger.info("=" * 60)
-                for stock_data in stocks_data:
-                    technical_data = stock_data.get('technical_analysis', {})
-                    fundamental_data = stock_data.get('fundamental_analysis', {})
-                    risk_data = self.risk_analyzer.calculate_overall_risk(
-                        technical_data, fundamental_data
-                    )
-                    stock_data['risk_analysis'] = risk_data
+            # Step 5: Risk Analysis (if available) - This was moved inside process_stock
+            # The risk_analyzer is now called for each stock within process_stock
             
             # Step 5B: Sector Analysis (if available)
+            sector_results = {}
             if self.sector_analyzer:
                 logger.info("=" * 60)
                 logger.info("STEP 5B: Sector Analysis...")
@@ -502,7 +538,38 @@ class AIStockResearchEngine:
             
             # Step 7: Send alerts
             if send_alerts:
-                await self.send_alerts(ranking_results)
+                logger.info("=" * 60)
+                logger.info("STEP 6: Sending Alerts...")
+                logger.info("=" * 60)
+                
+                # Send top stocks alert
+                self.alert_system.send_top_stocks_alert(ranking_results)
+                
+                # Send individual alerts for top BUY stocks with AI verification
+                for stock in ranking_results.get('top_5_buy', [])[:3]:  # Top 3 only
+                    ticker = stock['symbol']
+                    ranking_data = stock['final_score'] # Assuming final_score now contains the full ranking data
+                    ai_recommendation = stock.get('ai_recommendation', {})
+
+                    # Alert Logic with AI Verification (Accuracy Check)
+                    # Use a combination of original ranking and new AI intelligence
+                    if ranking_data["final_score"] >= 80: # Assuming 80 is a high score threshold
+                        is_verified = True
+                        if ai_recommendation:
+                            # Only send alert if AI Recommender has at least medium confidence 
+                            # and no extreme exhaustion risk for BUY signals
+                            conf = ai_recommendation.get('confidence_score', 0)
+                            if conf < 65:
+                                is_verified = False
+                                logger.warning(f"Alert suppressed for {ticker}: Low AI Confidence ({conf})")
+                                
+                            if ai_recommendation.get('exhaustion_risk') == 'EXTREME':
+                                is_verified = False
+                                logger.warning(f"Alert suppressed for {ticker}: Trend exhaustion risk.")
+                        
+                        if is_verified:
+                            # Pass AI recommendation to alert system if needed
+                            await self.alert_system.send_stock_alert({**ranking_data, "ai_rec": ai_recommendation})
             
             # Calculate execution time
             end_time = datetime.now()

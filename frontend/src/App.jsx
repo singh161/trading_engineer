@@ -171,8 +171,16 @@ function App() {
       }
     };
 
+    const handleStartGuide = () => {
+      setShowTour(true);
+    };
+    window.addEventListener('start-guide-tour', handleStartGuide);
+
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('start-guide-tour', handleStartGuide);
+    };
   }, []);
 
   // Show stock detail

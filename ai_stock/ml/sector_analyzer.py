@@ -13,46 +13,57 @@ logger = logging.getLogger(__name__)
 class SectorAnalyzer:
     """Analyze stocks by sector"""
     
-    # Updated Indian stock sectors based on user request
+    # Updated Indian stock sectors with more constituents for better breadth
     SECTOR_MAPPING = {
         'IT & Software': [
             'TCS', 'INFY', 'WIPRO', 'HCLTECH', 'TECHM', 'LTIM', 'AURIONPRO', 
-            'KPITTECH', 'PERSISTENT', 'COFORGE', 'MPHASIS', 'LTTS'
+            'KPITTECH', 'PERSISTENT', 'COFORGE', 'MPHASIS', 'LTTS', 'ZENSARTECH', 'SONATSOFTW'
         ],
         'Banking': [
             'HDFCBANK', 'ICICIBANK', 'SBIN', 'KOTAKBANK', 'AXISBANK', 
-            'INDUSINDBK', 'INDIANB', 'CANBK', 'BOB', 'PNB', 'IDFCFIRSTB'
+            'INDUSINDBK', 'INDIANB', 'CANBK', 'BOB', 'PNB', 'IDFCFIRSTB', 'FEDERALBNK', 'YESBANK'
         ],
         'Financial Services': [
             'BAJFINANCE', 'BAJAJFINSV', 'HDFCLIFE', 'JIOFIN', 'SBILIFE', 
-            'MANAPPURAM', 'CDSL', 'MFSL', 'IIFL', 'CHOLAFIN', 'RECLTD', 'PFC', 'MUTHOOTFIN'
+            'MANAPPURAM', 'CDSL', 'MFSL', 'IIFL', 'CHOLAFIN', 'RECLTD', 'PFC', 'MUTHOOTFIN',
+            'BSE', 'ANGELONE', 'MCX'
         ],
         'FMCG': [
             'HINDUNILVR', 'ITC', 'NESTLEIND', 'TATACONSUM', 'MARICO', 
-            'JUBLFOOD', 'PAGEIND', 'BRITANNIA', 'DABUR', 'COLPAL', 'VBL'
+            'JUBLFOOD', 'PAGEIND', 'BRITANNIA', 'DABUR', 'COLPAL', 'VBL', 'TATAELXSI'
         ],
         'Pharma & Healthcare': [
             'SUNPHARMA', 'DRREDDY', 'DIVISLAB', 'MAXHEALTH', 'GLENMARK', 
-            'BIOCON', 'SYNGENE', 'NH', 'PPLPHARMA', 'CIPLA', 'TORNTPHARM', 'MANKIND', 'APOLLOHOSP'
+            'BIOCON', 'SYNGENE', 'NH', 'PPLPHARMA', 'CIPLA', 'TORNTPHARM', 'MANKIND', 'APOLLOHOSP',
+            'LUPIN', 'AUROPHARMA'
         ],
         'Automobile': [
             'MARUTI', 'TATAMOTORS', 'HEROMOTOCO', 'GABRIEL', 'INDNIPPON', 
-            'RICOAUTO', 'BHARATFORG', 'M&M', 'EICHERMOT', 'BAJAJ-AUTO', 'TVSMOTOR'
+            'RICOAUTO', 'BHARATFORG', 'M&M', 'EICHERMOT', 'BAJAJ-AUTO', 'TVSMOTOR', 
+            'ASHOKLEY', 'MOTHERSON'
         ],
         'Metals & Mining': [
             'TATASTEEL', 'JSWSTEEL', 'HINDZINC', 'JAIBALAJI', 'GRAVITA', 
-            'ASHAPURMIN', 'VISASTEEL', 'HINDALCO', 'COALINDIA', 'NMDC', 'SAIL', 'VEDL'
+            'ASHAPURMIN', 'VISASTEEL', 'HINDALCO', 'COALINDIA', 'NMDC', 'SAIL', 'VEDL',
+            'NATIONALUM'
         ],
         'Energy & Power': [
             'RELIANCE', 'ONGC', 'NTPC', 'POWERGRID', 'JSWENERGY', 'HINDPETRO', 
-            'WAAREEENER', 'INOXWIND', 'IRMENERGY', 'BPCL', 'IOC', 'GAIL', 'ADANIGREEN', 'TATAPOWER'
+            'WAAREEENER', 'INOXWIND', 'IRMENERGY', 'BPCL', 'IOC', 'GAIL', 'ADANIGREEN', 
+            'TATAPOWER', 'ADANIPOWER', 'NHPC'
         ],
         'Infrastructure & Cement': [
             'LT', 'ADANIPORTS', 'ULTRACEMCO', 'OBEROIRLTY', 'ASTRAL', 
-            'GRASIM', 'ACC', 'AMBUJACEM', 'DLF', 'LODHA', 'BEL', 'IRB'
+            'GRASIM', 'ACC', 'AMBUJACEM', 'DLF', 'LODHA', 'BEL', 'IRB', 'RVNL', 'IRCON', 'NBCC'
         ],
         'Telecom & Media': [
-            'BHARTIARTL', 'HFCL', 'INDUSTOWER', 'ZEEL', 'SUNTV', 'PVRINOX', 'TATACOMM'
+            'BHARTIARTL', 'HFCL', 'INDUSTOWER', 'ZEEL', 'SUNTV', 'PVRINOX', 'TATACOMM', 'IDEA'
+        ],
+        'Defense': [
+            'HAL', 'BEL', 'BDL', 'MAZDOCK', 'GRSE', 'COCHINSHIP', 'DATAPATTNS'
+        ],
+        'Railways': [
+            'RVNL', 'IRCON', 'IRFC', 'RAILTEL', 'TITAGARH'
         ]
     }
     
@@ -67,14 +78,16 @@ class SectorAnalyzer:
         return self.reverse_mapping.get(symbol, 'Unknown')
     
     def analyze_sector_performance(self, stocks_data: List[Dict]) -> Dict:
-        """Analyze performance by sector"""
+        """Analyze performance by sector using advanced breadth and momentum weighted metrics"""
         sector_data = defaultdict(lambda: {
             'stocks': [],
             'total_score': 0.0,
             'count': 0,
             'buy_count': 0,
             'hold_count': 0,
-            'sell_count': 0
+            'sell_count': 0,
+            'bullish_breadth': 0,  # Stocks with positive momentum/trend
+            'momentum_intensity': 0.0
         })
         
         for stock in stocks_data:
@@ -84,6 +97,7 @@ class SectorAnalyzer:
             sector_data[sector]['stocks'].append(symbol)
             sector_data[sector]['count'] += 1
             
+            # Technical and Scoring data
             score_result = stock.get('final_score', 50.0)
             if isinstance(score_result, dict):
                 final_score = score_result.get('final_score', 50.0)
@@ -92,6 +106,24 @@ class SectorAnalyzer:
             
             sector_data[sector]['total_score'] += final_score
             
+            # Use technical analysis to calculate breadth
+            tech = stock.get('technical_analysis', {})
+            # A stock is "Bullish" for breadth if price > EMA50 AND RSI > 50
+            is_bullish = False
+            if tech:
+                price = tech.get('price', 0)
+                ema_50 = tech.get('ema_50', 0)
+                rsi = tech.get('rsi', 0)
+                if price > ema_50 and rsi > 50:
+                    is_bullish = True
+                    sector_data[sector]['bullish_breadth'] += 1
+            
+            # Momentum Scoring for Intensity
+            momentum_score = 50.0
+            if isinstance(score_result, dict):
+                momentum_score = score_result.get('momentum_score', 50.0)
+            sector_data[sector]['momentum_intensity'] += momentum_score
+
             recommendation = stock.get('recommendation', 'HOLD')
             if recommendation == 'BUY':
                 sector_data[sector]['buy_count'] += 1
@@ -99,23 +131,36 @@ class SectorAnalyzer:
                 sector_data[sector]['sell_count'] += 1
             else:
                 sector_data[sector]['hold_count'] += 1
-        
-        # Calculate averages and rankings
+                
+        # Calculate averages and rankings with refined score logic
         sector_analysis = {}
         for sector, data in sector_data.items():
             if data['count'] > 0:
+                # Basic Averages
                 avg_score = data['total_score'] / data['count']
+                avg_momentum = data['momentum_intensity'] / data['count']
+                
+                # Breadth Multiplier (How many stocks are participating in the move)
+                breadth_ratio = data['bullish_breadth'] / data['count']
+                
+                # Refined Score = (Avg Score * 0.5) + (Breadth Ratio * 30) + (Avg Momentum * 0.2)
+                # This weighted approach prioritizes high participation AND high momentum
+                refined_score = (avg_score * 0.5) + (breadth_ratio * 30) + (avg_momentum * 0.2)
+                
                 sector_analysis[sector] = {
-                    'average_score': round(avg_score, 2),
+                    'average_score': round(refined_score, 2),
+                    'original_avg': round(avg_score, 2),
                     'stock_count': data['count'],
                     'stocks': data['stocks'],
                     'buy_count': data['buy_count'],
                     'hold_count': data['hold_count'],
                     'sell_count': data['sell_count'],
-                    'buy_ratio': round(data['buy_count'] / data['count'], 2) if data['count'] > 0 else 0
+                    'buy_ratio': round(data['buy_count'] / data['count'], 2),
+                    'breadth_ratio': round(breadth_ratio, 2),
+                    'momentum_intensity': round(avg_momentum, 2)
                 }
         
-        # Sort by average score
+        # Sort by refined average score
         sorted_sectors = sorted(
             sector_analysis.items(),
             key=lambda x: x[1]['average_score'],
@@ -130,11 +175,13 @@ class SectorAnalyzer:
                 'sector': sector,
                 'rank': len(ranked_sectors) + 1,
                 'average_score': data['average_score'],
+                'original_avg': data['original_avg'],
                 'stock_count': data['stock_count'],
                 'buy_count': data['buy_count'],
                 'hold_count': data['hold_count'],
                 'sell_count': data['sell_count'],
                 'buy_ratio': data['buy_ratio'],
+                'breadth_ratio': data['breadth_ratio'],
                 'recommendation': recommendation,
                 'stocks': data['stocks']
             })
