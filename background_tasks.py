@@ -286,19 +286,18 @@ class BackgroundTaskManager:
     
     async def start_live_price_ticker(self, interval_seconds: int = 20):
         """Bulk price ticker using index constituents API (avoids rate limiting)"""
-        from nse_scraper import NSEScraper
+        from nse_scraper import nse_scraper
         from config import NSE_INDICES
         
         logger.info(f"Starting BULK price ticker every {interval_seconds} seconds")
         while self.is_running:
             try:
-                scraper = NSEScraper()
                 updated_count = 0
                 
                 # Fetch prices in BULK from index constituents (each call returns 50+ stock prices)
                 for index_name in NSE_INDICES:
                     try:
-                        data = await scraper.get_index_constituents(index_name)
+                        data = await nse_scraper.get_index_constituents(index_name)
                         if data and 'data' in data:
                             for row in data['data']:
                                 symbol = row.get('symbol', '').strip().upper()
@@ -322,8 +321,6 @@ class BackgroundTaskManager:
                     
                     # Small delay between index fetches to avoid rate limiting
                     await asyncio.sleep(2)
-                
-                await scraper.close()
                 
                 if updated_count > 0:
                     logger.info(f"Ticker: Updated {updated_count} stock prices via bulk index API")

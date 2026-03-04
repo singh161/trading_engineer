@@ -10657,5 +10657,910 @@
       }
     ],
     "total_results": 15
+  },
+  {
+    "date": "2026-03-03",
+    "timestamp": "2026-03-03T21:54:02.758523",
+    "results": [
+      {
+        "ticker": "LT",
+        "title": "US Stocks | Buyback plans aren't enough to soothe investors after software-sector rout",
+        "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/us-stocks-buyback-plans-arent-enough-to-soothe-investors-after-software-sector-rout/articleshow/128969662.cms",
+        "sentiment": "negative",
+        "sentiment_score": -0.9601441025733948,
+        "confidence": 0.9601441025733948,
+        "timestamp": "2026-03-03T21:53:57.703504",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Tata Elxsi Q4 net profit, revenue decline QoQ; firm declares dividend of Rs 70 per share",
+        "link": "https://www.moneycontrol.com/news/business/tata-elxsi-q4-net-profit-revenue-decline-qoq-firm-declares-dividendrs-70-per-share_17532061.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.7057161331176758,
+        "confidence": 0.7057161331176758,
+        "timestamp": "2026-03-03T21:53:58.027104",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Cyient DLM#39;s profit after tax in FY24 surges 93%",
+        "link": "https://www.moneycontrol.com/news/business/cyient-dlm39s-profit-after-taxfy24-surges-93_17532091.html",
+        "sentiment": "positive",
+        "sentiment_score": 0.8877953886985779,
+        "confidence": 0.8877953886985779,
+        "timestamp": "2026-03-03T21:53:58.027114",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Tata Consumer Q4 net profit falls 19% to Rs 217 cr, firm declares dividend of Rs 7.75 per share",
+        "link": "https://www.moneycontrol.com/news/business/tata-consumer-q4-net-profit-falls-19-to-rs-217-cr-firm-declares-dividendrs-775-per-share_17532071.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.9550828337669373,
+        "confidence": 0.9550828337669373,
+        "timestamp": "2026-03-03T21:53:58.027117",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Multibagger alert! Force Motors, MCX among 14 Nifty 500 stocks that gained 100–236% since last Holi. Do you own any?",
+        "link": "https://www.livemint.com/market/stock-market-news/multibagger-alert-force-motors-mcx-among-14-nifty-500-stocks-that-gained-100-236-since-last-holi-do-you-own-any-11772536040453.html",
+        "sentiment": "positive",
+        "sentiment_score": 0.9465056657791138,
+        "confidence": 0.9465056657791138,
+        "timestamp": "2026-03-03T21:53:58.312856",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Market quote of the day by Benjamin Graham | \"The individual investor should act consistently as an investor and not as a speculator\"",
+        "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/market-quote-of-the-day-by-benjamin-graham-the-individual-investor-should-act-consistently-as-an-investor-and-not-as-a-speculator/articleshow/128962734.cms",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.8905553221702576,
+        "timestamp": "2026-03-03T21:53:57.703493",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "ICICI Pru Life Q4 net profit falls 26% to Rs 174 cr, insurer announces dividend",
+        "link": "https://www.moneycontrol.com/news/business/icici-pru-life-q4-net-profit-falls-26-to-rs-174-cr-insurer-announces-dividend_17532101.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.9603726267814636,
+        "confidence": 0.9603726267814636,
+        "timestamp": "2026-03-03T21:53:58.027109",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "LTIMindtree Q4 Preview: Lower pass-through revenue seen impacting growth marginally",
+        "link": "https://www.moneycontrol.com/news/business/ltimindtree-q4-preview-lower-pass-through-revenue-seen-impacting-growth-marginally_17531881.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.9478145241737366,
+        "confidence": 0.9478145241737366,
+        "timestamp": "2026-03-03T21:53:58.027129",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Air India enters into codeshare pact with Japan#39;s All Nippon Airways",
+        "link": "https://www.moneycontrol.com/news/business/air-india-enters-into-codeshare-pactjapan39s-all-nippon-airways_17531801.html",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.5923376679420471,
+        "timestamp": "2026-03-03T21:53:58.027136",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "LT manufactures hydrotreating reactor for refinery in Mexico",
+        "link": "https://www.moneycontrol.com/news/business/lt-manufactures-hydrotreating-reactor-for-refinerymexico_17531811.html",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.9097131490707397,
+        "timestamp": "2026-03-03T21:53:58.027133",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "SoftBank's $30 Billion OpenAI Bet Spurs S&P Credit Outlook Cut",
+        "link": "https://www.ndtvprofit.com/business/softbanks-30-billion-openai-bet-spurs-s-p-credit-outlook-cut-11164072#publisher=newsstand",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.8878798484802246,
+        "timestamp": "2026-03-03T21:54:00.232417",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "No issue with Futures segment, but concerns around short-dated Options: Sebi chief",
+        "link": "https://economictimes.indiatimes.com/markets/stocks/news/no-issue-with-futures-segment-but-concerns-around-short-dated-options-sebi-chief/articleshow/128976136.cms",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.7940371036529541,
+        "timestamp": "2026-03-03T21:53:57.703467",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "ICICI Prudential Life Insurance to focus on growing absolute VNB amid slump in FY24",
+        "link": "https://www.moneycontrol.com/news/business/icici-prudential-life-insurance-to-focusgrowing-absolute-vnb-amid-slumpfy24_17532041.html",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.7065851092338562,
+        "timestamp": "2026-03-03T21:53:58.027088",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Hindustan Unilever Q4 Preview: Price cuts, slow demand, regional competition to hurt topline",
+        "link": "https://www.moneycontrol.com/news/business/hindustan-unilever-q4-preview-price-cuts-slow-demand-regional-competition-to-hurt-topline_17531901.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.7406632304191589,
+        "confidence": 0.7406632304191589,
+        "timestamp": "2026-03-03T21:53:58.027125",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Market Trading Guide: Buy Sterlite Technologies and BEL on Wednesday for near term gains up to 16%. What’s brewing?",
+        "link": "https://economictimes.indiatimes.com/markets/stocks/news/market-trading-guide-buy-sterlite-technologies-and-bel-on-wednesday-for-near-term-gains-up-to-16-whats-brewing/slideshow/128978262.cms",
+        "sentiment": "positive",
+        "sentiment_score": 0.9445675611495972,
+        "confidence": 0.9445675611495972,
+        "timestamp": "2026-03-03T21:53:57.703450",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Target Corp shares jump 6% to 11-month high as company lifts sales forecast after another weak quarter",
+        "link": "https://www.livemint.com/market/stock-market-news/target-corp-shares-jump-6-to-11-month-high-as-company-lifts-sales-forecast-after-another-weak-quarter-11772548609181.html",
+        "sentiment": "positive",
+        "sentiment_score": 0.9551185965538025,
+        "confidence": 0.9551185965538025,
+        "timestamp": "2026-03-03T21:53:58.312814",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Buy, Sell Or Hold: MCX, Oil India, L&T, Asian Paints, NTPC And Paytm — Ask Profit",
+        "link": "https://www.ndtvprofit.com/markets/buy-sell-or-hold-ask-profit-11160562#publisher=newsstand",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.9429612755775452,
+        "timestamp": "2026-03-03T21:54:00.232403",
+        "source": "rss"
+      }
+    ],
+    "total_results": 17
+  },
+  {
+    "date": "2026-03-03",
+    "timestamp": "2026-03-03T21:54:22.560557",
+    "results": [
+      {
+        "ticker": "LT",
+        "title": "US Stocks | Buyback plans aren't enough to soothe investors after software-sector rout",
+        "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/us-stocks-buyback-plans-arent-enough-to-soothe-investors-after-software-sector-rout/articleshow/128969662.cms",
+        "sentiment": "negative",
+        "sentiment_score": -0.9601441025733948,
+        "confidence": 0.9601441025733948,
+        "timestamp": "2026-03-03T21:53:57.703504",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Tata Elxsi Q4 net profit, revenue decline QoQ; firm declares dividend of Rs 70 per share",
+        "link": "https://www.moneycontrol.com/news/business/tata-elxsi-q4-net-profit-revenue-decline-qoq-firm-declares-dividendrs-70-per-share_17532061.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.7057161331176758,
+        "confidence": 0.7057161331176758,
+        "timestamp": "2026-03-03T21:53:58.027104",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Cyient DLM#39;s profit after tax in FY24 surges 93%",
+        "link": "https://www.moneycontrol.com/news/business/cyient-dlm39s-profit-after-taxfy24-surges-93_17532091.html",
+        "sentiment": "positive",
+        "sentiment_score": 0.8877953886985779,
+        "confidence": 0.8877953886985779,
+        "timestamp": "2026-03-03T21:53:58.027114",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Tata Consumer Q4 net profit falls 19% to Rs 217 cr, firm declares dividend of Rs 7.75 per share",
+        "link": "https://www.moneycontrol.com/news/business/tata-consumer-q4-net-profit-falls-19-to-rs-217-cr-firm-declares-dividendrs-775-per-share_17532071.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.9550828337669373,
+        "confidence": 0.9550828337669373,
+        "timestamp": "2026-03-03T21:53:58.027117",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Multibagger alert! Force Motors, MCX among 14 Nifty 500 stocks that gained 100–236% since last Holi. Do you own any?",
+        "link": "https://www.livemint.com/market/stock-market-news/multibagger-alert-force-motors-mcx-among-14-nifty-500-stocks-that-gained-100-236-since-last-holi-do-you-own-any-11772536040453.html",
+        "sentiment": "positive",
+        "sentiment_score": 0.9465056657791138,
+        "confidence": 0.9465056657791138,
+        "timestamp": "2026-03-03T21:53:58.312856",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Market quote of the day by Benjamin Graham | \"The individual investor should act consistently as an investor and not as a speculator\"",
+        "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/market-quote-of-the-day-by-benjamin-graham-the-individual-investor-should-act-consistently-as-an-investor-and-not-as-a-speculator/articleshow/128962734.cms",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.8905553221702576,
+        "timestamp": "2026-03-03T21:53:57.703493",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "ICICI Pru Life Q4 net profit falls 26% to Rs 174 cr, insurer announces dividend",
+        "link": "https://www.moneycontrol.com/news/business/icici-pru-life-q4-net-profit-falls-26-to-rs-174-cr-insurer-announces-dividend_17532101.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.9603726267814636,
+        "confidence": 0.9603726267814636,
+        "timestamp": "2026-03-03T21:53:58.027109",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "LTIMindtree Q4 Preview: Lower pass-through revenue seen impacting growth marginally",
+        "link": "https://www.moneycontrol.com/news/business/ltimindtree-q4-preview-lower-pass-through-revenue-seen-impacting-growth-marginally_17531881.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.9478145241737366,
+        "confidence": 0.9478145241737366,
+        "timestamp": "2026-03-03T21:53:58.027129",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Air India enters into codeshare pact with Japan#39;s All Nippon Airways",
+        "link": "https://www.moneycontrol.com/news/business/air-india-enters-into-codeshare-pactjapan39s-all-nippon-airways_17531801.html",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.5923376679420471,
+        "timestamp": "2026-03-03T21:53:58.027136",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "LT manufactures hydrotreating reactor for refinery in Mexico",
+        "link": "https://www.moneycontrol.com/news/business/lt-manufactures-hydrotreating-reactor-for-refinerymexico_17531811.html",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.9097131490707397,
+        "timestamp": "2026-03-03T21:53:58.027133",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "SoftBank's $30 Billion OpenAI Bet Spurs S&P Credit Outlook Cut",
+        "link": "https://www.ndtvprofit.com/business/softbanks-30-billion-openai-bet-spurs-s-p-credit-outlook-cut-11164072#publisher=newsstand",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.8878798484802246,
+        "timestamp": "2026-03-03T21:54:00.232417",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "No issue with Futures segment, but concerns around short-dated Options: Sebi chief",
+        "link": "https://economictimes.indiatimes.com/markets/stocks/news/no-issue-with-futures-segment-but-concerns-around-short-dated-options-sebi-chief/articleshow/128976136.cms",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.7940371036529541,
+        "timestamp": "2026-03-03T21:53:57.703467",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "ICICI Prudential Life Insurance to focus on growing absolute VNB amid slump in FY24",
+        "link": "https://www.moneycontrol.com/news/business/icici-prudential-life-insurance-to-focusgrowing-absolute-vnb-amid-slumpfy24_17532041.html",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.7065851092338562,
+        "timestamp": "2026-03-03T21:53:58.027088",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Hindustan Unilever Q4 Preview: Price cuts, slow demand, regional competition to hurt topline",
+        "link": "https://www.moneycontrol.com/news/business/hindustan-unilever-q4-preview-price-cuts-slow-demand-regional-competition-to-hurt-topline_17531901.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.7406632304191589,
+        "confidence": 0.7406632304191589,
+        "timestamp": "2026-03-03T21:53:58.027125",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Market Trading Guide: Buy Sterlite Technologies and BEL on Wednesday for near term gains up to 16%. What’s brewing?",
+        "link": "https://economictimes.indiatimes.com/markets/stocks/news/market-trading-guide-buy-sterlite-technologies-and-bel-on-wednesday-for-near-term-gains-up-to-16-whats-brewing/slideshow/128978262.cms",
+        "sentiment": "positive",
+        "sentiment_score": 0.9445675611495972,
+        "confidence": 0.9445675611495972,
+        "timestamp": "2026-03-03T21:53:57.703450",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Target Corp shares jump 6% to 11-month high as company lifts sales forecast after another weak quarter",
+        "link": "https://www.livemint.com/market/stock-market-news/target-corp-shares-jump-6-to-11-month-high-as-company-lifts-sales-forecast-after-another-weak-quarter-11772548609181.html",
+        "sentiment": "positive",
+        "sentiment_score": 0.9551185965538025,
+        "confidence": 0.9551185965538025,
+        "timestamp": "2026-03-03T21:53:58.312814",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Buy, Sell Or Hold: MCX, Oil India, L&T, Asian Paints, NTPC And Paytm — Ask Profit",
+        "link": "https://www.ndtvprofit.com/markets/buy-sell-or-hold-ask-profit-11160562#publisher=newsstand",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.9429612755775452,
+        "timestamp": "2026-03-03T21:54:00.232403",
+        "source": "rss"
+      }
+    ],
+    "total_results": 17
+  },
+  {
+    "date": "2026-03-03",
+    "timestamp": "2026-03-03T22:41:39.159847",
+    "results": [
+      {
+        "ticker": "LT",
+        "title": "Tata Elxsi Q4 net profit, revenue decline QoQ; firm declares dividend of Rs 70 per share",
+        "link": "https://www.moneycontrol.com/news/business/tata-elxsi-q4-net-profit-revenue-decline-qoq-firm-declares-dividendrs-70-per-share_17532061.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.7057161331176758,
+        "confidence": 0.7057161331176758,
+        "timestamp": "2026-03-03T22:41:27.413087",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Cyient DLM#39;s profit after tax in FY24 surges 93%",
+        "link": "https://www.moneycontrol.com/news/business/cyient-dlm39s-profit-after-taxfy24-surges-93_17532091.html",
+        "sentiment": "positive",
+        "sentiment_score": 0.8877953886985779,
+        "confidence": 0.8877953886985779,
+        "timestamp": "2026-03-03T22:41:27.413096",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Tata Consumer Q4 net profit falls 19% to Rs 217 cr, firm declares dividend of Rs 7.75 per share",
+        "link": "https://www.moneycontrol.com/news/business/tata-consumer-q4-net-profit-falls-19-to-rs-217-cr-firm-declares-dividendrs-775-per-share_17532071.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.9550828337669373,
+        "confidence": 0.9550828337669373,
+        "timestamp": "2026-03-03T22:41:27.413100",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Multibagger alert! Force Motors, MCX among 14 Nifty 500 stocks that gained 100–236% since last Holi. Do you own any?",
+        "link": "https://www.livemint.com/market/stock-market-news/multibagger-alert-force-motors-mcx-among-14-nifty-500-stocks-that-gained-100-236-since-last-holi-do-you-own-any-11772536040453.html",
+        "sentiment": "positive",
+        "sentiment_score": 0.9465056657791138,
+        "confidence": 0.9465056657791138,
+        "timestamp": "2026-03-03T22:41:27.689959",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Got Rs 1 Crore Corpus For Retirement? Here Are Four Ways To Make It Pay You For Life",
+        "link": "https://www.ndtvprofit.com/personal-finance/got-rs-1-crore-corpus-for-retirement-here-are-four-ways-to-make-it-pay-you-for-life-11159250#publisher=newsstand",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.7358049750328064,
+        "timestamp": "2026-03-03T22:41:29.659713",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Market quote of the day by Benjamin Graham | \"The individual investor should act consistently as an investor and not as a speculator\"",
+        "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/market-quote-of-the-day-by-benjamin-graham-the-individual-investor-should-act-consistently-as-an-investor-and-not-as-a-speculator/articleshow/128962734.cms",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.8905553221702576,
+        "timestamp": "2026-03-03T22:41:27.078204",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "ICICI Pru Life Q4 net profit falls 26% to Rs 174 cr, insurer announces dividend",
+        "link": "https://www.moneycontrol.com/news/business/icici-pru-life-q4-net-profit-falls-26-to-rs-174-cr-insurer-announces-dividend_17532101.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.9603726267814636,
+        "confidence": 0.9603726267814636,
+        "timestamp": "2026-03-03T22:41:27.413092",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "LTIMindtree Q4 Preview: Lower pass-through revenue seen impacting growth marginally",
+        "link": "https://www.moneycontrol.com/news/business/ltimindtree-q4-preview-lower-pass-through-revenue-seen-impacting-growth-marginally_17531881.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.9478145241737366,
+        "confidence": 0.9478145241737366,
+        "timestamp": "2026-03-03T22:41:27.413111",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Air India enters into codeshare pact with Japan#39;s All Nippon Airways",
+        "link": "https://www.moneycontrol.com/news/business/air-india-enters-into-codeshare-pactjapan39s-all-nippon-airways_17531801.html",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.5923376679420471,
+        "timestamp": "2026-03-03T22:41:27.413117",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "LT manufactures hydrotreating reactor for refinery in Mexico",
+        "link": "https://www.moneycontrol.com/news/business/lt-manufactures-hydrotreating-reactor-for-refinerymexico_17531811.html",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.9097131490707397,
+        "timestamp": "2026-03-03T22:41:27.413114",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "No issue with Futures segment, but concerns around short-dated Options: Sebi chief",
+        "link": "https://economictimes.indiatimes.com/markets/stocks/news/no-issue-with-futures-segment-but-concerns-around-short-dated-options-sebi-chief/articleshow/128976136.cms",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.7940371036529541,
+        "timestamp": "2026-03-03T22:41:27.078195",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "ICICI Prudential Life Insurance to focus on growing absolute VNB amid slump in FY24",
+        "link": "https://www.moneycontrol.com/news/business/icici-prudential-life-insurance-to-focusgrowing-absolute-vnb-amid-slumpfy24_17532041.html",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.7065851092338562,
+        "timestamp": "2026-03-03T22:41:27.413075",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Hindustan Unilever Q4 Preview: Price cuts, slow demand, regional competition to hurt topline",
+        "link": "https://www.moneycontrol.com/news/business/hindustan-unilever-q4-preview-price-cuts-slow-demand-regional-competition-to-hurt-topline_17531901.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.7406632304191589,
+        "confidence": 0.7406632304191589,
+        "timestamp": "2026-03-03T22:41:27.413107",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Market Trading Guide: Buy Sterlite Technologies and BEL on Wednesday for near term gains up to 16%. What’s brewing?",
+        "link": "https://economictimes.indiatimes.com/markets/stocks/news/market-trading-guide-buy-sterlite-technologies-and-bel-on-wednesday-for-near-term-gains-up-to-16-whats-brewing/slideshow/128978262.cms",
+        "sentiment": "positive",
+        "sentiment_score": 0.9445675611495972,
+        "confidence": 0.9445675611495972,
+        "timestamp": "2026-03-03T22:41:27.078182",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Target Corp shares jump 6% to 11-month high as company lifts sales forecast after another weak quarter",
+        "link": "https://www.livemint.com/market/stock-market-news/target-corp-shares-jump-6-to-11-month-high-as-company-lifts-sales-forecast-after-another-weak-quarter-11772548609181.html",
+        "sentiment": "positive",
+        "sentiment_score": 0.9551185965538025,
+        "confidence": 0.9551185965538025,
+        "timestamp": "2026-03-03T22:41:27.689927",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Ahead of Market: 10 things that will decide stock market action on Wednesday",
+        "link": "https://economictimes.indiatimes.com/markets/stocks/news/ahead-of-market-10-things-that-will-decide-stock-market-action-on-wednesday/articleshow/128980765.cms",
+        "sentiment": "negative",
+        "sentiment_score": -0.9695567488670349,
+        "confidence": 0.9695567488670349,
+        "timestamp": "2026-03-03T22:41:27.078156",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Buy, Sell Or Hold: MCX, Oil India, L&T, Asian Paints, NTPC And Paytm — Ask Profit",
+        "link": "https://www.ndtvprofit.com/markets/buy-sell-or-hold-ask-profit-11160562#publisher=newsstand",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.9429612755775452,
+        "timestamp": "2026-03-03T22:41:29.659739",
+        "source": "rss"
+      }
+    ],
+    "total_results": 17
+  },
+  {
+    "date": "2026-03-03",
+    "timestamp": "2026-03-03T23:15:00.985158",
+    "results": [
+      {
+        "ticker": "LT",
+        "title": "Tata Elxsi Q4 net profit, revenue decline QoQ; firm declares dividend of Rs 70 per share",
+        "link": "https://www.moneycontrol.com/news/business/tata-elxsi-q4-net-profit-revenue-decline-qoq-firm-declares-dividendrs-70-per-share_17532061.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.7057161331176758,
+        "confidence": 0.7057161331176758,
+        "timestamp": "2026-03-03T23:14:56.355901",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Cyient DLM#39;s profit after tax in FY24 surges 93%",
+        "link": "https://www.moneycontrol.com/news/business/cyient-dlm39s-profit-after-taxfy24-surges-93_17532091.html",
+        "sentiment": "positive",
+        "sentiment_score": 0.8877953886985779,
+        "confidence": 0.8877953886985779,
+        "timestamp": "2026-03-03T23:14:56.355909",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Tata Consumer Q4 net profit falls 19% to Rs 217 cr, firm declares dividend of Rs 7.75 per share",
+        "link": "https://www.moneycontrol.com/news/business/tata-consumer-q4-net-profit-falls-19-to-rs-217-cr-firm-declares-dividendrs-775-per-share_17532071.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.9550828337669373,
+        "confidence": 0.9550828337669373,
+        "timestamp": "2026-03-03T23:14:56.355912",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Multibagger alert! Force Motors, MCX among 14 Nifty 500 stocks that gained 100–236% since last Holi. Do you own any?",
+        "link": "https://www.livemint.com/market/stock-market-news/multibagger-alert-force-motors-mcx-among-14-nifty-500-stocks-that-gained-100-236-since-last-holi-do-you-own-any-11772536040453.html",
+        "sentiment": "positive",
+        "sentiment_score": 0.9465056657791138,
+        "confidence": 0.9465056657791138,
+        "timestamp": "2026-03-03T23:14:56.625774",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Got Rs 1 Crore Corpus For Retirement? Here Are Four Ways To Make It Pay You For Life",
+        "link": "https://www.ndtvprofit.com/personal-finance/got-rs-1-crore-corpus-for-retirement-here-are-four-ways-to-make-it-pay-you-for-life-11159250#publisher=newsstand",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.7358049750328064,
+        "timestamp": "2026-03-03T23:14:58.626333",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Market quote of the day by Benjamin Graham | \"The individual investor should act consistently as an investor and not as a speculator\"",
+        "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/market-quote-of-the-day-by-benjamin-graham-the-individual-investor-should-act-consistently-as-an-investor-and-not-as-a-speculator/articleshow/128962734.cms",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.8905553221702576,
+        "timestamp": "2026-03-03T23:14:56.027624",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "ICICI Pru Life Q4 net profit falls 26% to Rs 174 cr, insurer announces dividend",
+        "link": "https://www.moneycontrol.com/news/business/icici-pru-life-q4-net-profit-falls-26-to-rs-174-cr-insurer-announces-dividend_17532101.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.9603726267814636,
+        "confidence": 0.9603726267814636,
+        "timestamp": "2026-03-03T23:14:56.355905",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "LTIMindtree Q4 Preview: Lower pass-through revenue seen impacting growth marginally",
+        "link": "https://www.moneycontrol.com/news/business/ltimindtree-q4-preview-lower-pass-through-revenue-seen-impacting-growth-marginally_17531881.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.9478145241737366,
+        "confidence": 0.9478145241737366,
+        "timestamp": "2026-03-03T23:14:56.355923",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Indian stock market: Gift Nifty crashes 700 points as US-Iran conflict intensifies, crude hits multi-month high",
+        "link": "https://www.livemint.com/market/stock-market-news/indian-stock-market-gift-nifty-crashes-700-points-as-us-iran-conflict-intensifies-crude-hits-multi-month-high-11772555560931.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.965544581413269,
+        "confidence": 0.965544581413269,
+        "timestamp": "2026-03-03T23:14:56.625734",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Air India enters into codeshare pact with Japan#39;s All Nippon Airways",
+        "link": "https://www.moneycontrol.com/news/business/air-india-enters-into-codeshare-pactjapan39s-all-nippon-airways_17531801.html",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.5923376679420471,
+        "timestamp": "2026-03-03T23:14:56.355931",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "LT manufactures hydrotreating reactor for refinery in Mexico",
+        "link": "https://www.moneycontrol.com/news/business/lt-manufactures-hydrotreating-reactor-for-refinerymexico_17531811.html",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.9097131490707397,
+        "timestamp": "2026-03-03T23:14:56.355926",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "No issue with Futures segment, but concerns around short-dated Options: Sebi chief",
+        "link": "https://economictimes.indiatimes.com/markets/stocks/news/no-issue-with-futures-segment-but-concerns-around-short-dated-options-sebi-chief/articleshow/128976136.cms",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.7940371036529541,
+        "timestamp": "2026-03-03T23:14:56.027615",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "ICICI Prudential Life Insurance to focus on growing absolute VNB amid slump in FY24",
+        "link": "https://www.moneycontrol.com/news/business/icici-prudential-life-insurance-to-focusgrowing-absolute-vnb-amid-slumpfy24_17532041.html",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.7065851092338562,
+        "timestamp": "2026-03-03T23:14:56.355890",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Hindustan Unilever Q4 Preview: Price cuts, slow demand, regional competition to hurt topline",
+        "link": "https://www.moneycontrol.com/news/business/hindustan-unilever-q4-preview-price-cuts-slow-demand-regional-competition-to-hurt-topline_17531901.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.7406632304191589,
+        "confidence": 0.7406632304191589,
+        "timestamp": "2026-03-03T23:14:56.355919",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Market Trading Guide: Buy Sterlite Technologies and BEL on Wednesday for near term gains up to 16%. What’s brewing?",
+        "link": "https://economictimes.indiatimes.com/markets/stocks/news/market-trading-guide-buy-sterlite-technologies-and-bel-on-wednesday-for-near-term-gains-up-to-16-whats-brewing/slideshow/128978262.cms",
+        "sentiment": "positive",
+        "sentiment_score": 0.9445675611495972,
+        "confidence": 0.9445675611495972,
+        "timestamp": "2026-03-03T23:14:56.027603",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Target Corp shares jump 6% to 11-month high as company lifts sales forecast after another weak quarter",
+        "link": "https://www.livemint.com/market/stock-market-news/target-corp-shares-jump-6-to-11-month-high-as-company-lifts-sales-forecast-after-another-weak-quarter-11772548609181.html",
+        "sentiment": "positive",
+        "sentiment_score": 0.9551185965538025,
+        "confidence": 0.9551185965538025,
+        "timestamp": "2026-03-03T23:14:56.625747",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Ahead of Market: 10 things that will decide stock market action on Wednesday",
+        "link": "https://economictimes.indiatimes.com/markets/stocks/news/ahead-of-market-10-things-that-will-decide-stock-market-action-on-wednesday/articleshow/128980765.cms",
+        "sentiment": "negative",
+        "sentiment_score": -0.9695567488670349,
+        "confidence": 0.9695567488670349,
+        "timestamp": "2026-03-03T23:14:56.027578",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Buy, Sell Or Hold: MCX, Oil India, L&T, Asian Paints, NTPC And Paytm — Ask Profit",
+        "link": "https://www.ndtvprofit.com/markets/buy-sell-or-hold-ask-profit-11160562#publisher=newsstand",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.9429612755775452,
+        "timestamp": "2026-03-03T23:14:58.626360",
+        "source": "rss"
+      }
+    ],
+    "total_results": 18
+  },
+  {
+    "date": "2026-03-03",
+    "timestamp": "2026-03-03T23:30:07.913580",
+    "results": [
+      {
+        "ticker": "LT",
+        "title": "Tata Elxsi Q4 net profit, revenue decline QoQ; firm declares dividend of Rs 70 per share",
+        "link": "https://www.moneycontrol.com/news/business/tata-elxsi-q4-net-profit-revenue-decline-qoq-firm-declares-dividendrs-70-per-share_17532061.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.7057161331176758,
+        "confidence": 0.7057161331176758,
+        "timestamp": "2026-03-03T23:14:56.355901",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Cyient DLM#39;s profit after tax in FY24 surges 93%",
+        "link": "https://www.moneycontrol.com/news/business/cyient-dlm39s-profit-after-taxfy24-surges-93_17532091.html",
+        "sentiment": "positive",
+        "sentiment_score": 0.8877953886985779,
+        "confidence": 0.8877953886985779,
+        "timestamp": "2026-03-03T23:14:56.355909",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Tata Consumer Q4 net profit falls 19% to Rs 217 cr, firm declares dividend of Rs 7.75 per share",
+        "link": "https://www.moneycontrol.com/news/business/tata-consumer-q4-net-profit-falls-19-to-rs-217-cr-firm-declares-dividendrs-775-per-share_17532071.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.9550828337669373,
+        "confidence": 0.9550828337669373,
+        "timestamp": "2026-03-03T23:14:56.355912",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Multibagger alert! Force Motors, MCX among 14 Nifty 500 stocks that gained 100–236% since last Holi. Do you own any?",
+        "link": "https://www.livemint.com/market/stock-market-news/multibagger-alert-force-motors-mcx-among-14-nifty-500-stocks-that-gained-100-236-since-last-holi-do-you-own-any-11772536040453.html",
+        "sentiment": "positive",
+        "sentiment_score": 0.9465056657791138,
+        "confidence": 0.9465056657791138,
+        "timestamp": "2026-03-03T23:14:56.625774",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Got Rs 1 Crore Corpus For Retirement? Here Are Four Ways To Make It Pay You For Life",
+        "link": "https://www.ndtvprofit.com/personal-finance/got-rs-1-crore-corpus-for-retirement-here-are-four-ways-to-make-it-pay-you-for-life-11159250#publisher=newsstand",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.7358049750328064,
+        "timestamp": "2026-03-03T23:14:58.626333",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Market quote of the day by Benjamin Graham | \"The individual investor should act consistently as an investor and not as a speculator\"",
+        "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/market-quote-of-the-day-by-benjamin-graham-the-individual-investor-should-act-consistently-as-an-investor-and-not-as-a-speculator/articleshow/128962734.cms",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.8905553221702576,
+        "timestamp": "2026-03-03T23:14:56.027624",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "ICICI Pru Life Q4 net profit falls 26% to Rs 174 cr, insurer announces dividend",
+        "link": "https://www.moneycontrol.com/news/business/icici-pru-life-q4-net-profit-falls-26-to-rs-174-cr-insurer-announces-dividend_17532101.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.9603726267814636,
+        "confidence": 0.9603726267814636,
+        "timestamp": "2026-03-03T23:14:56.355905",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "LTIMindtree Q4 Preview: Lower pass-through revenue seen impacting growth marginally",
+        "link": "https://www.moneycontrol.com/news/business/ltimindtree-q4-preview-lower-pass-through-revenue-seen-impacting-growth-marginally_17531881.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.9478145241737366,
+        "confidence": 0.9478145241737366,
+        "timestamp": "2026-03-03T23:14:56.355923",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Indian stock market: Gift Nifty crashes 700 points as US-Iran conflict intensifies, crude hits multi-month high",
+        "link": "https://www.livemint.com/market/stock-market-news/indian-stock-market-gift-nifty-crashes-700-points-as-us-iran-conflict-intensifies-crude-hits-multi-month-high-11772555560931.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.965544581413269,
+        "confidence": 0.965544581413269,
+        "timestamp": "2026-03-03T23:14:56.625734",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Air India enters into codeshare pact with Japan#39;s All Nippon Airways",
+        "link": "https://www.moneycontrol.com/news/business/air-india-enters-into-codeshare-pactjapan39s-all-nippon-airways_17531801.html",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.5923376679420471,
+        "timestamp": "2026-03-03T23:14:56.355931",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "LT manufactures hydrotreating reactor for refinery in Mexico",
+        "link": "https://www.moneycontrol.com/news/business/lt-manufactures-hydrotreating-reactor-for-refinerymexico_17531811.html",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.9097131490707397,
+        "timestamp": "2026-03-03T23:14:56.355926",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "No issue with Futures segment, but concerns around short-dated Options: Sebi chief",
+        "link": "https://economictimes.indiatimes.com/markets/stocks/news/no-issue-with-futures-segment-but-concerns-around-short-dated-options-sebi-chief/articleshow/128976136.cms",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.7940371036529541,
+        "timestamp": "2026-03-03T23:14:56.027615",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "ICICI Prudential Life Insurance to focus on growing absolute VNB amid slump in FY24",
+        "link": "https://www.moneycontrol.com/news/business/icici-prudential-life-insurance-to-focusgrowing-absolute-vnb-amid-slumpfy24_17532041.html",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.7065851092338562,
+        "timestamp": "2026-03-03T23:14:56.355890",
+        "source": "rss"
+      },
+      {
+        "ticker": "LT",
+        "title": "Hindustan Unilever Q4 Preview: Price cuts, slow demand, regional competition to hurt topline",
+        "link": "https://www.moneycontrol.com/news/business/hindustan-unilever-q4-preview-price-cuts-slow-demand-regional-competition-to-hurt-topline_17531901.html",
+        "sentiment": "negative",
+        "sentiment_score": -0.7406632304191589,
+        "confidence": 0.7406632304191589,
+        "timestamp": "2026-03-03T23:14:56.355919",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Market Trading Guide: Buy Sterlite Technologies and BEL on Wednesday for near term gains up to 16%. What’s brewing?",
+        "link": "https://economictimes.indiatimes.com/markets/stocks/news/market-trading-guide-buy-sterlite-technologies-and-bel-on-wednesday-for-near-term-gains-up-to-16-whats-brewing/slideshow/128978262.cms",
+        "sentiment": "positive",
+        "sentiment_score": 0.9445675611495972,
+        "confidence": 0.9445675611495972,
+        "timestamp": "2026-03-03T23:14:56.027603",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Target Corp shares jump 6% to 11-month high as company lifts sales forecast after another weak quarter",
+        "link": "https://www.livemint.com/market/stock-market-news/target-corp-shares-jump-6-to-11-month-high-as-company-lifts-sales-forecast-after-another-weak-quarter-11772548609181.html",
+        "sentiment": "positive",
+        "sentiment_score": 0.9551185965538025,
+        "confidence": 0.9551185965538025,
+        "timestamp": "2026-03-03T23:14:56.625747",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Ahead of Market: 10 things that will decide stock market action on Wednesday",
+        "link": "https://economictimes.indiatimes.com/markets/stocks/news/ahead-of-market-10-things-that-will-decide-stock-market-action-on-wednesday/articleshow/128980765.cms",
+        "sentiment": "negative",
+        "sentiment_score": -0.9695567488670349,
+        "confidence": 0.9695567488670349,
+        "timestamp": "2026-03-03T23:14:56.027578",
+        "source": "rss"
+      },
+      {
+        "ticker": null,
+        "title": "Buy, Sell Or Hold: MCX, Oil India, L&T, Asian Paints, NTPC And Paytm — Ask Profit",
+        "link": "https://www.ndtvprofit.com/markets/buy-sell-or-hold-ask-profit-11160562#publisher=newsstand",
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "confidence": 0.9429612755775452,
+        "timestamp": "2026-03-03T23:14:58.626360",
+        "source": "rss"
+      }
+    ],
+    "total_results": 18
   }
 ]

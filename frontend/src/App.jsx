@@ -56,6 +56,7 @@ function App() {
   const [isSpotlightOpen, setIsSpotlightOpen] = useState(false);
   const [showTour, setShowTour] = useState(false);
   const [initialLoadFinished, setInitialLoadFinished] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   // Use Ref for analyses to avoid stale closure in WS handler
   const analysesRef = useRef({});
@@ -428,20 +429,13 @@ function App() {
             <div className="lg:col-span-2 space-y-4">
               <ModeSelector mode={mode} onModeChange={setMode} />
               <Filters filter={filter} onFilterChange={setFilter} />
+              {/* Market Sentiment Heatmap - Market Pulse ke right side mein */}
+              <MarketHeatmap
+                stocks={filteredStocks}
+                analyses={analyses}
+                onStockClick={showStockDetail}
+              />
             </div>
-          </div>
-
-          {/* Smart Heatmap Integration - Trends */}
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-dark-text">Market Sentiment Heatmap</h3>
-              <p className="text-xs text-dark-text-secondary font-mono">Real-time Technical Dominance</p>
-            </div>
-            <MarketHeatmap
-              stocks={filteredStocks}
-              analyses={analyses}
-              onStockClick={showStockDetail}
-            />
           </div>
         </div>
       );
@@ -636,6 +630,8 @@ function App() {
         onTabChange={setActiveTab}
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
+        isCollapsed={isSidebarCollapsed}
+        setIsCollapsed={setIsSidebarCollapsed}
       />
 
       {/* Main Content */}

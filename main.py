@@ -80,15 +80,15 @@ async def lifespan(app: FastAPI):
     """Lifespan context manager for startup and shutdown events"""
     # Startup
     try:
-        # PRELOAD ALL STOCKS FROM NSE API INTO MEMORY
-        await task_manager.preload_stocks()
-        
         # Register update handlers
         task_manager.add_update_callback(sse_update_handler)
         task_manager.add_update_callback(ws_update_handler)
         
         # Init portfolio JSON storage
         PortfolioManager.setup_table()
+        
+        # Start preloading in background so server starts immediately
+        asyncio.create_task(task_manager.preload_stocks())
         
         # Start background refresh task
         refresh_task = asyncio.create_task(
@@ -100,8 +100,7 @@ async def lifespan(app: FastAPI):
             task_manager.start_live_price_ticker(interval_seconds=60)
         )
         
-        logger.info("Application started successfully — MySQL-free, NSE-direct!")
-        logger.info("Background tasks started: 3m Analysis Refresh + 20s Live Price Ticker")
+        logger.info("Application started! Preloading stocks and starting background tasks...")
     except Exception as e:
         logger.error(f"Failed to initialize application: {e}")
     
@@ -179,6 +178,32 @@ async def health_check():
         "analyses_cached": analyses_cached,
         "timestamp": datetime.now().isoformat()
     }
+
+
+@app.get("/stocks")
+async def get_all_stocks(
+    filter_momentum: bool = Query(None),
+    filter_price: bool = Query(None)
+):
+    """
+    Get all preloaded NSE stocks from memory
+    
+    Args:
+        filter_momentum: Whether to filter by momentum (optional)
+        filter_price: Whether to filter by price range (optional)
+    """
+    stocks = task_manager.stocks_list
+    
+    if not stocks:
+        # If cache is empty, return empty list
+        return []
+        
+    filtered_stocks = stocks
+    
+    # Optional filtering can be added here if needed
+    # (Currently, the frontend expects a full list or basic filtering)
+    
+    return filtered_stocks
 
 
 def has_momentum(analysis: Dict) -> bool:

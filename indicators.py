@@ -222,30 +222,51 @@ class TechnicalIndicators:
     def detect_trend(self) -> str:
         """
         Detect trend: UP, DOWN, or NEUTRAL
-        Based on higher highs + higher lows (UP) or lower highs + lower lows (DOWN)
+        Uses a combination of EMA slope and price action
         """
-        if len(self.df) < 3:
+        if len(self.df) < 5:
             return "NEUTRAL"
         
         try:
-            # Get recent highs and lows
+            # Ensure EMAs are calculated if missing
+            if 'ema_20' not in self.df.columns or 'ema_50' not in self.df.columns:
+                self.df = self._calculate_ema(self.df)
+                
+            latest = self.df.iloc[-1]
+            price = float(latest['close'])
+            ema_20 = float(latest['ema_20']) if pd.notna(latest.get('ema_20')) else None
+            ema_50 = float(latest['ema_50']) if pd.notna(latest.get('ema_50')) else None
+            
+            # 1. EMA Based Trend (Primary)
+            # If price is above both EMAs and EMA20 > EMA50 -> Strong UP
+            if ema_20 and ema_50:
+                if price > ema_20 and ema_20 > ema_50:
+                    return "UP"
+                if price < ema_20 and ema_20 < ema_50:
+                    return "DOWN"
+            
+            # 2. Price Action Trend (Secondary)
             recent_highs = self.df['high'].tail(5).values
             recent_lows = self.df['low'].tail(5).values
             
-            # Check for higher highs and higher lows
-            higher_highs = all(recent_highs[i] >= recent_highs[i-1] for i in range(1, len(recent_highs)))
-            higher_lows = all(recent_lows[i] >= recent_lows[i-1] for i in range(1, len(recent_lows)))
+            high_ups = sum(1 for i in range(1, len(recent_highs)) if recent_highs[i] > recent_highs[i-1])
+            low_ups  = sum(1 for i in range(1, len(recent_lows)) if recent_lows[i] > recent_lows[i-1])
             
-            # Check for lower highs and lower lows
-            lower_highs = all(recent_highs[i] <= recent_highs[i-1] for i in range(1, len(recent_highs)))
-            lower_lows = all(recent_lows[i] <= recent_lows[i-1] for i in range(1, len(recent_lows)))
-            
-            if higher_highs and higher_lows:
+            if high_ups >= 3 and low_ups >= 2:
                 return "UP"
-            elif lower_highs and lower_lows:
+            
+            high_downs = sum(1 for i in range(1, len(recent_highs)) if recent_highs[i] < recent_highs[i-1])
+            low_downs  = sum(1 for i in range(1, len(recent_lows)) if recent_lows[i] < recent_lows[i-1])
+            
+            if high_downs >= 3 and low_downs >= 2:
                 return "DOWN"
-            else:
-                return "NEUTRAL"
+            
+            # 3. Simple Close vs EMA20
+            if ema_20:
+                if price > ema_20 * 1.01: return "UP"
+                if price < ema_20 * 0.99: return "DOWN"
+            
+            return "NEUTRAL"
         except Exception as e:
             logger.error(f"Error detecting trend: {e}")
             return "NEUTRAL"

@@ -32,8 +32,8 @@ class AlertSystem:
         self.telegram_bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
         self.telegram_chat_id = os.getenv("TELEGRAM_CHAT_ID")
     
-    def send_email(self, subject: str, body: str, html_body: Optional[str] = None) -> bool:
-        """Send email alert"""
+    async def send_email(self, subject: str, body: str, html_body: Optional[str] = None) -> bool:
+        """Send email alert (async wrapper for blocking SMTP)"""
         if not self.smtp_username or not self.smtp_password or not self.email_to:
             logger.warning("Email configuration incomplete")
             return False
@@ -44,7 +44,6 @@ class AlertSystem:
             msg['From'] = self.email_from
             msg['To'] = ", ".join(self.email_to)
             
-            # Add text and HTML parts
             text_part = MIMEText(body, 'plain')
             msg.attach(text_part)
             
@@ -52,12 +51,22 @@ class AlertSystem:
                 html_part = MIMEText(html_body, 'html')
                 msg.attach(html_part)
             
-            # Send email
-            with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
-                server.starttls()
-                server.login(self.smtp_username, self.smtp_password)
-                server.send_message(msg)
+            def _blocking_send():
+                if self.smtp_port == 465:
+                    import ssl
+                    context = ssl.create_default_context()
+                    with smtplib.SMTP_SSL(self.smtp_server, self.smtp_port, context=context) as server:
+                        server.login(self.smtp_username, self.smtp_password)
+                        server.send_message(msg)
+                else:
+                    with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
+                        server.ehlo()
+                        server.starttls()
+                        server.ehlo()
+                        server.login(self.smtp_username, self.smtp_password)
+                        server.send_message(msg)
             
+            await asyncio.to_thread(_blocking_send)
             logger.info(f"Email sent: {subject}")
             return True
         except Exception as e:
@@ -144,7 +153,7 @@ Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
         
         return text.strip(), html
     
-    def send_stock_alert(self, stock_data: Dict, use_email: bool = True, use_telegram: bool = True):
+    async def send_stock_alert(self, stock_data: Dict, use_email: bool = True, use_telegram: bool = True):
         """Send stock recommendation alert"""
         text, html = self.format_stock_alert(stock_data)
         symbol = stock_data.get('symbol', 'STOCK')
@@ -152,15 +161,17 @@ Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
         
         subject = f"Stock Alert: {symbol} - {recommendation}"
         
-        # Send email
+        tasks = []
         if use_email:
-            self.send_email(subject, text, html)
+            tasks.append(self.send_email(subject, text, html))
         
-        # Send Telegram
         if use_telegram:
-            asyncio.run(self.send_telegram(text))
+            tasks.append(self.send_telegram(text))
+            
+        if tasks:
+            await asyncio.gather(*tasks, return_exceptions=True)
     
-    def send_top_stocks_alert(self, ranking_results: Dict, use_email: bool = True, use_telegram: bool = True):
+    async def send_top_stocks_alert(self, ranking_results: Dict, use_email: bool = True, use_telegram: bool = True):
         """Send alert with top stock recommendations"""
         top_buy = ranking_results.get('top_5_buy', [])
         top_sell = ranking_results.get('top_5_sell', [])
@@ -180,13 +191,15 @@ Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
         
         subject = "Daily Top Stock Recommendations"
         
-        # Send email
+        tasks = []
         if use_email:
-            self.send_email(subject, text)
+            tasks.append(self.send_email(subject, text))
         
-        # Send Telegram
         if use_telegram:
-            asyncio.run(self.send_telegram(text))
+            tasks.append(self.send_telegram(text))
+            
+        if tasks:
+            await asyncio.gather(*tasks, return_exceptions=True)
 
 
 if __name__ == "__main__":

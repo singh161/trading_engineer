@@ -349,11 +349,11 @@ class AIStockResearchEngine:
         logger.info("=" * 60)
         
         # Send top stocks alert
-        self.alert_system.send_top_stocks_alert(ranking_results)
+        await self.alert_system.send_top_stocks_alert(ranking_results)
         
         # Send individual alerts for top BUY stocks
         for stock in ranking_results.get('top_5_buy', [])[:3]:  # Top 3 only
-            self.alert_system.send_stock_alert(stock)
+            await self.alert_system.send_stock_alert(stock)
         
         logger.info("Alerts sent")
     
@@ -543,7 +543,7 @@ class AIStockResearchEngine:
                 logger.info("=" * 60)
                 
                 # Send top stocks alert
-                self.alert_system.send_top_stocks_alert(ranking_results)
+                await self.alert_system.send_top_stocks_alert(ranking_results)
                 
                 # Send individual alerts for top BUY stocks with AI verification
                 for stock in ranking_results.get('top_5_buy', [])[:3]:  # Top 3 only

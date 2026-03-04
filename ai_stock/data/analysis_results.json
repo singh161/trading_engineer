@@ -1,28 +1,32 @@
 {
   "status": "success",
-  "execution_time_seconds": 3.582618,
+  "execution_time_seconds": 11.472824,
   "stocks_analyzed": 15,
   "ranking_results": {
-    "top_5_buy": [
+    "top_5_buy": [],
+    "top_5_hold": [
       {
         "symbol": "AXISBANK",
-        "recommendation": "BUY",
-        "final_score": 73.54,
+        "recommendation": "HOLD",
+        "final_score": 48.1,
         "technical_score": 100,
         "sentiment_score": 50.0,
         "fundamental_score": 40.0,
-        "momentum_score": 63.96,
+        "momentum_score": 83.96,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.156961",
-        "risk_adjusted_score": 73.54,
-        "original_score": 67.09,
+        "timestamp": "2026-03-03T23:30:14.678255",
+        "risk_adjusted_score": 48.1,
+        "original_score": 39.25,
         "technical_analysis": {
           "buy_signals": [
+            "TREND_UP",
             "EMA_STRONG_BUY",
             "EMA_STRONG_BUY",
             "MACD_BULLISH",
@@ -30,10 +34,10 @@
             "BREAK_DAY_HIGH"
           ],
           "sell_signals": [],
-          "buy_count": 5,
+          "buy_count": 6,
           "sell_count": 0,
           "final_verdict": "BUY",
-          "trend": "NEUTRAL",
+          "trend": "UP",
           "volume_signal": "NEUTRAL",
           "buy_price": 1316.1,
           "sell_price": 1418.3,
@@ -41,7 +45,7 @@
           "open": 1369.0999755859,
           "high": 1384.6999511719,
           "low": 1353.5999755859,
-          "volume": 5131916.0,
+          "volume": 5132511.0,
           "rsi": 54.620880670501855,
           "ema_20": 1363.1089490805368,
           "ema_50": 1341.275155507935,
@@ -70,13 +74,13 @@
           "debt_to_equity": null,
           "profit_margin": 0.3417,
           "current_ratio": null,
-          "pe_ratio": 16.28263,
+          "pe_ratio": 16.286495,
           "pb_ratio": 2.0583348,
           "dividend_yield": 0.07,
-          "market_cap": 4262886113280,
+          "market_cap": 4263810170880,
           "revenue": 768435683328,
           "net_income": 262573506560,
-          "timestamp": "2026-03-02T21:42:24.608063",
+          "timestamp": "2026-03-03T23:30:10.110566",
           "fundamental_score": 40.0,
           "max_score": 100.0,
           "factors": [
@@ -86,47 +90,53 @@
           ],
           "alpha_vantage_data": null
         },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
         "target_price": {
-          "target_price": 1392.8,
+          "target_price": 1384.6,
           "current_price": 1372.3,
-          "price_change_pct": 1.49,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:25.373361"
+          "price_change_pct": 0.9,
+          "confidence": 0.45,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:14.650045"
         },
         "current_price": 1372.3000488281,
         "risk_analysis": {
-          "overall_risk": 28.5,
+          "overall_risk": 20.5,
           "risk_level": "LOW",
-          "volatility_risk": 20.0,
+          "volatility_risk": 0.0,
           "liquidity_risk": 50.0,
           "leverage_risk": 0.0,
           "earnings_risk": 50.0,
-          "correlation_risk": 50.0,
-          "timestamp": "2026-03-02T21:42:26.155259"
+          "correlation_risk": 30.0,
+          "timestamp": "2026-03-03T23:30:14.651191"
         }
-      }
-    ],
-    "top_5_hold": [
+      },
       {
         "symbol": "SBIN",
         "recommendation": "HOLD",
-        "final_score": 65.05,
-        "technical_score": 90.0,
+        "final_score": 43.94,
+        "technical_score": 93.33,
         "sentiment_score": 50.0,
         "fundamental_score": 35.0,
-        "momentum_score": 40.49,
+        "momentum_score": 60.49,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.157028",
-        "risk_adjusted_score": 65.05,
-        "original_score": 58.82,
+        "timestamp": "2026-03-03T23:30:14.678233",
+        "risk_adjusted_score": 43.94,
+        "original_score": 35.27,
         "technical_analysis": {
           "buy_signals": [
+            "TREND_UP",
             "EMA_STRONG_BUY",
             "EMA_STRONG_BUY",
             "BULLISH_CANDLE",
@@ -135,30 +145,30 @@
           "sell_signals": [
             "MACD_BEARISH"
           ],
-          "buy_count": 4,
+          "buy_count": 5,
           "sell_count": 1,
           "final_verdict": "BUY",
-          "trend": "NEUTRAL",
+          "trend": "UP",
           "volume_signal": "NEUTRAL",
           "buy_price": 1040.3,
           "sell_price": 1234.7,
-          "price": 1189.9000244140625,
+          "price": 1189.9000244141,
           "open": 1185.0,
-          "high": 1197.300048828125,
-          "low": 1179.4000244140625,
-          "volume": 16268877.0,
-          "rsi": 63.729007309569184,
-          "ema_20": 1170.671681270164,
-          "ema_50": 1113.1940731943885,
-          "macd": 38.73370990627518,
-          "macd_signal": 42.57646814600191,
-          "macd_hist": -3.8427582397267273,
-          "support": 1040.300048828125,
-          "resistance": 1234.699951171875,
-          "prev_price": 1201.699951171875,
-          "prev_rsi": 67.75009958547545,
-          "prev_macd": 42.204893552956264,
-          "prev_macd_signal": 43.53715770593359,
+          "high": 1197.3000488281,
+          "low": 1179.4000244141,
+          "volume": 16270835.0,
+          "rsi": 63.72900730958756,
+          "ema_20": 1170.6716812701702,
+          "ema_50": 1113.1940731944019,
+          "macd": 38.733709906272225,
+          "macd_signal": 42.576468145995435,
+          "macd_hist": -3.84275823972321,
+          "support": 1040.3000488281,
+          "resistance": 1234.6999511719,
+          "prev_price": 1201.6999511719,
+          "prev_rsi": 67.7500995854721,
+          "prev_macd": 42.20489355294967,
+          "prev_macd_signal": 43.537157705926234,
           "symbol": "SBIN",
           "mode": "swing"
         },
@@ -175,13 +185,13 @@
           "debt_to_equity": null,
           "profit_margin": 0.22498,
           "current_ratio": null,
-          "pe_ratio": 12.960463,
+          "pe_ratio": 12.953407,
           "pb_ratio": 1.8552734,
-          "dividend_yield": 1.32,
+          "dividend_yield": 1.34,
           "market_cap": 10983511687168,
           "revenue": 3700534018048,
           "net_income": 832563642368,
-          "timestamp": "2026-03-02T21:42:24.606651",
+          "timestamp": "2026-03-03T23:30:10.439820",
           "fundamental_score": 35.0,
           "max_score": 100.0,
           "factors": [
@@ -190,56 +200,66 @@
           ],
           "alpha_vantage_data": null
         },
-        "target_price": {
-          "target_price": 1240.67,
-          "current_price": 1189.9,
-          "price_change_pct": 4.27,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:26.114397"
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
         },
-        "current_price": 1189.9000244140625,
+        "target_price": {
+          "target_price": 1220.36,
+          "current_price": 1189.9,
+          "price_change_pct": 2.56,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:14.621038"
+        },
+        "current_price": 1189.9000244141,
         "risk_analysis": {
-          "overall_risk": 29.25,
+          "overall_risk": 21.1,
           "risk_level": "LOW",
-          "volatility_risk": 20.0,
+          "volatility_risk": 0.0,
           "liquidity_risk": 50.0,
           "leverage_risk": 0.0,
           "earnings_risk": 50.0,
-          "correlation_risk": 57.5,
-          "timestamp": "2026-03-02T21:42:26.155306"
+          "correlation_risk": 36.0,
+          "timestamp": "2026-03-03T23:30:14.622304"
         }
-      },
+      }
+    ],
+    "top_5_sell": [
       {
         "symbol": "ITC",
-        "recommendation": "HOLD",
-        "final_score": 51.67,
-        "technical_score": 50.0,
+        "recommendation": "SELL",
+        "final_score": 28.15,
+        "technical_score": 30.0,
         "sentiment_score": 50.0,
         "fundamental_score": 40.0,
-        "momentum_score": 45.78,
+        "momentum_score": 25.78,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.156852",
-        "risk_adjusted_score": 51.67,
-        "original_score": 46.87,
+        "timestamp": "2026-03-03T23:30:14.677983",
+        "risk_adjusted_score": 28.15,
+        "original_score": 20.65,
         "technical_analysis": {
           "buy_signals": [
             "BULLISH_CANDLE",
             "BREAK_DAY_HIGH"
           ],
           "sell_signals": [
+            "TREND_DOWN",
             "EMA_SELL",
             "MACD_BEARISH"
           ],
           "buy_count": 2,
-          "sell_count": 2,
-          "final_verdict": "NEUTRAL",
-          "trend": "NEUTRAL",
+          "sell_count": 3,
+          "final_verdict": "SELL",
+          "trend": "DOWN",
           "volume_signal": "NEUTRAL",
           "buy_price": 305.2,
           "sell_price": 334.25,
@@ -247,7 +267,7 @@
           "open": 307.0,
           "high": 315.75,
           "low": 307.0,
-          "volume": 22186090.0,
+          "volume": 22194311.0,
           "rsi": 43.29896907216495,
           "ema_20": 318.5599560395958,
           "ema_50": 314.7972427685129,
@@ -276,13 +296,13 @@
           "debt_to_equity": 0.507,
           "profit_margin": 0.43890998,
           "current_ratio": null,
-          "pe_ratio": 19.390394,
+          "pe_ratio": 19.378462,
           "pb_ratio": 5.5531063,
-          "dividend_yield": 4.58,
+          "dividend_yield": 4.56,
           "market_cap": 3945454370816,
           "revenue": 798087184384,
           "net_income": 203762597888,
-          "timestamp": "2026-03-02T21:42:24.607486",
+          "timestamp": "2026-03-03T23:30:11.914039",
           "fundamental_score": 40.0,
           "max_score": 100.0,
           "factors": [
@@ -292,56 +312,64 @@
           ],
           "alpha_vantage_data": null
         },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
         "target_price": {
-          "target_price": 313.14,
+          "target_price": 308.6,
           "current_price": 314.9,
-          "price_change_pct": -0.56,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:24.938908"
+          "price_change_pct": -2.0,
+          "confidence": 0.45,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:13.711301"
         },
         "current_price": 314.8999938965,
         "risk_analysis": {
-          "overall_risk": 34.0,
-          "risk_level": "MEDIUM",
-          "volatility_risk": 20.0,
+          "overall_risk": 25.0,
+          "risk_level": "LOW",
+          "volatility_risk": 0.0,
           "liquidity_risk": 50.0,
           "leverage_risk": 10.0,
           "earnings_risk": 50.0,
-          "correlation_risk": 80.0,
-          "timestamp": "2026-03-02T21:42:26.155184"
+          "correlation_risk": 50.0,
+          "timestamp": "2026-03-03T23:30:13.715063"
         }
       },
       {
         "symbol": "KOTAKBANK",
-        "recommendation": "HOLD",
-        "final_score": 49.87,
-        "technical_score": 50.0,
+        "recommendation": "SELL",
+        "final_score": 27.47,
+        "technical_score": 30.0,
         "sentiment_score": 50.0,
         "fundamental_score": 35.0,
-        "momentum_score": 37.11,
+        "momentum_score": 17.11,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.156807",
-        "risk_adjusted_score": 49.87,
-        "original_score": 44.32,
+        "timestamp": "2026-03-03T23:30:14.678144",
+        "risk_adjusted_score": 27.47,
+        "original_score": 19.22,
         "technical_analysis": {
           "buy_signals": [
             "BULLISH_CANDLE",
             "BREAK_DAY_HIGH"
           ],
           "sell_signals": [
+            "TREND_DOWN",
             "EMA_SELL",
             "MACD_BEARISH"
           ],
           "buy_count": 2,
-          "sell_count": 2,
-          "final_verdict": "NEUTRAL",
-          "trend": "NEUTRAL",
+          "sell_count": 3,
+          "final_verdict": "SELL",
+          "trend": "DOWN",
           "volume_signal": "NEUTRAL",
           "buy_price": 404.1,
           "sell_price": 434.9,
@@ -349,7 +377,7 @@
           "open": 410.0,
           "high": 414.6000061035,
           "low": 407.1000061035,
-          "volume": 15236520.0,
+          "volume": 15236666.0,
           "rsi": 36.27120905920976,
           "ema_20": 420.21012615008243,
           "ema_50": 415.95994519897755,
@@ -378,13 +406,13 @@
           "debt_to_equity": null,
           "profit_margin": 0.24558,
           "current_ratio": null,
-          "pe_ratio": 21.868715,
+          "pe_ratio": 21.834038,
           "pb_ratio": 2.4443352,
           "dividend_yield": 0.12,
           "market_cap": 4108483035136,
           "revenue": 765436690432,
           "net_income": 187974991872,
-          "timestamp": "2026-03-02T21:42:24.607825",
+          "timestamp": "2026-03-03T23:30:09.450065",
           "fundamental_score": 35.0,
           "max_score": 100.0,
           "factors": [
@@ -393,148 +421,50 @@
           ],
           "alpha_vantage_data": null
         },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
         "target_price": {
-          "target_price": 408.18,
+          "target_price": 410.15,
           "current_price": 413.1,
-          "price_change_pct": -1.19,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:24.917054"
+          "price_change_pct": -0.71,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:14.462015"
         },
         "current_price": 413.1000061035,
         "risk_analysis": {
-          "overall_risk": 31.5,
-          "risk_level": "MEDIUM",
-          "volatility_risk": 20.0,
+          "overall_risk": 22.5,
+          "risk_level": "LOW",
+          "volatility_risk": 0.0,
           "liquidity_risk": 50.0,
           "leverage_risk": 0.0,
           "earnings_risk": 50.0,
-          "correlation_risk": 80.0,
-          "timestamp": "2026-03-02T21:42:26.155165"
-        }
-      },
-      {
-        "symbol": "WIPRO",
-        "recommendation": "HOLD",
-        "final_score": 42.83,
-        "technical_score": 50.0,
-        "sentiment_score": 50.0,
-        "fundamental_score": 38.0,
-        "momentum_score": 32.2,
-        "weights": {
-          "technical": 0.35,
-          "sentiment": 0.25,
-          "fundamental": 0.25,
-          "momentum": 0.15
-        },
-        "timestamp": "2026-03-02T21:42:26.156871",
-        "risk_adjusted_score": 42.83,
-        "original_score": 44.33,
-        "technical_analysis": {
-          "buy_signals": [
-            "RSI_OVERSOLD",
-            "BULLISH_CANDLE",
-            "BREAK_DAY_HIGH"
-          ],
-          "sell_signals": [
-            "EMA_STRONG_SELL",
-            "EMA_STRONG_SELL",
-            "MACD_BEARISH"
-          ],
-          "buy_count": 3,
-          "sell_count": 3,
-          "final_verdict": "NEUTRAL",
-          "trend": "NEUTRAL",
-          "volume_signal": "NEUTRAL",
-          "buy_price": 194.7,
-          "sell_price": 259.89,
-          "price": 198.5700073242,
-          "open": 195.0,
-          "high": 200.3600006104,
-          "low": 194.6999969482,
-          "volume": 10483124.0,
-          "rsi": 10.188785013656357,
-          "ema_20": 214.30137902960658,
-          "ema_50": 226.62247503388681,
-          "macd": -10.11793244729705,
-          "macd_signal": -8.74256157239335,
-          "macd_hist": -1.3753708749037,
-          "support": 194.6999969482,
-          "resistance": 259.8900146484,
-          "prev_price": 200.9600067139,
-          "prev_rsi": 13.888901503593928,
-          "prev_macd": -9.981162710755882,
-          "prev_macd_signal": -8.398718853667425,
-          "symbol": "WIPRO",
-          "mode": "swing"
-        },
-        "sentiment_analysis": {
-          "avg_sentiment_score": 0.0,
-          "avg_confidence": 0.0,
-          "total_news": 0
-        },
-        "fundamental_analysis": {
-          "symbol": "WIPRO",
-          "revenue_growth": 0.055,
-          "earnings_growth": -0.072,
-          "roe": 0.15195,
-          "debt_to_equity": 22.031,
-          "profit_margin": 0.14594,
-          "current_ratio": 2.185,
-          "pe_ratio": 15.7345495,
-          "pb_ratio": 2.319418,
-          "dividend_yield": 8.46,
-          "market_cap": 2080319340544,
-          "revenue": 908918980608,
-          "net_income": 132651999232,
-          "timestamp": "2026-03-02T21:42:24.608786",
-          "fundamental_score": 38.0,
-          "max_score": 100.0,
-          "factors": [
-            "Revenue Growth: 15/25",
-            "EPS Growth: 3/25",
-            "ROE: 20/25",
-            "Debt/Equity: 0/25"
-          ],
-          "alpha_vantage_data": null
-        },
-        "target_price": {
-          "target_price": 178.99,
-          "current_price": 198.57,
-          "price_change_pct": -9.86,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:24.959566"
-        },
-        "current_price": 198.5700073242,
-        "risk_analysis": {
-          "overall_risk": 55.0,
-          "risk_level": "HIGH",
-          "volatility_risk": 50.0,
-          "liquidity_risk": 50.0,
-          "leverage_risk": 40.0,
-          "earnings_risk": 80.0,
-          "correlation_risk": 80.0,
-          "timestamp": "2026-03-02T21:42:26.155197"
+          "correlation_risk": 50.0,
+          "timestamp": "2026-03-03T23:30:14.463415"
         }
       },
       {
         "symbol": "HDFCBANK",
-        "recommendation": "HOLD",
-        "final_score": 41.37,
+        "recommendation": "SELL",
+        "final_score": 25.67,
         "technical_score": 23.33,
         "sentiment_score": 50.0,
         "fundamental_score": 60.0,
         "momentum_score": 0,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.156933",
-        "risk_adjusted_score": 41.37,
-        "original_score": 35.67,
+        "timestamp": "2026-03-03T23:30:14.678158",
+        "risk_adjusted_score": 25.67,
+        "original_score": 19.97,
         "technical_analysis": {
           "buy_signals": [
             "RSI_OVERSOLD",
@@ -560,7 +490,7 @@
           "open": 876.200012207,
           "high": 887.75,
           "low": 871.549987793,
-          "volume": 38376749.0,
+          "volume": 38378924.0,
           "rsi": 27.971723911891914,
           "ema_20": 913.6961885706547,
           "ema_50": 922.0912663889649,
@@ -589,13 +519,13 @@
           "debt_to_equity": null,
           "profit_margin": 0.26187,
           "current_ratio": null,
-          "pe_ratio": 19.616327,
+          "pe_ratio": 19.607582,
           "pb_ratio": 2.3956566,
-          "dividend_yield": 1.24,
+          "dividend_yield": 1.25,
           "market_cap": 13532221407232,
           "revenue": 2845330898944,
           "net_income": 745100869632,
-          "timestamp": "2026-03-02T21:42:24.609764",
+          "timestamp": "2026-03-03T23:30:12.233517",
           "fundamental_score": 60.0,
           "max_score": 100.0,
           "factors": [
@@ -605,13 +535,18 @@
           ],
           "alpha_vantage_data": null
         },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
         "target_price": {
-          "target_price": 842.54,
+          "target_price": 857.28,
           "current_price": 879.4,
-          "price_change_pct": -4.19,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:25.185393"
+          "price_change_pct": -2.52,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:14.492658"
         },
         "current_price": 879.4000244141,
         "risk_analysis": {
@@ -622,168 +557,64 @@
           "leverage_risk": 0.0,
           "earnings_risk": 50.0,
           "correlation_risk": 45.0,
-          "timestamp": "2026-03-02T21:42:26.155238"
-        }
-      }
-    ],
-    "top_5_sell": [
-      {
-        "symbol": "TCS",
-        "recommendation": "SELL",
-        "final_score": 39.7,
-        "technical_score": 50.0,
-        "sentiment_score": 50.0,
-        "fundamental_score": 35.0,
-        "momentum_score": 22.34,
-        "weights": {
-          "technical": 0.35,
-          "sentiment": 0.25,
-          "fundamental": 0.25,
-          "momentum": 0.15
-        },
-        "timestamp": "2026-03-02T21:42:26.156948",
-        "risk_adjusted_score": 39.7,
-        "original_score": 42.1,
-        "technical_analysis": {
-          "buy_signals": [
-            "RSI_OVERSOLD",
-            "BULLISH_CANDLE",
-            "BREAK_DAY_HIGH"
-          ],
-          "sell_signals": [
-            "EMA_STRONG_SELL",
-            "EMA_STRONG_SELL",
-            "MACD_BEARISH"
-          ],
-          "buy_count": 3,
-          "sell_count": 3,
-          "final_verdict": "NEUTRAL",
-          "trend": "NEUTRAL",
-          "volume_signal": "NEUTRAL",
-          "buy_price": 2561.3,
-          "sell_price": 3350.0,
-          "price": 2613.5,
-          "open": 2592.0,
-          "high": 2623.800048828125,
-          "low": 2580.300048828125,
-          "volume": 3373387.0,
-          "rsi": 18.341576879082723,
-          "ema_20": 2770.691192872015,
-          "ema_50": 2939.0751843626626,
-          "macd": -126.37488838363834,
-          "macd_signal": -121.50075872110156,
-          "macd_hist": -4.874129662536774,
-          "support": 2561.300048828125,
-          "resistance": 3350.0,
-          "prev_price": 2637.39990234375,
-          "prev_rsi": 24.039436070553577,
-          "prev_macd": -128.4181112331039,
-          "prev_macd_signal": -120.28222630546736,
-          "symbol": "TCS",
-          "mode": "swing"
-        },
-        "sentiment_analysis": {
-          "avg_sentiment_score": 0.0,
-          "avg_confidence": 0.0,
-          "total_news": 0
-        },
-        "fundamental_analysis": {
-          "symbol": "TCS",
-          "revenue_growth": 0.049,
-          "earnings_growth": -0.139,
-          "roe": 0.42635,
-          "debt_to_equity": 9.444,
-          "profit_margin": 0.18295999,
-          "current_ratio": 2.525,
-          "pe_ratio": 19.818762,
-          "pb_ratio": 8.330491,
-          "dividend_yield": 2.39,
-          "market_cap": 9455871721472,
-          "revenue": 2608020062208,
-          "net_income": 477160013824,
-          "timestamp": "2026-03-02T21:42:24.609295",
-          "fundamental_score": 35.0,
-          "max_score": 100.0,
-          "factors": [
-            "Revenue Growth: 10/25",
-            "EPS Growth: 0/25",
-            "ROE: 25/25",
-            "Debt/Equity: 0/25"
-          ],
-          "alpha_vantage_data": null
-        },
-        "target_price": {
-          "target_price": 2394.61,
-          "current_price": 2613.5,
-          "price_change_pct": -8.38,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:25.205804"
-        },
-        "current_price": 2613.5,
-        "risk_analysis": {
-          "overall_risk": 58.0,
-          "risk_level": "HIGH",
-          "volatility_risk": 50.0,
-          "liquidity_risk": 65.0,
-          "leverage_risk": 40.0,
-          "earnings_risk": 80.0,
-          "correlation_risk": 80.0,
-          "timestamp": "2026-03-02T21:42:26.155250"
+          "timestamp": "2026-03-03T23:30:14.493681"
         }
       },
       {
         "symbol": "ICICIBANK",
         "recommendation": "SELL",
-        "final_score": 37.64,
-        "technical_score": 23.33,
+        "final_score": 23.0,
+        "technical_score": 18.57,
         "sentiment_score": 50.0,
         "fundamental_score": 37.0,
-        "momentum_score": 20.46,
+        "momentum_score": 0.46,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.157040",
-        "risk_adjusted_score": 37.64,
-        "original_score": 32.99,
+        "timestamp": "2026-03-03T23:30:14.678129",
+        "risk_adjusted_score": 23.0,
+        "original_score": 15.86,
         "technical_analysis": {
           "buy_signals": [
             "BULLISH_CANDLE",
             "BREAK_DAY_HIGH"
           ],
           "sell_signals": [
+            "TREND_DOWN",
             "EMA_SELL",
             "MACD_BEARISH",
             "VOLUME_CONFIRMATION_SELL",
             "GAP_DOWN"
           ],
           "buy_count": 2,
-          "sell_count": 4,
+          "sell_count": 5,
           "final_verdict": "SELL",
-          "trend": "NEUTRAL",
+          "trend": "DOWN",
           "volume_signal": "SELL",
           "buy_price": 1355.0,
           "sell_price": 1434.4,
           "price": 1374.0,
           "open": 1355.0,
-          "high": 1379.199951171875,
+          "high": 1379.1999511719,
           "low": 1355.0,
-          "volume": 16927723.0,
-          "rsi": 38.644293057766355,
+          "volume": 16928683.0,
+          "rsi": 38.644293057796126,
           "ema_20": 1390.567433298312,
-          "ema_50": 1378.221796160528,
-          "macd": 4.298422962530822,
-          "macd_signal": 8.854797635548492,
-          "macd_hist": -4.55637467301767,
+          "ema_50": 1378.2217961605168,
+          "macd": 4.2984229625392345,
+          "macd_signal": 8.854797635554615,
+          "macd_hist": -4.55637467301538,
           "support": 1355.0,
-          "resistance": 1434.4000244140625,
-          "prev_price": 1378.9000244140625,
-          "prev_rsi": 44.13744940120475,
-          "prev_macd": 6.492881030596209,
-          "prev_macd_signal": 9.993891303802908,
+          "resistance": 1434.4000244141,
+          "prev_price": 1378.9000244141,
+          "prev_rsi": 44.13744940124014,
+          "prev_macd": 6.4928810306057585,
+          "prev_macd_signal": 9.99389130380846,
           "symbol": "ICICIBANK",
           "mode": "swing"
         },
@@ -800,13 +631,13 @@
           "debt_to_equity": null,
           "profit_margin": 0.27513,
           "current_ratio": null,
-          "pe_ratio": 18.765364,
+          "pe_ratio": 18.762802,
           "pb_ratio": 2.8176756,
           "dividend_yield": 0.8,
           "market_cap": 9833700917248,
           "revenue": 1924702535680,
           "net_income": 529548541952,
-          "timestamp": "2026-03-02T21:42:24.610200",
+          "timestamp": "2026-03-03T23:30:09.785052",
           "fundamental_score": 37.0,
           "max_score": 100.0,
           "factors": [
@@ -816,46 +647,54 @@
           ],
           "alpha_vantage_data": null
         },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
         "target_price": {
-          "target_price": 1363.71,
+          "target_price": 1346.52,
           "current_price": 1374.0,
-          "price_change_pct": -0.75,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:26.154399"
+          "price_change_pct": -2.0,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:14.433564"
         },
         "current_price": 1374.0,
         "risk_analysis": {
-          "overall_risk": 34.5,
-          "risk_level": "MEDIUM",
-          "volatility_risk": 20.0,
+          "overall_risk": 26.2,
+          "risk_level": "LOW",
+          "volatility_risk": 0.0,
           "liquidity_risk": 50.0,
           "leverage_risk": 0.0,
           "earnings_risk": 80.0,
-          "correlation_risk": 65.0,
-          "timestamp": "2026-03-02T21:42:26.155314"
+          "correlation_risk": 42.0,
+          "timestamp": "2026-03-03T23:30:14.434916"
         }
       },
       {
         "symbol": "MARUTI",
         "recommendation": "SELL",
-        "final_score": 35.72,
+        "final_score": 22.77,
         "technical_score": 0,
         "sentiment_score": 50.0,
         "fundamental_score": 60.0,
-        "momentum_score": 23.83,
+        "momentum_score": 3.83,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.156990",
-        "risk_adjusted_score": 35.72,
-        "original_score": 31.07,
+        "timestamp": "2026-03-03T23:30:14.678066",
+        "risk_adjusted_score": 22.77,
+        "original_score": 15.72,
         "technical_analysis": {
           "buy_signals": [],
           "sell_signals": [
+            "TREND_DOWN",
             "EMA_SELL",
             "MACD_BEARISH",
             "VOLUME_CONFIRMATION_SELL",
@@ -863,9 +702,9 @@
             "GAP_DOWN"
           ],
           "buy_count": 0,
-          "sell_count": 5,
+          "sell_count": 6,
           "final_verdict": "SELL",
-          "trend": "NEUTRAL",
+          "trend": "DOWN",
           "volume_signal": "SELL",
           "buy_price": 14204.0,
           "sell_price": 15459.0,
@@ -873,7 +712,7 @@
           "open": 14407.0,
           "high": 14684.0,
           "low": 14204.0,
-          "volume": 603715.0,
+          "volume": 603744.0,
           "rsi": 34.58096013018715,
           "ema_20": 14906.552629595168,
           "ema_50": 14735.927225388801,
@@ -902,13 +741,13 @@
           "debt_to_equity": 0.1,
           "profit_margin": 0.08693,
           "current_ratio": null,
-          "pe_ratio": 30.263765,
+          "pe_ratio": 30.303286,
           "pb_ratio": 4.5352216,
-          "dividend_yield": 0.91,
+          "dividend_yield": 0.94,
           "market_cap": 4523623972864,
           "revenue": 1717736046592,
           "net_income": 149315993600,
-          "timestamp": "2026-03-02T21:42:24.609533",
+          "timestamp": "2026-03-03T23:30:13.200429",
           "fundamental_score": 60.0,
           "max_score": 100.0,
           "factors": [
@@ -918,253 +757,55 @@
           ],
           "alpha_vantage_data": null
         },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
         "target_price": {
-          "target_price": 13967.89,
+          "target_price": 14135.93,
           "current_price": 14388.0,
-          "price_change_pct": -2.92,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:25.849975"
+          "price_change_pct": -1.75,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:13.764188"
         },
         "current_price": 14388.0,
         "risk_analysis": {
-          "overall_risk": 34.5,
-          "risk_level": "MEDIUM",
-          "volatility_risk": 20.0,
+          "overall_risk": 26.5,
+          "risk_level": "LOW",
+          "volatility_risk": 0.0,
           "liquidity_risk": 80.0,
           "leverage_risk": 0.0,
           "earnings_risk": 50.0,
-          "correlation_risk": 50.0,
-          "timestamp": "2026-03-02T21:42:26.155278"
-        }
-      },
-      {
-        "symbol": "INFY",
-        "recommendation": "SELL",
-        "final_score": 33.6,
-        "technical_score": 23.33,
-        "sentiment_score": 50.0,
-        "fundamental_score": 40.0,
-        "momentum_score": 26.58,
-        "weights": {
-          "technical": 0.35,
-          "sentiment": 0.25,
-          "fundamental": 0.25,
-          "momentum": 0.15
-        },
-        "timestamp": "2026-03-02T21:42:26.157015",
-        "risk_adjusted_score": 33.6,
-        "original_score": 34.65,
-        "technical_analysis": {
-          "buy_signals": [
-            "RSI_OVERSOLD",
-            "BREAK_DAY_HIGH"
-          ],
-          "sell_signals": [
-            "EMA_STRONG_SELL",
-            "EMA_STRONG_SELL",
-            "MACD_BEARISH",
-            "BEARISH_CANDLE"
-          ],
-          "buy_count": 2,
-          "sell_count": 4,
-          "final_verdict": "SELL",
-          "trend": "NEUTRAL",
-          "volume_signal": "NEUTRAL",
-          "buy_price": 1264.1,
-          "sell_price": 1728.0,
-          "price": 1288.9000244140625,
-          "open": 1291.0,
-          "high": 1298.800048828125,
-          "low": 1273.0,
-          "volume": 9699583.0,
-          "rsi": 16.447145267627363,
-          "ema_20": 1391.5286851394947,
-          "ema_50": 1493.1345176848654,
-          "macd": -78.83273102972475,
-          "macd_signal": -72.43888203091488,
-          "macd_hist": -6.393848998809872,
-          "support": 1264.0999755859375,
-          "resistance": 1728.0,
-          "prev_price": 1300.0999755859375,
-          "prev_rsi": 17.226483608603786,
-          "prev_macd": -79.70428433040752,
-          "prev_macd_signal": -70.8404197812124,
-          "symbol": "INFY",
-          "mode": "swing"
-        },
-        "sentiment_analysis": {
-          "avg_sentiment_score": 0.0,
-          "avg_confidence": 0.0,
-          "total_news": 0
-        },
-        "fundamental_analysis": {
-          "symbol": "INFY",
-          "revenue_growth": 0.032,
-          "earnings_growth": -0.053,
-          "roe": 0.32683,
-          "debt_to_equity": 10.531,
-          "profit_margin": 0.16153999,
-          "current_ratio": 1.812,
-          "pe_ratio": 18.391838,
-          "pb_ratio": 6.2010665,
-          "dividend_yield": 3.46,
-          "market_cap": 5214490329088,
-          "revenue": 19847000064,
-          "net_income": 3206000128,
-          "timestamp": "2026-03-02T21:42:24.608283",
-          "fundamental_score": 40.0,
-          "max_score": 100.0,
-          "factors": [
-            "Revenue Growth: 10/25",
-            "EPS Growth: 5/25",
-            "ROE: 25/25",
-            "Debt/Equity: 0/25"
-          ],
-          "alpha_vantage_data": null
-        },
-        "target_price": {
-          "target_price": 1153.22,
-          "current_price": 1288.9,
-          "price_change_pct": -10.53,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:26.055870"
-        },
-        "current_price": 1288.9000244140625,
-        "risk_analysis": {
-          "overall_risk": 53.5,
-          "risk_level": "HIGH",
-          "volatility_risk": 50.0,
-          "liquidity_risk": 50.0,
-          "leverage_risk": 40.0,
-          "earnings_risk": 80.0,
-          "correlation_risk": 65.0,
-          "timestamp": "2026-03-02T21:42:26.155298"
-        }
-      },
-      {
-        "symbol": "BAJFINANCE",
-        "recommendation": "SELL",
-        "final_score": 33.31,
-        "technical_score": 23.33,
-        "sentiment_score": 50.0,
-        "fundamental_score": 19.0,
-        "momentum_score": 41.63,
-        "weights": {
-          "technical": 0.35,
-          "sentiment": 0.25,
-          "fundamental": 0.25,
-          "momentum": 0.15
-        },
-        "timestamp": "2026-03-02T21:42:26.156887",
-        "risk_adjusted_score": 33.31,
-        "original_score": 31.66,
-        "technical_analysis": {
-          "buy_signals": [
-            "BULLISH_CANDLE"
-          ],
-          "sell_signals": [
-            "EMA_SELL",
-            "MACD_BEARISH"
-          ],
-          "buy_count": 1,
-          "sell_count": 2,
-          "final_verdict": "SELL",
-          "trend": "NEUTRAL",
-          "volume_signal": "NEUTRAL",
-          "buy_price": 941.9,
-          "sell_price": 1046.0,
-          "price": 978.25,
-          "open": 971.0,
-          "high": 990.4000244141,
-          "low": 968.0,
-          "volume": 8489398.0,
-          "rsi": 54.063611445522554,
-          "ema_20": 991.4881937179098,
-          "ema_50": 957.8611595044853,
-          "macd": 19.9890154985236,
-          "macd_signal": 25.22341036662941,
-          "macd_hist": -5.2343948681058095,
-          "support": 941.9000244141,
-          "resistance": 1046.0,
-          "prev_price": 995.9000244141,
-          "prev_rsi": 54.0983593692349,
-          "prev_macd": 24.073745768617414,
-          "prev_macd_signal": 26.53200908365586,
-          "symbol": "BAJFINANCE",
-          "mode": "swing"
-        },
-        "sentiment_analysis": {
-          "avg_sentiment_score": 0.0,
-          "avg_confidence": 0.0,
-          "total_news": 0
-        },
-        "fundamental_analysis": {
-          "symbol": "BAJFINANCE",
-          "revenue_growth": 0.064,
-          "earnings_growth": -0.068,
-          "roe": null,
-          "debt_to_equity": 310.294,
-          "profit_margin": 0.4368,
-          "current_ratio": null,
-          "pe_ratio": 33.75604,
-          "pb_ratio": 5.8864055,
-          "dividend_yield": 0.44,
-          "market_cap": 6081139965952,
-          "revenue": 412833284096,
-          "net_income": 180323893248,
-          "timestamp": "2026-03-02T21:42:24.606916",
-          "fundamental_score": 19.0,
-          "max_score": 100.0,
-          "factors": [
-            "Revenue Growth: 15/25",
-            "EPS Growth: 4/25",
-            "Debt/Equity: 0/25"
-          ],
-          "alpha_vantage_data": null
-        },
-        "target_price": {
-          "target_price": 982.13,
-          "current_price": 978.25,
-          "price_change_pct": 0.4,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:24.980779"
-        },
-        "current_price": 978.25,
-        "risk_analysis": {
-          "overall_risk": 44.5,
-          "risk_level": "MEDIUM",
-          "volatility_risk": 20.0,
-          "liquidity_risk": 50.0,
-          "leverage_risk": 40.0,
-          "earnings_risk": 80.0,
-          "correlation_risk": 65.0,
-          "timestamp": "2026-03-02T21:42:26.155208"
+          "correlation_risk": 30.0,
+          "timestamp": "2026-03-03T23:30:13.765421"
         }
       }
     ],
     "all_ranked": [
       {
         "symbol": "AXISBANK",
-        "recommendation": "BUY",
-        "final_score": 73.54,
+        "recommendation": "HOLD",
+        "final_score": 48.1,
         "technical_score": 100,
         "sentiment_score": 50.0,
         "fundamental_score": 40.0,
-        "momentum_score": 63.96,
+        "momentum_score": 83.96,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.156961",
-        "risk_adjusted_score": 73.54,
-        "original_score": 67.09,
+        "timestamp": "2026-03-03T23:30:14.678255",
+        "risk_adjusted_score": 48.1,
+        "original_score": 39.25,
         "technical_analysis": {
           "buy_signals": [
+            "TREND_UP",
             "EMA_STRONG_BUY",
             "EMA_STRONG_BUY",
             "MACD_BULLISH",
@@ -1172,10 +813,10 @@
             "BREAK_DAY_HIGH"
           ],
           "sell_signals": [],
-          "buy_count": 5,
+          "buy_count": 6,
           "sell_count": 0,
           "final_verdict": "BUY",
-          "trend": "NEUTRAL",
+          "trend": "UP",
           "volume_signal": "NEUTRAL",
           "buy_price": 1316.1,
           "sell_price": 1418.3,
@@ -1183,7 +824,7 @@
           "open": 1369.0999755859,
           "high": 1384.6999511719,
           "low": 1353.5999755859,
-          "volume": 5131916.0,
+          "volume": 5132511.0,
           "rsi": 54.620880670501855,
           "ema_20": 1363.1089490805368,
           "ema_50": 1341.275155507935,
@@ -1212,13 +853,13 @@
           "debt_to_equity": null,
           "profit_margin": 0.3417,
           "current_ratio": null,
-          "pe_ratio": 16.28263,
+          "pe_ratio": 16.286495,
           "pb_ratio": 2.0583348,
           "dividend_yield": 0.07,
-          "market_cap": 4262886113280,
+          "market_cap": 4263810170880,
           "revenue": 768435683328,
           "net_income": 262573506560,
-          "timestamp": "2026-03-02T21:42:24.608063",
+          "timestamp": "2026-03-03T23:30:10.110566",
           "fundamental_score": 40.0,
           "max_score": 100.0,
           "factors": [
@@ -1228,45 +869,53 @@
           ],
           "alpha_vantage_data": null
         },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
         "target_price": {
-          "target_price": 1392.8,
+          "target_price": 1384.6,
           "current_price": 1372.3,
-          "price_change_pct": 1.49,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:25.373361"
+          "price_change_pct": 0.9,
+          "confidence": 0.45,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:14.650045"
         },
         "current_price": 1372.3000488281,
         "risk_analysis": {
-          "overall_risk": 28.5,
+          "overall_risk": 20.5,
           "risk_level": "LOW",
-          "volatility_risk": 20.0,
+          "volatility_risk": 0.0,
           "liquidity_risk": 50.0,
           "leverage_risk": 0.0,
           "earnings_risk": 50.0,
-          "correlation_risk": 50.0,
-          "timestamp": "2026-03-02T21:42:26.155259"
+          "correlation_risk": 30.0,
+          "timestamp": "2026-03-03T23:30:14.651191"
         }
       },
       {
         "symbol": "SBIN",
         "recommendation": "HOLD",
-        "final_score": 65.05,
-        "technical_score": 90.0,
+        "final_score": 43.94,
+        "technical_score": 93.33,
         "sentiment_score": 50.0,
         "fundamental_score": 35.0,
-        "momentum_score": 40.49,
+        "momentum_score": 60.49,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.157028",
-        "risk_adjusted_score": 65.05,
-        "original_score": 58.82,
+        "timestamp": "2026-03-03T23:30:14.678233",
+        "risk_adjusted_score": 43.94,
+        "original_score": 35.27,
         "technical_analysis": {
           "buy_signals": [
+            "TREND_UP",
             "EMA_STRONG_BUY",
             "EMA_STRONG_BUY",
             "BULLISH_CANDLE",
@@ -1275,30 +924,30 @@
           "sell_signals": [
             "MACD_BEARISH"
           ],
-          "buy_count": 4,
+          "buy_count": 5,
           "sell_count": 1,
           "final_verdict": "BUY",
-          "trend": "NEUTRAL",
+          "trend": "UP",
           "volume_signal": "NEUTRAL",
           "buy_price": 1040.3,
           "sell_price": 1234.7,
-          "price": 1189.9000244140625,
+          "price": 1189.9000244141,
           "open": 1185.0,
-          "high": 1197.300048828125,
-          "low": 1179.4000244140625,
-          "volume": 16268877.0,
-          "rsi": 63.729007309569184,
-          "ema_20": 1170.671681270164,
-          "ema_50": 1113.1940731943885,
-          "macd": 38.73370990627518,
-          "macd_signal": 42.57646814600191,
-          "macd_hist": -3.8427582397267273,
-          "support": 1040.300048828125,
-          "resistance": 1234.699951171875,
-          "prev_price": 1201.699951171875,
-          "prev_rsi": 67.75009958547545,
-          "prev_macd": 42.204893552956264,
-          "prev_macd_signal": 43.53715770593359,
+          "high": 1197.3000488281,
+          "low": 1179.4000244141,
+          "volume": 16270835.0,
+          "rsi": 63.72900730958756,
+          "ema_20": 1170.6716812701702,
+          "ema_50": 1113.1940731944019,
+          "macd": 38.733709906272225,
+          "macd_signal": 42.576468145995435,
+          "macd_hist": -3.84275823972321,
+          "support": 1040.3000488281,
+          "resistance": 1234.6999511719,
+          "prev_price": 1201.6999511719,
+          "prev_rsi": 67.7500995854721,
+          "prev_macd": 42.20489355294967,
+          "prev_macd_signal": 43.537157705926234,
           "symbol": "SBIN",
           "mode": "swing"
         },
@@ -1315,13 +964,13 @@
           "debt_to_equity": null,
           "profit_margin": 0.22498,
           "current_ratio": null,
-          "pe_ratio": 12.960463,
+          "pe_ratio": 12.953407,
           "pb_ratio": 1.8552734,
-          "dividend_yield": 1.32,
+          "dividend_yield": 1.34,
           "market_cap": 10983511687168,
           "revenue": 3700534018048,
           "net_income": 832563642368,
-          "timestamp": "2026-03-02T21:42:24.606651",
+          "timestamp": "2026-03-03T23:30:10.439820",
           "fundamental_score": 35.0,
           "max_score": 100.0,
           "factors": [
@@ -1330,56 +979,64 @@
           ],
           "alpha_vantage_data": null
         },
-        "target_price": {
-          "target_price": 1240.67,
-          "current_price": 1189.9,
-          "price_change_pct": 4.27,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:26.114397"
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
         },
-        "current_price": 1189.9000244140625,
+        "target_price": {
+          "target_price": 1220.36,
+          "current_price": 1189.9,
+          "price_change_pct": 2.56,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:14.621038"
+        },
+        "current_price": 1189.9000244141,
         "risk_analysis": {
-          "overall_risk": 29.25,
+          "overall_risk": 21.1,
           "risk_level": "LOW",
-          "volatility_risk": 20.0,
+          "volatility_risk": 0.0,
           "liquidity_risk": 50.0,
           "leverage_risk": 0.0,
           "earnings_risk": 50.0,
-          "correlation_risk": 57.5,
-          "timestamp": "2026-03-02T21:42:26.155306"
+          "correlation_risk": 36.0,
+          "timestamp": "2026-03-03T23:30:14.622304"
         }
       },
       {
         "symbol": "ITC",
-        "recommendation": "HOLD",
-        "final_score": 51.67,
-        "technical_score": 50.0,
+        "recommendation": "SELL",
+        "final_score": 28.15,
+        "technical_score": 30.0,
         "sentiment_score": 50.0,
         "fundamental_score": 40.0,
-        "momentum_score": 45.78,
+        "momentum_score": 25.78,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.156852",
-        "risk_adjusted_score": 51.67,
-        "original_score": 46.87,
+        "timestamp": "2026-03-03T23:30:14.677983",
+        "risk_adjusted_score": 28.15,
+        "original_score": 20.65,
         "technical_analysis": {
           "buy_signals": [
             "BULLISH_CANDLE",
             "BREAK_DAY_HIGH"
           ],
           "sell_signals": [
+            "TREND_DOWN",
             "EMA_SELL",
             "MACD_BEARISH"
           ],
           "buy_count": 2,
-          "sell_count": 2,
-          "final_verdict": "NEUTRAL",
-          "trend": "NEUTRAL",
+          "sell_count": 3,
+          "final_verdict": "SELL",
+          "trend": "DOWN",
           "volume_signal": "NEUTRAL",
           "buy_price": 305.2,
           "sell_price": 334.25,
@@ -1387,7 +1044,7 @@
           "open": 307.0,
           "high": 315.75,
           "low": 307.0,
-          "volume": 22186090.0,
+          "volume": 22194311.0,
           "rsi": 43.29896907216495,
           "ema_20": 318.5599560395958,
           "ema_50": 314.7972427685129,
@@ -1416,13 +1073,13 @@
           "debt_to_equity": 0.507,
           "profit_margin": 0.43890998,
           "current_ratio": null,
-          "pe_ratio": 19.390394,
+          "pe_ratio": 19.378462,
           "pb_ratio": 5.5531063,
-          "dividend_yield": 4.58,
+          "dividend_yield": 4.56,
           "market_cap": 3945454370816,
           "revenue": 798087184384,
           "net_income": 203762597888,
-          "timestamp": "2026-03-02T21:42:24.607486",
+          "timestamp": "2026-03-03T23:30:11.914039",
           "fundamental_score": 40.0,
           "max_score": 100.0,
           "factors": [
@@ -1432,56 +1089,64 @@
           ],
           "alpha_vantage_data": null
         },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
         "target_price": {
-          "target_price": 313.14,
+          "target_price": 308.6,
           "current_price": 314.9,
-          "price_change_pct": -0.56,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:24.938908"
+          "price_change_pct": -2.0,
+          "confidence": 0.45,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:13.711301"
         },
         "current_price": 314.8999938965,
         "risk_analysis": {
-          "overall_risk": 34.0,
-          "risk_level": "MEDIUM",
-          "volatility_risk": 20.0,
+          "overall_risk": 25.0,
+          "risk_level": "LOW",
+          "volatility_risk": 0.0,
           "liquidity_risk": 50.0,
           "leverage_risk": 10.0,
           "earnings_risk": 50.0,
-          "correlation_risk": 80.0,
-          "timestamp": "2026-03-02T21:42:26.155184"
+          "correlation_risk": 50.0,
+          "timestamp": "2026-03-03T23:30:13.715063"
         }
       },
       {
         "symbol": "KOTAKBANK",
-        "recommendation": "HOLD",
-        "final_score": 49.87,
-        "technical_score": 50.0,
+        "recommendation": "SELL",
+        "final_score": 27.47,
+        "technical_score": 30.0,
         "sentiment_score": 50.0,
         "fundamental_score": 35.0,
-        "momentum_score": 37.11,
+        "momentum_score": 17.11,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.156807",
-        "risk_adjusted_score": 49.87,
-        "original_score": 44.32,
+        "timestamp": "2026-03-03T23:30:14.678144",
+        "risk_adjusted_score": 27.47,
+        "original_score": 19.22,
         "technical_analysis": {
           "buy_signals": [
             "BULLISH_CANDLE",
             "BREAK_DAY_HIGH"
           ],
           "sell_signals": [
+            "TREND_DOWN",
             "EMA_SELL",
             "MACD_BEARISH"
           ],
           "buy_count": 2,
-          "sell_count": 2,
-          "final_verdict": "NEUTRAL",
-          "trend": "NEUTRAL",
+          "sell_count": 3,
+          "final_verdict": "SELL",
+          "trend": "DOWN",
           "volume_signal": "NEUTRAL",
           "buy_price": 404.1,
           "sell_price": 434.9,
@@ -1489,7 +1154,7 @@
           "open": 410.0,
           "high": 414.6000061035,
           "low": 407.1000061035,
-          "volume": 15236520.0,
+          "volume": 15236666.0,
           "rsi": 36.27120905920976,
           "ema_20": 420.21012615008243,
           "ema_50": 415.95994519897755,
@@ -1518,13 +1183,13 @@
           "debt_to_equity": null,
           "profit_margin": 0.24558,
           "current_ratio": null,
-          "pe_ratio": 21.868715,
+          "pe_ratio": 21.834038,
           "pb_ratio": 2.4443352,
           "dividend_yield": 0.12,
           "market_cap": 4108483035136,
           "revenue": 765436690432,
           "net_income": 187974991872,
-          "timestamp": "2026-03-02T21:42:24.607825",
+          "timestamp": "2026-03-03T23:30:09.450065",
           "fundamental_score": 35.0,
           "max_score": 100.0,
           "factors": [
@@ -1533,148 +1198,50 @@
           ],
           "alpha_vantage_data": null
         },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
         "target_price": {
-          "target_price": 408.18,
+          "target_price": 410.15,
           "current_price": 413.1,
-          "price_change_pct": -1.19,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:24.917054"
+          "price_change_pct": -0.71,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:14.462015"
         },
         "current_price": 413.1000061035,
         "risk_analysis": {
-          "overall_risk": 31.5,
-          "risk_level": "MEDIUM",
-          "volatility_risk": 20.0,
+          "overall_risk": 22.5,
+          "risk_level": "LOW",
+          "volatility_risk": 0.0,
           "liquidity_risk": 50.0,
           "leverage_risk": 0.0,
           "earnings_risk": 50.0,
-          "correlation_risk": 80.0,
-          "timestamp": "2026-03-02T21:42:26.155165"
-        }
-      },
-      {
-        "symbol": "WIPRO",
-        "recommendation": "HOLD",
-        "final_score": 42.83,
-        "technical_score": 50.0,
-        "sentiment_score": 50.0,
-        "fundamental_score": 38.0,
-        "momentum_score": 32.2,
-        "weights": {
-          "technical": 0.35,
-          "sentiment": 0.25,
-          "fundamental": 0.25,
-          "momentum": 0.15
-        },
-        "timestamp": "2026-03-02T21:42:26.156871",
-        "risk_adjusted_score": 42.83,
-        "original_score": 44.33,
-        "technical_analysis": {
-          "buy_signals": [
-            "RSI_OVERSOLD",
-            "BULLISH_CANDLE",
-            "BREAK_DAY_HIGH"
-          ],
-          "sell_signals": [
-            "EMA_STRONG_SELL",
-            "EMA_STRONG_SELL",
-            "MACD_BEARISH"
-          ],
-          "buy_count": 3,
-          "sell_count": 3,
-          "final_verdict": "NEUTRAL",
-          "trend": "NEUTRAL",
-          "volume_signal": "NEUTRAL",
-          "buy_price": 194.7,
-          "sell_price": 259.89,
-          "price": 198.5700073242,
-          "open": 195.0,
-          "high": 200.3600006104,
-          "low": 194.6999969482,
-          "volume": 10483124.0,
-          "rsi": 10.188785013656357,
-          "ema_20": 214.30137902960658,
-          "ema_50": 226.62247503388681,
-          "macd": -10.11793244729705,
-          "macd_signal": -8.74256157239335,
-          "macd_hist": -1.3753708749037,
-          "support": 194.6999969482,
-          "resistance": 259.8900146484,
-          "prev_price": 200.9600067139,
-          "prev_rsi": 13.888901503593928,
-          "prev_macd": -9.981162710755882,
-          "prev_macd_signal": -8.398718853667425,
-          "symbol": "WIPRO",
-          "mode": "swing"
-        },
-        "sentiment_analysis": {
-          "avg_sentiment_score": 0.0,
-          "avg_confidence": 0.0,
-          "total_news": 0
-        },
-        "fundamental_analysis": {
-          "symbol": "WIPRO",
-          "revenue_growth": 0.055,
-          "earnings_growth": -0.072,
-          "roe": 0.15195,
-          "debt_to_equity": 22.031,
-          "profit_margin": 0.14594,
-          "current_ratio": 2.185,
-          "pe_ratio": 15.7345495,
-          "pb_ratio": 2.319418,
-          "dividend_yield": 8.46,
-          "market_cap": 2080319340544,
-          "revenue": 908918980608,
-          "net_income": 132651999232,
-          "timestamp": "2026-03-02T21:42:24.608786",
-          "fundamental_score": 38.0,
-          "max_score": 100.0,
-          "factors": [
-            "Revenue Growth: 15/25",
-            "EPS Growth: 3/25",
-            "ROE: 20/25",
-            "Debt/Equity: 0/25"
-          ],
-          "alpha_vantage_data": null
-        },
-        "target_price": {
-          "target_price": 178.99,
-          "current_price": 198.57,
-          "price_change_pct": -9.86,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:24.959566"
-        },
-        "current_price": 198.5700073242,
-        "risk_analysis": {
-          "overall_risk": 55.0,
-          "risk_level": "HIGH",
-          "volatility_risk": 50.0,
-          "liquidity_risk": 50.0,
-          "leverage_risk": 40.0,
-          "earnings_risk": 80.0,
-          "correlation_risk": 80.0,
-          "timestamp": "2026-03-02T21:42:26.155197"
+          "correlation_risk": 50.0,
+          "timestamp": "2026-03-03T23:30:14.463415"
         }
       },
       {
         "symbol": "HDFCBANK",
-        "recommendation": "HOLD",
-        "final_score": 41.37,
+        "recommendation": "SELL",
+        "final_score": 25.67,
         "technical_score": 23.33,
         "sentiment_score": 50.0,
         "fundamental_score": 60.0,
         "momentum_score": 0,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.156933",
-        "risk_adjusted_score": 41.37,
-        "original_score": 35.67,
+        "timestamp": "2026-03-03T23:30:14.678158",
+        "risk_adjusted_score": 25.67,
+        "original_score": 19.97,
         "technical_analysis": {
           "buy_signals": [
             "RSI_OVERSOLD",
@@ -1700,7 +1267,7 @@
           "open": 876.200012207,
           "high": 887.75,
           "low": 871.549987793,
-          "volume": 38376749.0,
+          "volume": 38378924.0,
           "rsi": 27.971723911891914,
           "ema_20": 913.6961885706547,
           "ema_50": 922.0912663889649,
@@ -1729,13 +1296,13 @@
           "debt_to_equity": null,
           "profit_margin": 0.26187,
           "current_ratio": null,
-          "pe_ratio": 19.616327,
+          "pe_ratio": 19.607582,
           "pb_ratio": 2.3956566,
-          "dividend_yield": 1.24,
+          "dividend_yield": 1.25,
           "market_cap": 13532221407232,
           "revenue": 2845330898944,
           "net_income": 745100869632,
-          "timestamp": "2026-03-02T21:42:24.609764",
+          "timestamp": "2026-03-03T23:30:12.233517",
           "fundamental_score": 60.0,
           "max_score": 100.0,
           "factors": [
@@ -1745,13 +1312,18 @@
           ],
           "alpha_vantage_data": null
         },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
         "target_price": {
-          "target_price": 842.54,
+          "target_price": 857.28,
           "current_price": 879.4,
-          "price_change_pct": -4.19,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:25.185393"
+          "price_change_pct": -2.52,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:14.492658"
         },
         "current_price": 879.4000244141,
         "risk_analysis": {
@@ -1762,166 +1334,64 @@
           "leverage_risk": 0.0,
           "earnings_risk": 50.0,
           "correlation_risk": 45.0,
-          "timestamp": "2026-03-02T21:42:26.155238"
-        }
-      },
-      {
-        "symbol": "TCS",
-        "recommendation": "SELL",
-        "final_score": 39.7,
-        "technical_score": 50.0,
-        "sentiment_score": 50.0,
-        "fundamental_score": 35.0,
-        "momentum_score": 22.34,
-        "weights": {
-          "technical": 0.35,
-          "sentiment": 0.25,
-          "fundamental": 0.25,
-          "momentum": 0.15
-        },
-        "timestamp": "2026-03-02T21:42:26.156948",
-        "risk_adjusted_score": 39.7,
-        "original_score": 42.1,
-        "technical_analysis": {
-          "buy_signals": [
-            "RSI_OVERSOLD",
-            "BULLISH_CANDLE",
-            "BREAK_DAY_HIGH"
-          ],
-          "sell_signals": [
-            "EMA_STRONG_SELL",
-            "EMA_STRONG_SELL",
-            "MACD_BEARISH"
-          ],
-          "buy_count": 3,
-          "sell_count": 3,
-          "final_verdict": "NEUTRAL",
-          "trend": "NEUTRAL",
-          "volume_signal": "NEUTRAL",
-          "buy_price": 2561.3,
-          "sell_price": 3350.0,
-          "price": 2613.5,
-          "open": 2592.0,
-          "high": 2623.800048828125,
-          "low": 2580.300048828125,
-          "volume": 3373387.0,
-          "rsi": 18.341576879082723,
-          "ema_20": 2770.691192872015,
-          "ema_50": 2939.0751843626626,
-          "macd": -126.37488838363834,
-          "macd_signal": -121.50075872110156,
-          "macd_hist": -4.874129662536774,
-          "support": 2561.300048828125,
-          "resistance": 3350.0,
-          "prev_price": 2637.39990234375,
-          "prev_rsi": 24.039436070553577,
-          "prev_macd": -128.4181112331039,
-          "prev_macd_signal": -120.28222630546736,
-          "symbol": "TCS",
-          "mode": "swing"
-        },
-        "sentiment_analysis": {
-          "avg_sentiment_score": 0.0,
-          "avg_confidence": 0.0,
-          "total_news": 0
-        },
-        "fundamental_analysis": {
-          "symbol": "TCS",
-          "revenue_growth": 0.049,
-          "earnings_growth": -0.139,
-          "roe": 0.42635,
-          "debt_to_equity": 9.444,
-          "profit_margin": 0.18295999,
-          "current_ratio": 2.525,
-          "pe_ratio": 19.818762,
-          "pb_ratio": 8.330491,
-          "dividend_yield": 2.39,
-          "market_cap": 9455871721472,
-          "revenue": 2608020062208,
-          "net_income": 477160013824,
-          "timestamp": "2026-03-02T21:42:24.609295",
-          "fundamental_score": 35.0,
-          "max_score": 100.0,
-          "factors": [
-            "Revenue Growth: 10/25",
-            "EPS Growth: 0/25",
-            "ROE: 25/25",
-            "Debt/Equity: 0/25"
-          ],
-          "alpha_vantage_data": null
-        },
-        "target_price": {
-          "target_price": 2394.61,
-          "current_price": 2613.5,
-          "price_change_pct": -8.38,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:25.205804"
-        },
-        "current_price": 2613.5,
-        "risk_analysis": {
-          "overall_risk": 58.0,
-          "risk_level": "HIGH",
-          "volatility_risk": 50.0,
-          "liquidity_risk": 65.0,
-          "leverage_risk": 40.0,
-          "earnings_risk": 80.0,
-          "correlation_risk": 80.0,
-          "timestamp": "2026-03-02T21:42:26.155250"
+          "timestamp": "2026-03-03T23:30:14.493681"
         }
       },
       {
         "symbol": "ICICIBANK",
         "recommendation": "SELL",
-        "final_score": 37.64,
-        "technical_score": 23.33,
+        "final_score": 23.0,
+        "technical_score": 18.57,
         "sentiment_score": 50.0,
         "fundamental_score": 37.0,
-        "momentum_score": 20.46,
+        "momentum_score": 0.46,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.157040",
-        "risk_adjusted_score": 37.64,
-        "original_score": 32.99,
+        "timestamp": "2026-03-03T23:30:14.678129",
+        "risk_adjusted_score": 23.0,
+        "original_score": 15.86,
         "technical_analysis": {
           "buy_signals": [
             "BULLISH_CANDLE",
             "BREAK_DAY_HIGH"
           ],
           "sell_signals": [
+            "TREND_DOWN",
             "EMA_SELL",
             "MACD_BEARISH",
             "VOLUME_CONFIRMATION_SELL",
             "GAP_DOWN"
           ],
           "buy_count": 2,
-          "sell_count": 4,
+          "sell_count": 5,
           "final_verdict": "SELL",
-          "trend": "NEUTRAL",
+          "trend": "DOWN",
           "volume_signal": "SELL",
           "buy_price": 1355.0,
           "sell_price": 1434.4,
           "price": 1374.0,
           "open": 1355.0,
-          "high": 1379.199951171875,
+          "high": 1379.1999511719,
           "low": 1355.0,
-          "volume": 16927723.0,
-          "rsi": 38.644293057766355,
+          "volume": 16928683.0,
+          "rsi": 38.644293057796126,
           "ema_20": 1390.567433298312,
-          "ema_50": 1378.221796160528,
-          "macd": 4.298422962530822,
-          "macd_signal": 8.854797635548492,
-          "macd_hist": -4.55637467301767,
+          "ema_50": 1378.2217961605168,
+          "macd": 4.2984229625392345,
+          "macd_signal": 8.854797635554615,
+          "macd_hist": -4.55637467301538,
           "support": 1355.0,
-          "resistance": 1434.4000244140625,
-          "prev_price": 1378.9000244140625,
-          "prev_rsi": 44.13744940120475,
-          "prev_macd": 6.492881030596209,
-          "prev_macd_signal": 9.993891303802908,
+          "resistance": 1434.4000244141,
+          "prev_price": 1378.9000244141,
+          "prev_rsi": 44.13744940124014,
+          "prev_macd": 6.4928810306057585,
+          "prev_macd_signal": 9.99389130380846,
           "symbol": "ICICIBANK",
           "mode": "swing"
         },
@@ -1938,13 +1408,13 @@
           "debt_to_equity": null,
           "profit_margin": 0.27513,
           "current_ratio": null,
-          "pe_ratio": 18.765364,
+          "pe_ratio": 18.762802,
           "pb_ratio": 2.8176756,
           "dividend_yield": 0.8,
           "market_cap": 9833700917248,
           "revenue": 1924702535680,
           "net_income": 529548541952,
-          "timestamp": "2026-03-02T21:42:24.610200",
+          "timestamp": "2026-03-03T23:30:09.785052",
           "fundamental_score": 37.0,
           "max_score": 100.0,
           "factors": [
@@ -1954,46 +1424,54 @@
           ],
           "alpha_vantage_data": null
         },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
         "target_price": {
-          "target_price": 1363.71,
+          "target_price": 1346.52,
           "current_price": 1374.0,
-          "price_change_pct": -0.75,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:26.154399"
+          "price_change_pct": -2.0,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:14.433564"
         },
         "current_price": 1374.0,
         "risk_analysis": {
-          "overall_risk": 34.5,
-          "risk_level": "MEDIUM",
-          "volatility_risk": 20.0,
+          "overall_risk": 26.2,
+          "risk_level": "LOW",
+          "volatility_risk": 0.0,
           "liquidity_risk": 50.0,
           "leverage_risk": 0.0,
           "earnings_risk": 80.0,
-          "correlation_risk": 65.0,
-          "timestamp": "2026-03-02T21:42:26.155314"
+          "correlation_risk": 42.0,
+          "timestamp": "2026-03-03T23:30:14.434916"
         }
       },
       {
         "symbol": "MARUTI",
         "recommendation": "SELL",
-        "final_score": 35.72,
+        "final_score": 22.77,
         "technical_score": 0,
         "sentiment_score": 50.0,
         "fundamental_score": 60.0,
-        "momentum_score": 23.83,
+        "momentum_score": 3.83,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.156990",
-        "risk_adjusted_score": 35.72,
-        "original_score": 31.07,
+        "timestamp": "2026-03-03T23:30:14.678066",
+        "risk_adjusted_score": 22.77,
+        "original_score": 15.72,
         "technical_analysis": {
           "buy_signals": [],
           "sell_signals": [
+            "TREND_DOWN",
             "EMA_SELL",
             "MACD_BEARISH",
             "VOLUME_CONFIRMATION_SELL",
@@ -2001,9 +1479,9 @@
             "GAP_DOWN"
           ],
           "buy_count": 0,
-          "sell_count": 5,
+          "sell_count": 6,
           "final_verdict": "SELL",
-          "trend": "NEUTRAL",
+          "trend": "DOWN",
           "volume_signal": "SELL",
           "buy_price": 14204.0,
           "sell_price": 15459.0,
@@ -2011,7 +1489,7 @@
           "open": 14407.0,
           "high": 14684.0,
           "low": 14204.0,
-          "volume": 603715.0,
+          "volume": 603744.0,
           "rsi": 34.58096013018715,
           "ema_20": 14906.552629595168,
           "ema_50": 14735.927225388801,
@@ -2040,13 +1518,13 @@
           "debt_to_equity": 0.1,
           "profit_margin": 0.08693,
           "current_ratio": null,
-          "pe_ratio": 30.263765,
+          "pe_ratio": 30.303286,
           "pb_ratio": 4.5352216,
-          "dividend_yield": 0.91,
+          "dividend_yield": 0.94,
           "market_cap": 4523623972864,
           "revenue": 1717736046592,
           "net_income": 149315993600,
-          "timestamp": "2026-03-02T21:42:24.609533",
+          "timestamp": "2026-03-03T23:30:13.200429",
           "fundamental_score": 60.0,
           "max_score": 100.0,
           "factors": [
@@ -2056,79 +1534,87 @@
           ],
           "alpha_vantage_data": null
         },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
         "target_price": {
-          "target_price": 13967.89,
+          "target_price": 14135.93,
           "current_price": 14388.0,
-          "price_change_pct": -2.92,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:25.849975"
+          "price_change_pct": -1.75,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:13.764188"
         },
         "current_price": 14388.0,
         "risk_analysis": {
-          "overall_risk": 34.5,
-          "risk_level": "MEDIUM",
-          "volatility_risk": 20.0,
+          "overall_risk": 26.5,
+          "risk_level": "LOW",
+          "volatility_risk": 0.0,
           "liquidity_risk": 80.0,
           "leverage_risk": 0.0,
           "earnings_risk": 50.0,
-          "correlation_risk": 50.0,
-          "timestamp": "2026-03-02T21:42:26.155278"
+          "correlation_risk": 30.0,
+          "timestamp": "2026-03-03T23:30:13.765421"
         }
       },
       {
-        "symbol": "INFY",
+        "symbol": "WIPRO",
         "recommendation": "SELL",
-        "final_score": 33.6,
-        "technical_score": 23.33,
+        "final_score": 20.91,
+        "technical_score": 32.86,
         "sentiment_score": 50.0,
-        "fundamental_score": 40.0,
-        "momentum_score": 26.58,
+        "fundamental_score": 38.0,
+        "momentum_score": 12.2,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.157015",
-        "risk_adjusted_score": 33.6,
-        "original_score": 34.65,
+        "timestamp": "2026-03-03T23:30:14.678218",
+        "risk_adjusted_score": 20.91,
+        "original_score": 19.78,
         "technical_analysis": {
           "buy_signals": [
             "RSI_OVERSOLD",
+            "BULLISH_CANDLE",
             "BREAK_DAY_HIGH"
           ],
           "sell_signals": [
+            "TREND_DOWN",
             "EMA_STRONG_SELL",
             "EMA_STRONG_SELL",
-            "MACD_BEARISH",
-            "BEARISH_CANDLE"
+            "MACD_BEARISH"
           ],
-          "buy_count": 2,
+          "buy_count": 3,
           "sell_count": 4,
           "final_verdict": "SELL",
-          "trend": "NEUTRAL",
+          "trend": "DOWN",
           "volume_signal": "NEUTRAL",
-          "buy_price": 1264.1,
-          "sell_price": 1728.0,
-          "price": 1288.9000244140625,
-          "open": 1291.0,
-          "high": 1298.800048828125,
-          "low": 1273.0,
-          "volume": 9699583.0,
-          "rsi": 16.447145267627363,
-          "ema_20": 1391.5286851394947,
-          "ema_50": 1493.1345176848654,
-          "macd": -78.83273102972475,
-          "macd_signal": -72.43888203091488,
-          "macd_hist": -6.393848998809872,
-          "support": 1264.0999755859375,
-          "resistance": 1728.0,
-          "prev_price": 1300.0999755859375,
-          "prev_rsi": 17.226483608603786,
-          "prev_macd": -79.70428433040752,
-          "prev_macd_signal": -70.8404197812124,
-          "symbol": "INFY",
+          "buy_price": 194.7,
+          "sell_price": 259.89,
+          "price": 198.5700073242,
+          "open": 195.0,
+          "high": 200.3600006104,
+          "low": 194.6999969482,
+          "volume": 10486866.0,
+          "rsi": 10.188785013656357,
+          "ema_20": 214.30137902960658,
+          "ema_50": 226.62247503388681,
+          "macd": -10.11793244729705,
+          "macd_signal": -8.74256157239335,
+          "macd_hist": -1.3753708749037,
+          "support": 194.6999969482,
+          "resistance": 259.8900146484,
+          "prev_price": 200.9600067139,
+          "prev_rsi": 13.888901503593928,
+          "prev_macd": -9.981162710755882,
+          "prev_macd_signal": -8.398718853667425,
+          "symbol": "WIPRO",
           "mode": "swing"
         },
         "sentiment_analysis": {
@@ -2137,173 +1623,193 @@
           "total_news": 0
         },
         "fundamental_analysis": {
-          "symbol": "INFY",
-          "revenue_growth": 0.032,
-          "earnings_growth": -0.053,
-          "roe": 0.32683,
-          "debt_to_equity": 10.531,
-          "profit_margin": 0.16153999,
-          "current_ratio": 1.812,
-          "pe_ratio": 18.391838,
-          "pb_ratio": 6.2010665,
-          "dividend_yield": 3.46,
-          "market_cap": 5214490329088,
-          "revenue": 19847000064,
-          "net_income": 3206000128,
-          "timestamp": "2026-03-02T21:42:24.608283",
-          "fundamental_score": 40.0,
+          "symbol": "WIPRO",
+          "revenue_growth": 0.055,
+          "earnings_growth": -0.072,
+          "roe": 0.15195,
+          "debt_to_equity": 22.031,
+          "profit_margin": 0.14594,
+          "current_ratio": 2.185,
+          "pe_ratio": 15.722091,
+          "pb_ratio": 2.319418,
+          "dividend_yield": 8.56,
+          "market_cap": 2080319340544,
+          "revenue": 908918980608,
+          "net_income": 132651999232,
+          "timestamp": "2026-03-03T23:30:11.194039",
+          "fundamental_score": 38.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 15/25",
+            "EPS Growth: 3/25",
+            "ROE: 20/25",
+            "Debt/Equity: 0/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
+        "target_price": {
+          "target_price": 186.82,
+          "current_price": 198.57,
+          "price_change_pct": -5.92,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:14.596295"
+        },
+        "current_price": 198.5700073242,
+        "risk_analysis": {
+          "overall_risk": 46.25,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 30.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 40.0,
+          "earnings_risk": 80.0,
+          "correlation_risk": 52.5,
+          "timestamp": "2026-03-03T23:30:14.597385"
+        }
+      },
+      {
+        "symbol": "TCS",
+        "recommendation": "SELL",
+        "final_score": 18.77,
+        "technical_score": 32.86,
+        "sentiment_score": 50.0,
+        "fundamental_score": 35.0,
+        "momentum_score": 2.34,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-03-03T23:30:14.678202",
+        "risk_adjusted_score": 18.77,
+        "original_score": 18.54,
+        "technical_analysis": {
+          "buy_signals": [
+            "RSI_OVERSOLD",
+            "BULLISH_CANDLE",
+            "BREAK_DAY_HIGH"
+          ],
+          "sell_signals": [
+            "TREND_DOWN",
+            "EMA_STRONG_SELL",
+            "EMA_STRONG_SELL",
+            "MACD_BEARISH"
+          ],
+          "buy_count": 3,
+          "sell_count": 4,
+          "final_verdict": "SELL",
+          "trend": "DOWN",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 2561.3,
+          "sell_price": 3350.0,
+          "price": 2613.5,
+          "open": 2592.0,
+          "high": 2623.8000488281,
+          "low": 2580.3000488281,
+          "volume": 3374385.0,
+          "rsi": 18.341576879084286,
+          "ema_20": 2770.6911928720147,
+          "ema_50": 2939.075184362641,
+          "macd": -126.37488838362424,
+          "macd_signal": -121.50075872108692,
+          "macd_hist": -4.874129662537314,
+          "support": 2561.3000488281,
+          "resistance": 3350.0,
+          "prev_price": 2637.3999023438,
+          "prev_rsi": 24.039436070548092,
+          "prev_macd": -128.41811123308707,
+          "prev_macd_signal": -120.2822263054526,
+          "symbol": "TCS",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "TCS",
+          "revenue_growth": 0.049,
+          "earnings_growth": -0.139,
+          "roe": 0.42635,
+          "debt_to_equity": 9.444,
+          "profit_margin": 0.18295999,
+          "current_ratio": 2.525,
+          "pe_ratio": 19.802244,
+          "pb_ratio": 8.330491,
+          "dividend_yield": 2.41,
+          "market_cap": 9455871721472,
+          "revenue": 2608020062208,
+          "net_income": 477160013824,
+          "timestamp": "2026-03-03T23:30:11.516949",
+          "fundamental_score": 35.0,
           "max_score": 100.0,
           "factors": [
             "Revenue Growth: 10/25",
-            "EPS Growth: 5/25",
+            "EPS Growth: 0/25",
             "ROE: 25/25",
             "Debt/Equity: 0/25"
           ],
           "alpha_vantage_data": null
         },
-        "target_price": {
-          "target_price": 1153.22,
-          "current_price": 1288.9,
-          "price_change_pct": -10.53,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:26.055870"
-        },
-        "current_price": 1288.9000244140625,
-        "risk_analysis": {
-          "overall_risk": 53.5,
-          "risk_level": "HIGH",
-          "volatility_risk": 50.0,
-          "liquidity_risk": 50.0,
-          "leverage_risk": 40.0,
-          "earnings_risk": 80.0,
-          "correlation_risk": 65.0,
-          "timestamp": "2026-03-02T21:42:26.155298"
-        }
-      },
-      {
-        "symbol": "BAJFINANCE",
-        "recommendation": "SELL",
-        "final_score": 33.31,
-        "technical_score": 23.33,
-        "sentiment_score": 50.0,
-        "fundamental_score": 19.0,
-        "momentum_score": 41.63,
-        "weights": {
-          "technical": 0.35,
-          "sentiment": 0.25,
-          "fundamental": 0.25,
-          "momentum": 0.15
-        },
-        "timestamp": "2026-03-02T21:42:26.156887",
-        "risk_adjusted_score": 33.31,
-        "original_score": 31.66,
-        "technical_analysis": {
-          "buy_signals": [
-            "BULLISH_CANDLE"
-          ],
-          "sell_signals": [
-            "EMA_SELL",
-            "MACD_BEARISH"
-          ],
-          "buy_count": 1,
-          "sell_count": 2,
-          "final_verdict": "SELL",
-          "trend": "NEUTRAL",
-          "volume_signal": "NEUTRAL",
-          "buy_price": 941.9,
-          "sell_price": 1046.0,
-          "price": 978.25,
-          "open": 971.0,
-          "high": 990.4000244141,
-          "low": 968.0,
-          "volume": 8489398.0,
-          "rsi": 54.063611445522554,
-          "ema_20": 991.4881937179098,
-          "ema_50": 957.8611595044853,
-          "macd": 19.9890154985236,
-          "macd_signal": 25.22341036662941,
-          "macd_hist": -5.2343948681058095,
-          "support": 941.9000244141,
-          "resistance": 1046.0,
-          "prev_price": 995.9000244141,
-          "prev_rsi": 54.0983593692349,
-          "prev_macd": 24.073745768617414,
-          "prev_macd_signal": 26.53200908365586,
-          "symbol": "BAJFINANCE",
-          "mode": "swing"
-        },
-        "sentiment_analysis": {
-          "avg_sentiment_score": 0.0,
-          "avg_confidence": 0.0,
-          "total_news": 0
-        },
-        "fundamental_analysis": {
-          "symbol": "BAJFINANCE",
-          "revenue_growth": 0.064,
-          "earnings_growth": -0.068,
-          "roe": null,
-          "debt_to_equity": 310.294,
-          "profit_margin": 0.4368,
-          "current_ratio": null,
-          "pe_ratio": 33.75604,
-          "pb_ratio": 5.8864055,
-          "dividend_yield": 0.44,
-          "market_cap": 6081139965952,
-          "revenue": 412833284096,
-          "net_income": 180323893248,
-          "timestamp": "2026-03-02T21:42:24.606916",
-          "fundamental_score": 19.0,
-          "max_score": 100.0,
-          "factors": [
-            "Revenue Growth: 15/25",
-            "EPS Growth: 4/25",
-            "Debt/Equity: 0/25"
-          ],
-          "alpha_vantage_data": null
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
         },
         "target_price": {
-          "target_price": 982.13,
-          "current_price": 978.25,
-          "price_change_pct": 0.4,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:24.980779"
+          "target_price": 2482.17,
+          "current_price": 2613.5,
+          "price_change_pct": -5.03,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:14.571481"
         },
-        "current_price": 978.25,
+        "current_price": 2613.5,
         "risk_analysis": {
-          "overall_risk": 44.5,
+          "overall_risk": 49.25,
           "risk_level": "MEDIUM",
-          "volatility_risk": 20.0,
-          "liquidity_risk": 50.0,
+          "volatility_risk": 30.0,
+          "liquidity_risk": 65.0,
           "leverage_risk": 40.0,
           "earnings_risk": 80.0,
-          "correlation_risk": 65.0,
-          "timestamp": "2026-03-02T21:42:26.155208"
+          "correlation_risk": 52.5,
+          "timestamp": "2026-03-03T23:30:14.573120"
         }
       },
       {
         "symbol": "HINDUNILVR",
         "recommendation": "SELL",
-        "final_score": 30.94,
-        "technical_score": 6.67,
+        "final_score": 18.65,
+        "technical_score": 4.29,
         "sentiment_score": 50.0,
         "fundamental_score": 37.0,
-        "momentum_score": 29.89,
+        "momentum_score": 9.89,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.156977",
-        "risk_adjusted_score": 30.94,
-        "original_score": 28.57,
+        "timestamp": "2026-03-03T23:30:14.678174",
+        "risk_adjusted_score": 18.65,
+        "original_score": 13.85,
         "technical_analysis": {
           "buy_signals": [
             "BULLISH_CANDLE"
           ],
           "sell_signals": [
+            "TREND_DOWN",
             "EMA_STRONG_SELL",
             "EMA_STRONG_SELL",
             "MACD_BEARISH",
@@ -2311,9 +1817,9 @@
             "GAP_DOWN"
           ],
           "buy_count": 1,
-          "sell_count": 5,
+          "sell_count": 6,
           "final_verdict": "SELL",
-          "trend": "NEUTRAL",
+          "trend": "DOWN",
           "volume_signal": "SELL",
           "buy_price": 2275.6,
           "sell_price": 2479.6,
@@ -2321,7 +1827,7 @@
           "open": 2303.0,
           "high": 2354.0,
           "low": 2290.1999511719,
-          "volume": 2273111.0,
+          "volume": 2273224.0,
           "rsi": 33.76463295425536,
           "ema_20": 2352.4723892901106,
           "ema_50": 2357.5607898724766,
@@ -2350,13 +1856,13 @@
           "debt_to_equity": 3.611,
           "profit_margin": 0.22292,
           "current_ratio": null,
-          "pe_ratio": 53.942352,
+          "pe_ratio": 54.055443,
           "pb_ratio": 11.189924,
-          "dividend_yield": 1.84,
+          "dividend_yield": 1.85,
           "market_cap": 5453253705728,
           "revenue": 651000020992,
           "net_income": 101139996672,
-          "timestamp": "2026-03-02T21:42:24.607212",
+          "timestamp": "2026-03-03T23:30:08.706557",
           "fundamental_score": 37.0,
           "max_score": 100.0,
           "factors": [
@@ -2366,49 +1872,279 @@
           ],
           "alpha_vantage_data": null
         },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
         "target_price": {
-          "target_price": 2286.69,
+          "target_price": 2300.25,
           "current_price": 2320.6,
-          "price_change_pct": -1.46,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:25.395529"
+          "price_change_pct": -0.88,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:14.518571"
         },
         "current_price": 2320.6000976562,
         "risk_analysis": {
-          "overall_risk": 42.1,
+          "overall_risk": 34.0,
           "risk_level": "MEDIUM",
-          "volatility_risk": 20.0,
+          "volatility_risk": 0.0,
           "liquidity_risk": 65.0,
           "leverage_risk": 40.0,
           "earnings_risk": 50.0,
-          "correlation_risk": 56.0,
-          "timestamp": "2026-03-02T21:42:26.155269"
+          "correlation_risk": 35.0,
+          "timestamp": "2026-03-03T23:30:14.519675"
         }
       },
       {
-        "symbol": "BHARTIARTL",
+        "symbol": "BAJFINANCE",
         "recommendation": "SELL",
-        "final_score": 30.0,
-        "technical_score": 18.57,
+        "final_score": 18.62,
+        "technical_score": 15.0,
         "sentiment_score": 50.0,
-        "fundamental_score": 45.0,
-        "momentum_score": 19.74,
+        "fundamental_score": 19.0,
+        "momentum_score": 21.63,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.157003",
-        "risk_adjusted_score": 30.0,
-        "original_score": 33.21,
+        "timestamp": "2026-03-03T23:30:14.678188",
+        "risk_adjusted_score": 18.62,
+        "original_score": 14.42,
+        "technical_analysis": {
+          "buy_signals": [
+            "BULLISH_CANDLE"
+          ],
+          "sell_signals": [
+            "TREND_DOWN",
+            "EMA_SELL",
+            "MACD_BEARISH"
+          ],
+          "buy_count": 1,
+          "sell_count": 3,
+          "final_verdict": "SELL",
+          "trend": "DOWN",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 941.9,
+          "sell_price": 1046.0,
+          "price": 978.25,
+          "open": 971.0,
+          "high": 990.4000244141,
+          "low": 968.0,
+          "volume": 8493269.0,
+          "rsi": 54.063611445522554,
+          "ema_20": 991.4881937179098,
+          "ema_50": 957.8611595044853,
+          "macd": 19.9890154985236,
+          "macd_signal": 25.22341036662941,
+          "macd_hist": -5.2343948681058095,
+          "support": 941.9000244141,
+          "resistance": 1046.0,
+          "prev_price": 995.9000244141,
+          "prev_rsi": 54.0983593692349,
+          "prev_macd": 24.073745768617414,
+          "prev_macd_signal": 26.53200908365586,
+          "symbol": "BAJFINANCE",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "BAJFINANCE",
+          "revenue_growth": 0.064,
+          "earnings_growth": -0.068,
+          "roe": null,
+          "debt_to_equity": 310.294,
+          "profit_margin": 0.4368,
+          "current_ratio": null,
+          "pe_ratio": 33.77935,
+          "pb_ratio": 5.8864055,
+          "dividend_yield": 0.45,
+          "market_cap": 6081139965952,
+          "revenue": 412833284096,
+          "net_income": 180323893248,
+          "timestamp": "2026-03-03T23:30:08.376640",
+          "fundamental_score": 19.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 15/25",
+            "EPS Growth: 4/25",
+            "Debt/Equity: 0/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
+        "target_price": {
+          "target_price": 958.68,
+          "current_price": 978.25,
+          "price_change_pct": -2.0,
+          "confidence": 0.45,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:14.541935"
+        },
+        "current_price": 978.25,
+        "risk_analysis": {
+          "overall_risk": 36.0,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 0.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 40.0,
+          "earnings_risk": 80.0,
+          "correlation_risk": 40.0,
+          "timestamp": "2026-03-03T23:30:14.543063"
+        }
+      },
+      {
+        "symbol": "INFY",
+        "recommendation": "SELL",
+        "final_score": 18.23,
+        "technical_score": 18.57,
+        "sentiment_score": 50.0,
+        "fundamental_score": 40.0,
+        "momentum_score": 6.58,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-03-03T23:30:14.678041",
+        "risk_adjusted_score": 18.23,
+        "original_score": 16.79,
+        "technical_analysis": {
+          "buy_signals": [
+            "RSI_OVERSOLD",
+            "BREAK_DAY_HIGH"
+          ],
+          "sell_signals": [
+            "TREND_DOWN",
+            "EMA_STRONG_SELL",
+            "EMA_STRONG_SELL",
+            "MACD_BEARISH",
+            "BEARISH_CANDLE"
+          ],
+          "buy_count": 2,
+          "sell_count": 5,
+          "final_verdict": "SELL",
+          "trend": "DOWN",
+          "volume_signal": "NEUTRAL",
+          "buy_price": 1264.1,
+          "sell_price": 1728.0,
+          "price": 1288.9000244141,
+          "open": 1291.0,
+          "high": 1298.8000488281,
+          "low": 1273.0,
+          "volume": 9700361.0,
+          "rsi": 16.44714526763606,
+          "ema_20": 1391.528685139495,
+          "ema_50": 1493.1345176848802,
+          "macd": -78.83273102973317,
+          "macd_signal": -72.43888203092445,
+          "macd_hist": -6.393848998808721,
+          "support": 1264.0999755859,
+          "resistance": 1728.0,
+          "prev_price": 1300.0999755859,
+          "prev_rsi": 17.226483608594748,
+          "prev_macd": -79.7042843304207,
+          "prev_macd_signal": -70.84041978122227,
+          "symbol": "INFY",
+          "mode": "swing"
+        },
+        "sentiment_analysis": {
+          "avg_sentiment_score": 0.0,
+          "avg_confidence": 0.0,
+          "total_news": 0
+        },
+        "fundamental_analysis": {
+          "symbol": "INFY",
+          "revenue_growth": 0.032,
+          "earnings_growth": -0.053,
+          "roe": 0.32683,
+          "debt_to_equity": 10.531,
+          "profit_margin": 0.16153999,
+          "current_ratio": 1.812,
+          "pe_ratio": 18.381346,
+          "pb_ratio": 6.2010665,
+          "dividend_yield": 3.49,
+          "market_cap": 5214490329088,
+          "revenue": 19847000064,
+          "net_income": 3206000128,
+          "timestamp": "2026-03-03T23:30:09.111674",
+          "fundamental_score": 40.0,
+          "max_score": 100.0,
+          "factors": [
+            "Revenue Growth: 10/25",
+            "EPS Growth: 5/25",
+            "ROE: 25/25",
+            "Debt/Equity: 0/25"
+          ],
+          "alpha_vantage_data": null
+        },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
+        "target_price": {
+          "target_price": 1207.49,
+          "current_price": 1288.9,
+          "price_change_pct": -6.32,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:13.740945"
+        },
+        "current_price": 1288.9000244141,
+        "risk_analysis": {
+          "overall_risk": 45.2,
+          "risk_level": "MEDIUM",
+          "volatility_risk": 30.0,
+          "liquidity_risk": 50.0,
+          "leverage_risk": 40.0,
+          "earnings_risk": 80.0,
+          "correlation_risk": 42.0,
+          "timestamp": "2026-03-03T23:30:13.741761"
+        }
+      },
+      {
+        "symbol": "BHARTIARTL",
+        "recommendation": "SELL",
+        "final_score": 15.49,
+        "technical_score": 15.0,
+        "sentiment_score": 50.0,
+        "fundamental_score": 45.0,
+        "momentum_score": 0,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
+        "weights": {
+          "technical": 0.35,
+          "sentiment": 0.25,
+          "fundamental": 0.25,
+          "momentum": 0.15
+        },
+        "timestamp": "2026-03-03T23:30:14.678085",
+        "risk_adjusted_score": 15.49,
+        "original_score": 16.24,
         "technical_analysis": {
           "buy_signals": [
             "RSI_OVERSOLD",
             "BULLISH_CANDLE"
           ],
           "sell_signals": [
+            "TREND_DOWN",
             "EMA_STRONG_SELL",
             "EMA_STRONG_SELL",
             "MACD_BEARISH",
@@ -2416,29 +2152,29 @@
             "GAP_DOWN"
           ],
           "buy_count": 2,
-          "sell_count": 5,
+          "sell_count": 6,
           "final_verdict": "SELL",
-          "trend": "NEUTRAL",
+          "trend": "DOWN",
           "volume_signal": "SELL",
           "buy_price": 1847.9,
           "sell_price": 2057.0,
-          "price": 1873.199951171875,
-          "open": 1850.0999755859375,
-          "high": 1895.9000244140625,
-          "low": 1847.9000244140625,
-          "volume": 11785007.0,
-          "rsi": 24.340385072498222,
-          "ema_20": 1961.2842811818552,
-          "ema_50": 1971.1434955272553,
-          "macd": -20.976736279460965,
-          "macd_signal": -4.577702100111991,
-          "macd_hist": -16.399034179348973,
-          "support": 1847.9000244140625,
+          "price": 1873.1999511719,
+          "open": 1850.0999755859,
+          "high": 1895.9000244141,
+          "low": 1847.9000244141,
+          "volume": 11785758.0,
+          "rsi": 24.34038507248367,
+          "ema_20": 1961.2842811818587,
+          "ema_50": 1971.1434955272719,
+          "macd": -20.976736279467787,
+          "macd_signal": -4.577702100120807,
+          "macd_hist": -16.39903417934698,
+          "support": 1847.9000244141,
           "resistance": 2057.0,
-          "prev_price": 1879.300048828125,
-          "prev_rsi": 22.594005541379275,
-          "prev_macd": -15.314249458724362,
-          "prev_macd_signal": -0.4779435552747473,
+          "prev_price": 1879.3000488281,
+          "prev_rsi": 22.594005541356466,
+          "prev_macd": -15.314249458734366,
+          "prev_macd_signal": -0.47794355528406207,
           "symbol": "BHARTIARTL",
           "mode": "swing"
         },
@@ -2455,13 +2191,13 @@
           "debt_to_equity": 117.095,
           "profit_margin": 0.14937,
           "current_ratio": 0.45,
-          "pe_ratio": 37.05638,
+          "pe_ratio": 37.034397,
           "pb_ratio": 9.141307,
           "dividend_yield": 0.85,
           "market_cap": 11410545311744,
           "revenue": 2034658050048,
           "net_income": 303919005696,
-          "timestamp": "2026-03-02T21:42:24.609981",
+          "timestamp": "2026-03-03T23:30:12.879702",
           "fundamental_score": 45.0,
           "max_score": 100.0,
           "factors": [
@@ -2472,48 +2208,56 @@
           ],
           "alpha_vantage_data": null
         },
-        "target_price": {
-          "target_price": 1784.6,
-          "current_price": 1873.2,
-          "price_change_pct": -4.73,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:25.872095"
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
         },
-        "current_price": 1873.199951171875,
+        "target_price": {
+          "target_price": 1820.04,
+          "current_price": 1873.2,
+          "price_change_pct": -2.84,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:13.797720"
+        },
+        "current_price": 1873.1999511719,
         "risk_analysis": {
-          "overall_risk": 60.7,
+          "overall_risk": 52.5,
           "risk_level": "HIGH",
-          "volatility_risk": 50.0,
+          "volatility_risk": 30.0,
           "liquidity_risk": 50.0,
           "leverage_risk": 70.0,
           "earnings_risk": 80.0,
-          "correlation_risk": 62.0,
-          "timestamp": "2026-03-02T21:42:26.155289"
+          "correlation_risk": 40.0,
+          "timestamp": "2026-03-03T23:30:13.801825"
         }
       },
       {
         "symbol": "RELIANCE",
         "recommendation": "SELL",
-        "final_score": 26.19,
-        "technical_score": 6.67,
+        "final_score": 15.2,
+        "technical_score": 4.29,
         "sentiment_score": 50.0,
         "fundamental_score": 30.0,
-        "momentum_score": 21.89,
+        "momentum_score": 1.89,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.156918",
-        "risk_adjusted_score": 26.19,
-        "original_score": 25.62,
+        "timestamp": "2026-03-03T23:30:14.678271",
+        "risk_adjusted_score": 15.2,
+        "original_score": 12.2,
         "technical_analysis": {
           "buy_signals": [
             "RSI_OVERSOLD"
           ],
           "sell_signals": [
+            "TREND_DOWN",
             "EMA_SELL",
             "MACD_BEARISH",
             "VOLUME_CONFIRMATION_SELL",
@@ -2521,9 +2265,9 @@
             "GAP_DOWN"
           ],
           "buy_count": 1,
-          "sell_count": 5,
+          "sell_count": 6,
           "final_verdict": "SELL",
-          "trend": "NEUTRAL",
+          "trend": "DOWN",
           "volume_signal": "SELL",
           "buy_price": 1341.5,
           "sell_price": 1489.5,
@@ -2531,7 +2275,7 @@
           "open": 1375.5,
           "high": 1378.5999755859,
           "low": 1341.5,
-          "volume": 23727290.0,
+          "volume": 23728722.0,
           "rsi": 29.71337893511766,
           "ema_20": 1413.1067314707973,
           "ema_50": 1409.12192770243,
@@ -2560,13 +2304,13 @@
           "debt_to_equity": 35.651,
           "profit_margin": 0.08122,
           "current_ratio": null,
-          "pe_ratio": 22.092077,
+          "pe_ratio": 22.074121,
           "pb_ratio": 2.095291,
-          "dividend_yield": 0.39,
+          "dividend_yield": 0.41,
           "market_cap": 18377097609216,
           "revenue": 10245479858176,
           "net_income": 832110002176,
-          "timestamp": "2026-03-02T21:42:24.608543",
+          "timestamp": "2026-03-03T23:30:10.758766",
           "fundamental_score": 30.0,
           "max_score": 100.0,
           "factors": [
@@ -2576,57 +2320,65 @@
           ],
           "alpha_vantage_data": null
         },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
         "target_price": {
-          "target_price": 1306.89,
+          "target_price": 1327.33,
           "current_price": 1358.0,
-          "price_change_pct": -3.76,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:25.033015"
+          "price_change_pct": -2.26,
+          "confidence": 0.35,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:14.673736"
         },
         "current_price": 1358.0,
         "risk_analysis": {
-          "overall_risk": 48.1,
+          "overall_risk": 40.0,
           "risk_level": "MEDIUM",
-          "volatility_risk": 50.0,
+          "volatility_risk": 30.0,
           "liquidity_risk": 50.0,
           "leverage_risk": 40.0,
           "earnings_risk": 50.0,
-          "correlation_risk": 56.0,
-          "timestamp": "2026-03-02T21:42:26.155229"
+          "correlation_risk": 35.0,
+          "timestamp": "2026-03-03T23:30:14.675053"
         }
       },
       {
         "symbol": "LT",
         "recommendation": "SELL",
-        "final_score": 22.36,
-        "technical_score": 10.0,
-        "sentiment_score": 25.46,
+        "final_score": 14.93,
+        "technical_score": 6.67,
+        "sentiment_score": 36.02,
         "fundamental_score": 26.0,
-        "momentum_score": 27.42,
+        "momentum_score": 7.42,
+        "ai_confidence": 0,
+        "success_probability": 50.0,
         "weights": {
           "technical": 0.35,
           "sentiment": 0.25,
           "fundamental": 0.25,
           "momentum": 0.15
         },
-        "timestamp": "2026-03-02T21:42:26.156903",
-        "risk_adjusted_score": 22.36,
-        "original_score": 20.48,
+        "timestamp": "2026-03-03T23:30:14.678112",
+        "risk_adjusted_score": 14.93,
+        "original_score": 10.61,
         "technical_analysis": {
           "buy_signals": [
             "BULLISH_CANDLE"
           ],
           "sell_signals": [
+            "TREND_DOWN",
             "EMA_SELL",
             "MACD_BEARISH",
             "VOLUME_CONFIRMATION_SELL",
             "GAP_DOWN"
           ],
           "buy_count": 1,
-          "sell_count": 4,
+          "sell_count": 5,
           "final_verdict": "SELL",
-          "trend": "NEUTRAL",
+          "trend": "DOWN",
           "volume_signal": "SELL",
           "buy_price": 3975.4,
           "sell_price": 4440.0,
@@ -2634,7 +2386,7 @@
           "open": 4061.0,
           "high": 4141.3999023438,
           "low": 3975.3999023438,
-          "volume": 6540933.0,
+          "volume": 6542141.0,
           "rsi": 43.55711721430613,
           "ema_20": 4194.6892222067845,
           "ema_50": 4087.011616296142,
@@ -2652,13 +2404,13 @@
         },
         "sentiment_analysis": {
           "ticker": "LT",
-          "total_news": 12,
-          "positive_count": 1,
-          "negative_count": 8,
-          "neutral_count": 3,
-          "avg_sentiment_score": -0.44605520467787024,
-          "avg_confidence": 0.8384372542301813,
-          "weighted_score": -5.352662456134443
+          "total_news": 14,
+          "positive_count": 2,
+          "negative_count": 6,
+          "neutral_count": 6,
+          "avg_sentiment_score": -0.21626365474640785,
+          "avg_confidence": 0.8384663079466138,
+          "weighted_score": -3.02769116644971
         },
         "fundamental_analysis": {
           "symbol": "LT",
@@ -2668,13 +2420,13 @@
           "debt_to_equity": 111.847,
           "profit_margin": 0.057490002,
           "current_ratio": null,
-          "pe_ratio": 31.790964,
+          "pe_ratio": 31.848225,
           "pb_ratio": 5.5179925,
-          "dividend_yield": 0.79,
+          "dividend_yield": 0.84,
           "market_cap": 5594199097344,
           "revenue": 2827686510592,
           "net_income": 171246305280,
-          "timestamp": "2026-03-02T21:42:24.609022",
+          "timestamp": "2026-03-03T23:30:12.563696",
           "fundamental_score": 26.0,
           "max_score": 100.0,
           "factors": [
@@ -2684,47 +2436,70 @@
           ],
           "alpha_vantage_data": null
         },
+        "ai_recommendation": {
+          "recommendation": "Neural Engine Offline: AIStockRecommender._calculate_success_probability() takes 2 positional arguments but 4 were given",
+          "confidence_score": 0,
+          "status": "error"
+        },
         "target_price": {
-          "target_price": 3994.55,
+          "target_price": 4023.41,
           "current_price": 4066.7,
-          "price_change_pct": -1.77,
-          "confidence": 0.4,
-          "model_used": "linear_fallback",
-          "timestamp": "2026-03-02T21:42:25.011801"
+          "price_change_pct": -1.06,
+          "confidence": 0.45,
+          "model_used": "mean_reversion_fallback",
+          "timestamp": "2026-03-03T23:30:13.826659"
         },
         "current_price": 4066.6999511719,
         "risk_analysis": {
-          "overall_risk": 43.75,
+          "overall_risk": 35.6,
           "risk_level": "MEDIUM",
-          "volatility_risk": 20.0,
+          "volatility_risk": 0.0,
           "liquidity_risk": 50.0,
           "leverage_risk": 40.0,
           "earnings_risk": 80.0,
-          "correlation_risk": 57.5,
-          "timestamp": "2026-03-02T21:42:26.155219"
+          "correlation_risk": 36.0,
+          "timestamp": "2026-03-03T23:30:13.827724"
         }
       }
     ],
-    "timestamp": "2026-03-02T21:42:26.157056",
+    "timestamp": "2026-03-03T23:30:14.678634",
     "sector_analysis": {
       "sector_analysis": {
+        "Financial Services": {
+          "average_score": 43.08,
+          "original_avg": 17.5,
+          "stock_count": 1,
+          "stocks": [
+            "BAJFINANCE"
+          ],
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0,
+          "breadth_ratio": 1.0,
+          "momentum_intensity": 21.63
+        },
         "Banking": {
-          "average_score": 50.0,
+          "average_score": 34.22,
+          "original_avg": 31.47,
           "stock_count": 5,
           "stocks": [
+            "ICICIBANK",
             "KOTAKBANK",
             "HDFCBANK",
-            "AXISBANK",
             "SBIN",
-            "ICICIBANK"
+            "AXISBANK"
           ],
           "buy_count": 0,
           "hold_count": 5,
           "sell_count": 0,
-          "buy_ratio": 0.0
+          "buy_ratio": 0.0,
+          "breadth_ratio": 0.4,
+          "momentum_intensity": 32.4
         },
         "FMCG": {
-          "average_score": 50.0,
+          "average_score": 14.04,
+          "original_avg": 20.94,
           "stock_count": 2,
           "stocks": [
             "ITC",
@@ -2733,56 +2508,29 @@
           "buy_count": 0,
           "hold_count": 2,
           "sell_count": 0,
-          "buy_ratio": 0.0
+          "buy_ratio": 0.0,
+          "breadth_ratio": 0.0,
+          "momentum_intensity": 17.84
         },
         "IT & Software": {
-          "average_score": 50.0,
+          "average_score": 12.56,
+          "original_avg": 22.31,
           "stock_count": 3,
           "stocks": [
-            "WIPRO",
+            "INFY",
             "TCS",
-            "INFY"
+            "WIPRO"
           ],
           "buy_count": 0,
           "hold_count": 3,
           "sell_count": 0,
-          "buy_ratio": 0.0
-        },
-        "Financial Services": {
-          "average_score": 50.0,
-          "stock_count": 1,
-          "stocks": [
-            "BAJFINANCE"
-          ],
-          "buy_count": 0,
-          "hold_count": 1,
-          "sell_count": 0,
-          "buy_ratio": 0.0
-        },
-        "Infrastructure & Cement": {
-          "average_score": 50.0,
-          "stock_count": 1,
-          "stocks": [
-            "LT"
-          ],
-          "buy_count": 0,
-          "hold_count": 1,
-          "sell_count": 0,
-          "buy_ratio": 0.0
-        },
-        "Energy & Power": {
-          "average_score": 50.0,
-          "stock_count": 1,
-          "stocks": [
-            "RELIANCE"
-          ],
-          "buy_count": 0,
-          "hold_count": 1,
-          "sell_count": 0,
-          "buy_ratio": 0.0
+          "buy_ratio": 0.0,
+          "breadth_ratio": 0.0,
+          "momentum_intensity": 7.04
         },
         "Automobile": {
-          "average_score": 50.0,
+          "average_score": 10.31,
+          "original_avg": 19.09,
           "stock_count": 1,
           "stocks": [
             "MARUTI"
@@ -2790,10 +2538,13 @@
           "buy_count": 0,
           "hold_count": 1,
           "sell_count": 0,
-          "buy_ratio": 0.0
+          "buy_ratio": 0.0,
+          "breadth_ratio": 0.0,
+          "momentum_intensity": 3.83
         },
         "Telecom & Media": {
-          "average_score": 50.0,
+          "average_score": 9.86,
+          "original_avg": 19.72,
           "stock_count": 1,
           "stocks": [
             "BHARTIARTL"
@@ -2801,37 +2552,87 @@
           "buy_count": 0,
           "hold_count": 1,
           "sell_count": 0,
-          "buy_ratio": 0.0
+          "buy_ratio": 0.0,
+          "breadth_ratio": 0.0,
+          "momentum_intensity": 0.0
+        },
+        "Infrastructure & Cement": {
+          "average_score": 7.93,
+          "original_avg": 12.89,
+          "stock_count": 1,
+          "stocks": [
+            "LT"
+          ],
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0,
+          "breadth_ratio": 0.0,
+          "momentum_intensity": 7.42
+        },
+        "Energy & Power": {
+          "average_score": 7.78,
+          "original_avg": 14.81,
+          "stock_count": 1,
+          "stocks": [
+            "RELIANCE"
+          ],
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0,
+          "breadth_ratio": 0.0,
+          "momentum_intensity": 1.89
         }
       },
       "ranked_sectors": [
         {
-          "sector": "Banking",
+          "sector": "Financial Services",
           "rank": 1,
-          "average_score": 50.0,
+          "average_score": 43.08,
+          "original_avg": 17.5,
+          "stock_count": 1,
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0,
+          "breadth_ratio": 1.0,
+          "recommendation": "SELL",
+          "stocks": [
+            "BAJFINANCE"
+          ]
+        },
+        {
+          "sector": "Banking",
+          "rank": 2,
+          "average_score": 34.22,
+          "original_avg": 31.47,
           "stock_count": 5,
           "buy_count": 0,
           "hold_count": 5,
           "sell_count": 0,
           "buy_ratio": 0.0,
+          "breadth_ratio": 0.4,
           "recommendation": "SELL",
           "stocks": [
+            "ICICIBANK",
             "KOTAKBANK",
             "HDFCBANK",
-            "AXISBANK",
             "SBIN",
-            "ICICIBANK"
+            "AXISBANK"
           ]
         },
         {
           "sector": "FMCG",
-          "rank": 2,
-          "average_score": 50.0,
+          "rank": 3,
+          "average_score": 14.04,
+          "original_avg": 20.94,
           "stock_count": 2,
           "buy_count": 0,
           "hold_count": 2,
           "sell_count": 0,
           "buy_ratio": 0.0,
+          "breadth_ratio": 0.0,
           "recommendation": "SELL",
           "stocks": [
             "ITC",
@@ -2840,71 +2641,33 @@
         },
         {
           "sector": "IT & Software",
-          "rank": 3,
-          "average_score": 50.0,
+          "rank": 4,
+          "average_score": 12.56,
+          "original_avg": 22.31,
           "stock_count": 3,
           "buy_count": 0,
           "hold_count": 3,
           "sell_count": 0,
           "buy_ratio": 0.0,
+          "breadth_ratio": 0.0,
           "recommendation": "SELL",
           "stocks": [
-            "WIPRO",
+            "INFY",
             "TCS",
-            "INFY"
-          ]
-        },
-        {
-          "sector": "Financial Services",
-          "rank": 4,
-          "average_score": 50.0,
-          "stock_count": 1,
-          "buy_count": 0,
-          "hold_count": 1,
-          "sell_count": 0,
-          "buy_ratio": 0.0,
-          "recommendation": "SELL",
-          "stocks": [
-            "BAJFINANCE"
-          ]
-        },
-        {
-          "sector": "Infrastructure & Cement",
-          "rank": 5,
-          "average_score": 50.0,
-          "stock_count": 1,
-          "buy_count": 0,
-          "hold_count": 1,
-          "sell_count": 0,
-          "buy_ratio": 0.0,
-          "recommendation": "SELL",
-          "stocks": [
-            "LT"
-          ]
-        },
-        {
-          "sector": "Energy & Power",
-          "rank": 6,
-          "average_score": 50.0,
-          "stock_count": 1,
-          "buy_count": 0,
-          "hold_count": 1,
-          "sell_count": 0,
-          "buy_ratio": 0.0,
-          "recommendation": "SELL",
-          "stocks": [
-            "RELIANCE"
+            "WIPRO"
           ]
         },
         {
           "sector": "Automobile",
-          "rank": 7,
-          "average_score": 50.0,
+          "rank": 5,
+          "average_score": 10.31,
+          "original_avg": 19.09,
           "stock_count": 1,
           "buy_count": 0,
           "hold_count": 1,
           "sell_count": 0,
           "buy_ratio": 0.0,
+          "breadth_ratio": 0.0,
           "recommendation": "SELL",
           "stocks": [
             "MARUTI"
@@ -2912,25 +2675,59 @@
         },
         {
           "sector": "Telecom & Media",
-          "rank": 8,
-          "average_score": 50.0,
+          "rank": 6,
+          "average_score": 9.86,
+          "original_avg": 19.72,
           "stock_count": 1,
           "buy_count": 0,
           "hold_count": 1,
           "sell_count": 0,
           "buy_ratio": 0.0,
+          "breadth_ratio": 0.0,
           "recommendation": "SELL",
           "stocks": [
             "BHARTIARTL"
           ]
+        },
+        {
+          "sector": "Infrastructure & Cement",
+          "rank": 7,
+          "average_score": 7.93,
+          "original_avg": 12.89,
+          "stock_count": 1,
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0,
+          "breadth_ratio": 0.0,
+          "recommendation": "SELL",
+          "stocks": [
+            "LT"
+          ]
+        },
+        {
+          "sector": "Energy & Power",
+          "rank": 8,
+          "average_score": 7.78,
+          "original_avg": 14.81,
+          "stock_count": 1,
+          "buy_count": 0,
+          "hold_count": 1,
+          "sell_count": 0,
+          "buy_ratio": 0.0,
+          "breadth_ratio": 0.0,
+          "recommendation": "SELL",
+          "stocks": [
+            "RELIANCE"
+          ]
         }
       ],
-      "top_sector": "Banking",
-      "worst_sector": "Telecom & Media",
-      "timestamp": "2026-03-02T21:42:26.155935"
+      "top_sector": "Financial Services",
+      "worst_sector": "Energy & Power",
+      "timestamp": "2026-03-03T23:30:14.676376"
     }
   },
-  "timestamp": "2026-03-02T21:42:26.157401",
+  "timestamp": "2026-03-03T23:30:14.678939",
   "features": {
     "risk_analysis": true,
     "sector_analysis": true,

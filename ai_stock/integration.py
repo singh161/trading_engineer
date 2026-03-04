@@ -1,8 +1,10 @@
 """
 Integration module to add AI Stock Research Engine endpoints to existing FastAPI app
 """
+import os
 import sys
 from pathlib import Path
+from datetime import datetime
 from fastapi import FastAPI, HTTPException, Query, Body
 from typing import List, Dict, Optional
 import logging
@@ -547,14 +549,27 @@ def add_ai_endpoints(app: FastAPI):
     async def get_config_status():
         """
         Check if critical AI Engine services are configured (SMTP, Telegram, etc.)
+        Reads env vars in real-time (not cached config values).
         """
-        from config import (
-            SMTP_USERNAME, SMTP_PASSWORD, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+        from dotenv import load_dotenv
+        load_dotenv(override=True)  # Re-read .env to get latest values
+        
+        smtp_user     = os.getenv("SMTP_USERNAME")
+        smtp_pass     = os.getenv("SMTP_PASSWORD")
+        email_to      = os.getenv("EMAIL_TO")
+        tg_token      = os.getenv("TELEGRAM_BOT_TOKEN")
+        tg_chat       = os.getenv("TELEGRAM_CHAT_ID")
+        
+        # Telegram is only configured if real values (not placeholders) are set
+        tg_configured = bool(
+            tg_token and tg_chat and
+            tg_token != "your_bot_token_here" and
+            tg_chat != "your_chat_id_here"
         )
         
         return {
-            "email_configured": bool(SMTP_USERNAME and SMTP_PASSWORD),
-            "telegram_configured": bool(TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID),
+            "email_configured": bool(smtp_user and smtp_pass and email_to),
+            "telegram_configured": tg_configured,
             "news_api_configured": bool(os.getenv("NEWSAPI_KEY")),
             "timestamp": datetime.now().isoformat()
         }
