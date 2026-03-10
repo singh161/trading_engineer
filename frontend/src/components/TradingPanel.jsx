@@ -20,6 +20,7 @@ function TradingPanel({ stocks = [], analyses = {}, onStockClick }) {
     const [searchResults, setSearchResults] = useState([]);
     const [orderForm, setOrderForm] = useState({
         symbol: '', orderType: 'BUY', quantity: 1, price: 0, stopLoss: '', target: '',
+        instrumentType: 'EQUITY', strikePrice: '', expiry: '', optionType: 'CE'
     });
     const [orderLoading, setOrderLoading] = useState(false);
     const [orderMessage, setOrderMessage] = useState(null);
@@ -28,6 +29,21 @@ function TradingPanel({ stocks = [], analyses = {}, onStockClick }) {
     const [editTarget, setEditTarget] = useState('');
     const [sortBy, setSortBy] = useState('pnl_pct');
     const [sortDir, setSortDir] = useState('desc');
+    const [priceType, setPriceType] = useState('LIMIT'); // LIMIT or MARKET
+
+    const getLotSize = (symbol) => {
+        const s = symbol?.toUpperCase() || '';
+        if (s.includes('BANKNIFTY')) return 15;
+        if (s.includes('FINNIFTY')) return 40;
+        if (s.includes('MIDCPNIFTY')) return 75;
+        if (s.includes('NIFTY')) return 50;
+        return 1;
+    };
+
+    const changeQty = (delta) => {
+        const lot = getLotSize(orderForm.symbol);
+        setOrderForm(p => ({ ...p, quantity: Math.max(lot, p.quantity + (delta * lot)) }));
+    };
 
     const loadData = useCallback(async () => {
         try {
@@ -44,7 +60,19 @@ function TradingPanel({ stocks = [], analyses = {}, onStockClick }) {
         finally { setLoading(false); }
     }, []);
 
-    useEffect(() => { loadData(); const i = setInterval(loadData, 30000); return () => clearInterval(i); }, [loadData]);
+    useEffect(() => {
+        loadData();
+        const i = setInterval(loadData, 30000);
+
+        // Listen for system-wide trading updates
+        const handleUpdate = () => loadData();
+        window.addEventListener('trading-update', handleUpdate);
+
+        return () => {
+            clearInterval(i);
+            window.removeEventListener('trading-update', handleUpdate);
+        };
+    }, [loadData]);
 
     useEffect(() => {
         if (searchTerm.length < 1) { setSearchResults([]); return; }
@@ -58,8 +86,12 @@ function TradingPanel({ stocks = [], analyses = {}, onStockClick }) {
 
     const selectStock = (stock) => {
         const sym = (stock.symbol || '').toUpperCase();
-        const price = analyses[sym]?.price || stock.price || 0;
-        setOrderForm(p => ({ ...p, symbol: sym, price: parseFloat(price) || 0 }));
+        if (orderForm.instrumentType === 'OPTION') {
+            setOrderForm(p => ({ ...p, symbol: sym }));
+        } else {
+            const price = analyses[sym]?.price || stock.price || 0;
+            setOrderForm(p => ({ ...p, symbol: sym, price: parseFloat(price) || 0 }));
+        }
         setSearchTerm(''); setSearchResults([]);
     };
 
@@ -73,9 +105,16 @@ function TradingPanel({ stocks = [], analyses = {}, onStockClick }) {
                 orderForm.symbol, orderForm.orderType, orderForm.quantity, orderForm.price,
                 orderForm.stopLoss ? parseFloat(orderForm.stopLoss) : null,
                 orderForm.target ? parseFloat(orderForm.target) : null,
+                orderForm.instrumentType,
+                orderForm.strikePrice ? parseFloat(orderForm.strikePrice) : null,
+                orderForm.expiry,
+                orderForm.instrumentType === 'OPTION' ? orderForm.optionType : null,
             );
             setOrderMessage({ type: 'success', text: result.message });
-            setOrderForm({ symbol: '', orderType: 'BUY', quantity: 1, price: 0, stopLoss: '', target: '' });
+            setOrderForm({
+                symbol: '', orderType: 'BUY', quantity: 1, price: 0, stopLoss: '', target: '',
+                instrumentType: 'EQUITY', strikePrice: '', expiry: '', optionType: 'CE'
+            });
             setTimeout(() => { setShowOrderForm(false); setOrderMessage(null); }, 1500);
             loadData();
         } catch (err) {
@@ -110,6 +149,52 @@ function TradingPanel({ stocks = [], analyses = {}, onStockClick }) {
         setOrderForm(p => ({ ...p, target: (p.price * (1 + pct / 100)).toFixed(2) }));
     };
 
+    // Calculate dynamic strikes and premiums
+    const optionChain = useMemo(() => {
+        if (orderForm.instrumentType !== 'OPTION' || !orderForm.symbol) return [];
+        const spot = analyses[orderForm.symbol]?.price || 0;
+        if (!spot) return [];
+
+        let step = 50;
+        if (orderForm.symbol.includes('BANKNIFTY')) step = 100;
+        else if (orderForm.symbol.includes('FINNIFTY')) step = 50;
+        else if (spot > 1000) step = 20;
+        else step = 5;
+
+        const atm = Math.round(spot / step) * step;
+        const strikes = [];
+        for (let i = -5; i <= 5; i++) {
+            const strike = atm + (i * step);
+            // Refined Premium Calculation
+            // Time Value (Extrinsic) is highest at ATM and decays as we move OTM/ITM
+            const distFromSpot = Math.abs(spot - strike);
+            const extrinsicBase = spot * 0.02; // Adjusted to 2% for matching current volatility better
+            const decay = Math.exp(- (distFromSpot / (spot * 0.1))); // Bell curve decay
+            const timeValue = extrinsicBase * decay;
+
+            let coreValue = 0;
+            if (orderForm.optionType === 'CE') coreValue = Math.max(0, spot - strike);
+            else coreValue = Math.max(0, strike - spot);
+
+            const premium = (coreValue + timeValue).toFixed(2);
+            strikes.push({
+                strike,
+                premium,
+                isATM: strike === atm,
+                intrinsic: coreValue.toFixed(2),
+                timeValue: timeValue.toFixed(2)
+            });
+        }
+        return strikes;
+    }, [orderForm.symbol, orderForm.instrumentType, orderForm.optionType, analyses]);
+
+    const breakEven = useMemo(() => {
+        if (orderForm.instrumentType !== 'OPTION' || !orderForm.strikePrice || !orderForm.price) return null;
+        const strike = parseFloat(orderForm.strikePrice);
+        const premium = parseFloat(orderForm.price);
+        return orderForm.optionType === 'CE' ? (strike + premium).toFixed(2) : (strike - premium).toFixed(2);
+    }, [orderForm.instrumentType, orderForm.strikePrice, orderForm.price, orderForm.optionType]);
+
     const sortedPositions = useMemo(() => {
         return [...positions].sort((a, b) => {
             const aVal = a[sortBy] ?? 0, bVal = b[sortBy] ?? 0;
@@ -131,7 +216,7 @@ function TradingPanel({ stocks = [], analyses = {}, onStockClick }) {
     const pnlBg = (v) => (!v && v !== 0) ? '' : v >= 0 ? 'bg-emerald-500/10 border-emerald-500/20' : 'bg-red-500/10 border-red-500/20';
 
     return (
-        <div className="space-y-5">
+        <div className="space-y-6 animate-in fade-in duration-700">
             {/* ═══ STATS ROW ═══ */}
             <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
                 {[
@@ -242,6 +327,16 @@ function TradingPanel({ stocks = [], analyses = {}, onStockClick }) {
                                             : 'text-dark-text-secondary hover:text-dark-text'}`}>{t}</button>
                                 ))}
                             </div>
+
+                            {/* Instrument Type Toggle */}
+                            <div className="flex bg-dark-bg rounded-xl p-1 gap-1">
+                                {['EQUITY', 'OPTION'].map(t => (
+                                    <button key={t} onClick={() => setOrderForm(p => ({ ...p, instrumentType: t }))}
+                                        className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${orderForm.instrumentType === t
+                                            ? 'bg-blue-accent text-white shadow-md'
+                                            : 'text-dark-text-secondary hover:text-dark-text'}`}>{t}</button>
+                                ))}
+                            </div>
                             {/* Stock Search */}
                             <div className="relative">
                                 <label className="text-xs text-dark-text-secondary mb-1 block">Stock Symbol</label>
@@ -249,7 +344,7 @@ function TradingPanel({ stocks = [], analyses = {}, onStockClick }) {
                                     <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-dark-text-secondary" />
                                     <input type="text" value={orderForm.symbol || searchTerm}
                                         onChange={(e) => { const v = e.target.value.toUpperCase(); setOrderForm(p => ({ ...p, symbol: v })); setSearchTerm(v); }}
-                                        placeholder="Search RELIANCE, TCS..."
+                                        placeholder={orderForm.instrumentType === 'EQUITY' ? "Search RELIANCE, TCS..." : "Enter Option Symbol (e.g. NIFTY24MAR22000CE)"}
                                         className="w-full pl-10 pr-4 py-3 bg-dark-bg border border-dark-border rounded-xl text-dark-text placeholder-dark-text-secondary/50 focus:border-blue-accent focus:outline-none transition-all font-semibold text-lg" />
                                 </div>
                                 {searchResults.length > 0 && (
@@ -265,23 +360,82 @@ function TradingPanel({ stocks = [], analyses = {}, onStockClick }) {
                                     </div>
                                 )}
                             </div>
+
+                            {/* Option Specific Fields */}
+                            {orderForm.instrumentType === 'OPTION' && (
+                                <div className="space-y-4 animate-in fade-in slide-in-from-top-2">
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <div>
+                                            <label className="text-xs text-dark-text-secondary mb-1 block">Option Type</label>
+                                            <div className="flex bg-dark-bg rounded-xl p-1">
+                                                {['CE', 'PE'].map(t => (
+                                                    <button key={t} onClick={() => setOrderForm(p => ({ ...p, optionType: t }))}
+                                                        className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${orderForm.optionType === t
+                                                            ? (t === 'CE' ? 'bg-emerald-500 text-white' : 'bg-red-500 text-white')
+                                                            : 'text-dark-text-secondary hover:text-dark-text'}`}>{t}</button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="flex items-center justify-between mb-1">
+                                                <label className="text-xs text-dark-text-secondary block">Select Strike Price</label>
+                                                <span className="text-[10px] text-blue-accent font-bold">Spot: ₹{analyses[orderForm.symbol]?.price || '—'}</span>
+                                            </div>
+                                            <select
+                                                value={orderForm.strikePrice}
+                                                onChange={(e) => {
+                                                    const selected = optionChain.find(o => o.strike === parseFloat(e.target.value));
+                                                    if (selected) {
+                                                        setOrderForm(p => ({ ...p, strikePrice: selected.strike, price: parseFloat(selected.premium) }));
+                                                    }
+                                                }}
+                                                className="w-full px-4 py-2 bg-dark-bg border border-dark-border rounded-xl text-dark-text focus:border-blue-accent focus:outline-none font-semibold text-sm"
+                                            >
+                                                <option value="">Select Strike</option>
+                                                {optionChain.map(o => (
+                                                    <option key={o.strike} value={o.strike}>
+                                                        {o.strike} {o.isATM ? '— (ATM/Spot)' : ''} (Premium: ₹{o.premium})
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label className="text-xs text-dark-text-secondary mb-1 block">Expiry Date</label>
+                                        <input type="text" value={orderForm.expiry}
+                                            onChange={e => setOrderForm(p => ({ ...p, expiry: e.target.value }))}
+                                            placeholder="e.g. 28-MAR-2024"
+                                            className="w-full px-4 py-2 bg-dark-bg border border-dark-border rounded-xl text-dark-text focus:border-blue-accent focus:outline-none font-semibold" />
+                                    </div>
+                                </div>
+                            )}
                             {/* Price & Qty */}
                             <div className="grid grid-cols-2 gap-3">
                                 <div>
-                                    <label className="text-xs text-dark-text-secondary mb-1 block">Price (₹)</label>
-                                    <input type="number" step="0.05" value={orderForm.price}
+                                    <div className="flex items-center justify-between mb-1">
+                                        <label className="text-xs text-dark-text-secondary">Price (₹)</label>
+                                        <button onClick={() => setPriceType(p => p === 'LIMIT' ? 'MARKET' : 'LIMIT')}
+                                            className={`text-[9px] px-1.5 py-0.5 rounded font-black transition-all ${priceType === 'MARKET' ? 'bg-blue-accent text-white' : 'bg-dark-border text-dark-text-secondary hover:text-dark-text'}`}>
+                                            {priceType}
+                                        </button>
+                                    </div>
+                                    <input type="number" step="0.05" value={priceType === 'MARKET' ? (analyses[orderForm.symbol]?.price || 0) : orderForm.price}
+                                        disabled={priceType === 'MARKET'}
                                         onChange={e => setOrderForm(p => ({ ...p, price: parseFloat(e.target.value) || 0 }))}
-                                        className="w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-xl text-dark-text focus:border-blue-accent focus:outline-none font-semibold" />
+                                        className={`w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-xl text-dark-text focus:border-blue-accent focus:outline-none font-semibold ${priceType === 'MARKET' ? 'opacity-50' : ''}`} />
                                 </div>
                                 <div>
-                                    <label className="text-xs text-dark-text-secondary mb-1 block">Quantity</label>
+                                    <div className="flex items-center justify-between mb-1">
+                                        <label className="text-xs text-dark-text-secondary">Quantity</label>
+                                        <span className="text-[9px] text-blue-accent font-bold">Lot: {getLotSize(orderForm.symbol)}</span>
+                                    </div>
                                     <div className="flex items-center gap-1">
-                                        <button onClick={() => setOrderForm(p => ({ ...p, quantity: Math.max(1, p.quantity - 1) }))}
+                                        <button onClick={() => changeQty(-1)}
                                             className="p-3 bg-dark-bg border border-dark-border rounded-l-xl text-dark-text-secondary hover:text-dark-text hover:bg-dark-border transition-all"><Minus className="w-4 h-4" /></button>
                                         <input type="number" min="1" value={orderForm.quantity}
                                             onChange={e => setOrderForm(p => ({ ...p, quantity: parseInt(e.target.value) || 1 }))}
                                             className="w-full px-2 py-3 bg-dark-bg border-y border-dark-border text-dark-text text-center focus:outline-none font-semibold" />
-                                        <button onClick={() => setOrderForm(p => ({ ...p, quantity: p.quantity + 1 }))}
+                                        <button onClick={() => changeQty(1)}
                                             className="p-3 bg-dark-bg border border-dark-border rounded-r-xl text-dark-text-secondary hover:text-dark-text hover:bg-dark-border transition-all"><Plus className="w-4 h-4" /></button>
                                     </div>
                                 </div>
@@ -329,6 +483,12 @@ function TradingPanel({ stocks = [], analyses = {}, onStockClick }) {
                                 {orderForm.stopLoss && orderForm.target && orderForm.price > parseFloat(orderForm.stopLoss) && (
                                     <div className="flex justify-between border-t border-dark-border pt-2"><span className="text-dark-text-secondary">Risk : Reward</span>
                                         <span className="font-bold text-blue-400">1 : {((parseFloat(orderForm.target) - orderForm.price) / (orderForm.price - parseFloat(orderForm.stopLoss))).toFixed(1)}</span></div>)}
+                                {breakEven && (
+                                    <div className="flex justify-between border-t border-dark-border pt-2">
+                                        <span className="text-dark-text-secondary">Break-Even (at expiry)</span>
+                                        <span className="font-bold text-dark-text">₹{breakEven}</span>
+                                    </div>
+                                )}
                             </div>
                             {orderMessage && (
                                 <div className={`text-sm px-4 py-3 rounded-xl ${orderMessage.type === 'success' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
@@ -386,8 +546,19 @@ function TradingPanel({ stocks = [], analyses = {}, onStockClick }) {
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex items-center gap-2 mb-1">
                                                         <button onClick={() => onStockClick?.(pos.symbol)} className="font-bold text-dark-text hover:text-blue-accent transition-colors">{pos.symbol}</button>
+                                                        {pos.instrument_type === 'OPTION' && (
+                                                            <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold ${pos.option_type === 'CE' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'}`}>
+                                                                {pos.option_type}
+                                                            </span>
+                                                        )}
                                                         <span className="text-[10px] bg-blue-accent/10 text-blue-accent px-2 py-0.5 rounded-full font-medium">{pos.quantity} qty</span>
                                                     </div>
+                                                    {pos.instrument_type === 'OPTION' && (
+                                                        <div className="text-[10px] text-dark-text-secondary mb-1 flex gap-2">
+                                                            <span>Strike: <span className="text-dark-text">{pos.strike_price}</span></span>
+                                                            {pos.expiry && <span>Expiry: <span className="text-dark-text">{pos.expiry}</span></span>}
+                                                        </div>
+                                                    )}
                                                     <div className="flex items-center gap-3 text-xs text-dark-text-secondary">
                                                         <span>Avg <span className="text-dark-text font-medium">{fmt(pos.avg_price)}</span></span>
                                                         <span>LTP <span className="text-dark-text font-medium">{pos.current_price ? fmt(pos.current_price) : '—'}</span></span>

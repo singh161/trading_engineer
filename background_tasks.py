@@ -31,6 +31,7 @@ class BackgroundTaskManager:
         self.is_running = False
         self.current_task = None
         self.is_preloaded = False
+        self.custom_symbols = set()  # Track custom symbols like options or user-added stocks
 
     async def preload_stocks(self):
         """Load all stocks from NSE API into memory cache at startup"""
@@ -78,13 +79,52 @@ class BackgroundTaskManager:
         if callback in self.update_callbacks:
             self.update_callbacks.remove(callback)
     
-    async def _notify_update(self, symbol: str, analysis: Dict):
-        """Notify all callbacks of update"""
+    async def _notify_update(self, symbol: str, data: Dict):
+        """Notify all callbacks of update (can be stock analysis or system notification)"""
         for callback in self.update_callbacks:
             try:
-                await callback(symbol, analysis)
+                await callback(symbol, data)
             except Exception as e:
                 logger.error(f"Error in update callback: {e}")
+
+    async def _check_auto_exits(self, current_prices: Dict[str, float]):
+        """Check if any open position has hit SL or Target and exit automatically"""
+        try:
+            from trading_manager import TradingManager
+            # Get positions with current prices
+            positions = TradingManager.get_positions(current_prices)
+            for pos in positions:
+                symbol = pos['symbol']
+                price = pos.get('current_price')
+                if not price: continue
+                
+                reason = None
+                # Check SL (Price falls below or equal to SL)
+                sl = pos.get('stop_loss')
+                if sl and price <= sl:
+                    reason = "SL_HIT"
+                
+                # Check Target (Price rises above or equal to Target)
+                target = pos.get('target')
+                if target and price >= target:
+                    reason = "TARGET_HIT"
+                
+                if reason:
+                    logger.info(f"🚨 {reason}: Auto-exiting {symbol} @ ₹{price}")
+                    exit_result = TradingManager.exit_position(symbol, price, reason=reason)
+                    
+                    # Notify UI about the automatic exit
+                    await self._notify_update("SYSTEM_ALERT", {
+                        "type": "trade_auto_exit",
+                        "symbol": symbol,
+                        "reason": reason,
+                        "price": price,
+                        "pnl": exit_result.get('trade', {}).get('pnl', 0),
+                        "message": exit_result.get('message'),
+                        "timestamp": datetime.now().isoformat()
+                    })
+        except Exception as e:
+            logger.error(f"Error in auto-exit check: {e}")
     
     async def analyze_stock(self, symbol: str, mode: str = 'swing') -> Dict:
         """Analyze a single stock"""
@@ -283,12 +323,23 @@ class BackgroundTaskManager:
             
             # Wait for next interval
             await asyncio.sleep(interval_minutes * 60)
+
+    def add_custom_symbol(self, symbol: str):
+        """Add a custom symbol to be tracked in background"""
+        if symbol:
+            self.custom_symbols.add(symbol.upper())
+            logger.info(f"Added custom symbol to tracking: {symbol}")
+
+    def get_custom_symbols(self) -> List[str]:
+        """Get all custom symbols"""
+        return list(self.custom_symbols)
     
     async def start_live_price_ticker(self, interval_seconds: int = 20):
         """Bulk price ticker using index constituents API (avoids rate limiting)"""
         from nse_scraper import nse_scraper
         from config import NSE_INDICES
         
+        self.is_running = True
         logger.info(f"Starting BULK price ticker every {interval_seconds} seconds")
         while self.is_running:
             try:
@@ -324,6 +375,37 @@ class BackgroundTaskManager:
                 
                 if updated_count > 0:
                     logger.info(f"Ticker: Updated {updated_count} stock prices via bulk index API")
+                    
+                    # After price updates, check for auto-exits (SL/Target)
+                    all_cached = self.get_all_analyses()
+                    prices = {s: float(data.get('price', 0)) for s, data in all_cached.items() if data.get('price')}
+                    if prices:
+                        await self._check_auto_exits(prices)
+                
+                # UPDATE CUSTOM SYMBOLS (Options, etc.)
+                if self.custom_symbols:
+                    logger.info(f"Ticker: Updating {len(self.custom_symbols)} custom symbols...")
+                    updated_custom = 0
+                    current_custom_prices = {}
+                    
+                    for symbol in list(self.custom_symbols):
+                        try:
+                            price = await self.data_fetcher.get_current_price(symbol)
+                            if price:
+                                current_custom_prices[symbol] = price
+                                if symbol not in self.analysis_cache:
+                                    self.analysis_cache[symbol] = {"symbol": symbol, "price": price}
+                                else:
+                                    self.analysis_cache[symbol]['price'] = price
+                                self.analysis_cache[symbol]['timestamp'] = datetime.now().isoformat()
+                                await self._notify_update(symbol, self.analysis_cache[symbol])
+                                updated_custom += 1
+                        except Exception as e:
+                            logger.error(f"Error updating custom symbol {symbol}: {e}")
+                    
+                    # Check auto-exits for custom symbols too
+                    if current_custom_prices:
+                        await self._check_auto_exits(current_custom_prices)
                 
                 # UPDATE MARKET INDICES TOO
                 indices = await self.data_fetcher.get_live_indices_data()
@@ -344,6 +426,53 @@ class BackgroundTaskManager:
                 logger.error(f"Error in price ticker: {e}")
             
             await asyncio.sleep(interval_seconds)
+
+    async def start_ai_scanner(self, interval_hours: int = 1):
+        """AI Research Scanner: Finds best stocks and sends Email/Telegram alerts"""
+        # Delay start to allow initial preloading to finish
+        await asyncio.sleep(60)
+        
+        while self.is_running:
+            try:
+                from ai_stock.main import AIStockResearchEngine
+                from ai_stock.integration import initialize_ai_engine
+                
+                logger.info(f"AI Scanner: Starting comprehensive market scan for best stocks...")
+                
+                # Initialize engine if not already done
+                engine = initialize_ai_engine()
+                
+                # Use popular + index stocks for top-tier scanning
+                symbols = AIStockResearchEngine.DEFAULT_INDIAN_STOCKS[:30]
+                
+                # Filter out those we already have in cache if needed, 
+                # but run_complete_analysis handles its own caching/logic.
+                
+                # Run complete analysis with alerts enabled
+                results = await engine.run_complete_analysis(symbols, send_alerts=True)
+                
+                if results.get('status') == 'success':
+                    logger.info(f"AI Scanner: Completed scan. {results.get('stocks_analyzed')} stocks checked.")
+                    
+                    # Notify UI of scan completion and top pick
+                    top_picks = results.get('ranking_results', {}).get('top_5_buy', [])
+                    if top_picks:
+                        best_stock = top_picks[0]
+                        await self._notify_update("AI_SCAN_NOTIFICATION", {
+                            "type": "ai_best_stock_found",
+                            "symbol": best_stock.get('symbol'),
+                            "score": best_stock.get('final_score'),
+                            "price": best_stock.get('current_price'),
+                            "recommendation": best_stock.get('recommendation'),
+                            "timestamp": datetime.now().isoformat()
+                        })
+                
+            except Exception as e:
+                logger.error(f"AI Scanner Fault: {e}", exc_info=True)
+            
+            # Scan every X hours (default 1 hour)
+            logger.info(f"AI Scanner: Waiting {interval_hours} hours for next deep scan.")
+            await asyncio.sleep(interval_hours * 3600)
 
     def stop_periodic_refresh(self):
         """Stop periodic refresh"""

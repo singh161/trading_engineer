@@ -266,6 +266,49 @@ function App() {
           }));
         }
 
+        if (data.type === 'ai_best_stock_found') {
+          const msg = `AI Scanner ko ek behtareen stock mila hai. ${data.symbol} ko check karein, iska score ${Math.round(data.score)} hai.`;
+          toast.success(`🌟 AI Top Pick: ${data.symbol}`, {
+            duration: 10000,
+            icon: '🤖',
+            style: { background: '#4c1d95', color: '#fff', border: '1px solid #a78bfa' }
+          });
+          speak(msg);
+        }
+
+        if (data.type === 'trade_auto_exit') {
+          const { symbol, reason, price, pnl } = data;
+          const msg = reason === 'SL_HIT'
+            ? `Warning! ${symbol} ka stop loss hit ho gaya hai ${Math.round(price)} par. Trade close ho chuki hai.`
+            : `Badhiya! ${symbol} ne target hit kar liya hai ${Math.round(price)} par. Profit book ho gaya hai.`;
+
+          toast(
+            (t) => (
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-2 font-bold">
+                  <span>{reason === 'SL_HIT' ? '🚨 SL Hit' : '🎯 Target Hit'}</span>
+                  <span className="text-white/70">{symbol}</span>
+                </div>
+                <p className="text-sm opacity-90">Exited @ ₹{price}</p>
+                <p className={`text-sm font-bold ${pnl >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                  {pnl >= 0 ? 'Profit' : 'Loss'}: ₹{Math.abs(Math.round(pnl))}
+                </p>
+              </div>
+            ),
+            {
+              duration: 8000,
+              style: {
+                background: reason === 'SL_HIT' ? '#7f1d1d' : '#065f46',
+                color: '#fff',
+                border: `1px solid ${reason === 'SL_HIT' ? '#ef4444' : '#10b981'}`
+              }
+            }
+          );
+          speak(msg);
+          // Refresh trading data
+          window.dispatchEvent(new CustomEvent('trading-update'));
+        }
+
         if (data.type === 'stock_update') {
           const newAnalysis = data.data;
           const symbol = data.symbol;
@@ -276,7 +319,7 @@ function App() {
           if (oldAnalysis) {
             // STRONG BUY Transition
             if (newAnalysis.final_verdict === 'STRONG BUY' && oldAnalysis.final_verdict !== 'STRONG BUY') {
-              const msg = `Dhyan dein! ${symbol} par Strong Buy signal mila hai. Current price hai ${Math.round(newAnalysis.price)} rupaye.`;
+              const msg = `Attention please! ${symbol} par Strong Buy signal mila hai. Current price hai ${Math.round(newAnalysis.price)} rupaye.`;
               toast.success(`🚀 New STRONG BUY Signal: ${symbol}`, {
                 duration: 5000,
                 icon: '🔥',
@@ -285,12 +328,24 @@ function App() {
               speak(msg);
             }
 
-            // Target Hit Logic (Hinglish Accent)
-            if (newAnalysis.price >= newAnalysis.buy_price && oldAnalysis.price < newAnalysis.buy_price) {
-              const msg = `Target hit ho gaya hai! ${symbol} ab ${newAnalysis.buy_price} rupaye ke target ke upar trade kar raha hai.`;
-              toast.success(`🎯 Target Hit: ${symbol} is above entry price ₹${newAnalysis.buy_price}`, {
+            // Target Price Hit Logic (Selling Target)
+            const targetPrice = newAnalysis.sell_price || (newAnalysis.target_price?.target_price);
+            if (targetPrice && newAnalysis.price >= targetPrice && oldAnalysis.price < targetPrice) {
+              const msg = `Mubarak ho! ${symbol} ne apna target hit kar liya hai. Ab ye ${targetPrice} rupaye ke upar trade kar raha hai.`;
+              toast.success(`🎯 Target Reached: ${symbol} hit ₹${targetPrice}!`, {
+                duration: 8000,
+                style: { background: '#064e3b', color: '#fff', border: '1px solid #10b981' }
+              });
+              speak(msg);
+            }
+
+            // Entry Price Hit Logic (Buy Order Level)
+            if (newAnalysis.buy_price && newAnalysis.price <= newAnalysis.buy_price && oldAnalysis.price > newAnalysis.buy_price) {
+              const msg = `${symbol} apne buying level par aa gaya hai. Current price hai ${newAnalysis.price} rupaye.`;
+              toast.success(`📥 Entry Point: ${symbol} is at buy level ₹${newAnalysis.buy_price}`, {
                 duration: 6000,
-                style: { background: '#064e3b', color: '#fff' }
+                icon: '💰',
+                style: { background: '#1e3a8a', color: '#fff', border: '1px solid #3b82f6' }
               });
               speak(msg);
             }

@@ -548,12 +548,12 @@ class AIStockResearchEngine:
                 # Send individual alerts for top BUY stocks with AI verification
                 for stock in ranking_results.get('top_5_buy', [])[:3]:  # Top 3 only
                     ticker = stock['symbol']
-                    ranking_data = stock['final_score'] # Assuming final_score now contains the full ranking data
+                    ranking_data = stock # This now holds the full stock data
                     ai_recommendation = stock.get('ai_recommendation', {})
 
                     # Alert Logic with AI Verification (Accuracy Check)
                     # Use a combination of original ranking and new AI intelligence
-                    if ranking_data["final_score"] >= 80: # Assuming 80 is a high score threshold
+                    if ranking_data.get("final_score", 0) >= 80: # Assuming 80 is a high score threshold
                         is_verified = True
                         if ai_recommendation:
                             # Only send alert if AI Recommender has at least medium confidence 
@@ -568,8 +568,8 @@ class AIStockResearchEngine:
                                 logger.warning(f"Alert suppressed for {ticker}: Trend exhaustion risk.")
                         
                         if is_verified:
-                            # Pass AI recommendation to alert system if needed
-                            await self.alert_system.send_stock_alert({**ranking_data, "ai_rec": ai_recommendation})
+                            # Pass stock data to alert system
+                            await self.alert_system.send_stock_alert(stock)
             
             # Calculate execution time
             end_time = datetime.now()

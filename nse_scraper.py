@@ -137,6 +137,49 @@ class NSEScraper:
             "timestamp": datetime.now().isoformat()
         }
 
+    async def get_derivative_quote(self, symbol: str) -> Optional[Dict[str, Any]]:
+        """Get live derivative (Option/Future) quote for a symbol (Async)"""
+        await self._ensure_session()
+        if not self.cookies_fetched:
+            await self._fetch_cookies()
+
+        url = f"https://www.nseindia.com/api/quote-derivative?symbol={symbol.upper()}"
+        try:
+            async with self.session.get(url, timeout=12) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    return data
+                elif response.status in [401, 403]:
+                    await self._fetch_cookies(force=True)
+                    async with self.session.get(url, timeout=12) as retry_res:
+                        if retry_res.status == 200:
+                            return await retry_res.json()
+            return None
+        except Exception as e:
+            logger.error(f"Error scraping NSE derivatives for {symbol}: {e}")
+            return None
+
+    def _extract_derivative_price_info(self, data: Dict, target_identifier: str) -> Optional[Dict]:
+        """Extract price for a specific option/future from derivative quote data"""
+        try:
+            stocks = data.get('stocks', [])
+            for s in stocks:
+                # Identifier matches the specific option contract
+                if s.get('metadata', {}).get('identifier') == target_identifier:
+                    market_dept = s.get('marketDeptOrderBook', {})
+                    trade_info = s.get('metadata', {})
+                    return {
+                        "symbol": target_identifier,
+                        "price": market_dept.get('tradeInfo', {}).get('lastPrice'),
+                        "change": market_dept.get('tradeInfo', {}).get('change'),
+                        "pChange": market_dept.get('tradeInfo', {}).get('pChange'),
+                        "timestamp": datetime.now().isoformat()
+                    }
+            return None
+        except Exception as e:
+            logger.error(f"Error extracting derivative info: {e}")
+            return None
+
     async def close(self):
         if self.session and not self.session.closed:
             await self.session.close()

@@ -231,32 +231,61 @@ class StockDataFetcher:
             return {}
 
     async def get_current_price(self, symbol: str) -> Optional[float]:
-        """Get current/latest price with 3-layer validation"""
+        """Get current/latest price using official NSE API (prioritized) with fallbacks"""
         try:
+            symbol = symbol.upper()
             clean_symbol = symbol.replace(NSE_SYMBOL_SUFFIX, "").replace(".BO", "")
-            yfinance_symbol = f"{clean_symbol}{NSE_SYMBOL_SUFFIX}"
             
-            nse_price = None
-            yf_price = None
+            # Layer 1: Official NSE Scraper (Prioritized as per user request)
+            price = None
             
-            # Layer 1: Prefers NSE Scraper for real-time live Indian stock prices
-            quote = await nse_scraper.get_live_quote(clean_symbol)
-            if quote and quote.get('price'):
-                nse_price = float(quote['price'])
-                logger.info(f"Fetched REAL-TIME price for {symbol}: ₹{nse_price}")
-            
-            # Layer 2: NSEPY / Layer 3: Yfinance (Using standard fallback)
-            ticker = yf.Ticker(yfinance_symbol)
-            info = ticker.info
-            yf_price = info.get('regularMarketPrice') or info.get('currentPrice')
-            
-            if yf_price:
-                logger.info(f"Fetched YFinance price for {symbol}: ₹{yf_price}")
+            # Detect if it's likely an option (e.g. NIFTY24MAR22000CE)
+            # Heuristic: Symbols longer than 12 chars often are option identifiers
+            if len(clean_symbol) > 12:
+                # Extract base symbol from option identifier (NIFTY, BANKNIFTY, RELIANCE, etc.)
+                base_symbol = ""
+                if "NIFTY" in clean_symbol:
+                    base_symbol = "NIFTY" if "BANK" not in clean_symbol and "FIN" not in clean_symbol else \
+                                  "BANKNIFTY" if "BANK" in clean_symbol else "FINNIFTY"
+                else:
+                    # For stocks, the first few letters are the symbol
+                    # This is a bit tricky, but usually the first characters until the first digit
+                    import re
+                    match = re.search(r'([A-Z]+)\d+', clean_symbol)
+                    if match:
+                        base_symbol = match.group(1)
                 
-            validated_price = self._validate_price(nse_price, yf_price, clean_symbol)
-            return validated_price
+                if base_symbol:
+                    logger.info(f"Detected OPTION symbol. Fetching derivative quote for base: {base_symbol}")
+                    derivative_data = await nse_scraper.get_derivative_quote(base_symbol)
+                    if derivative_data:
+                        info = nse_scraper._extract_derivative_price_info(derivative_data, clean_symbol)
+                        if info and info.get('price'):
+                            price = float(info['price'])
+                            logger.info(f"NSE REAL-TIME OPTION PRICE: {symbol} -> ₹{price}")
+            else:
+                # Standard Equity
+                quote = await nse_scraper.get_live_quote(clean_symbol)
+                if quote and quote.get('price'):
+                    price = float(quote['price'])
+                    logger.info(f"NSE REAL-TIME EQUITY PRICE: {symbol} -> ₹{price}")
+
+            # Layer 2: yfinance Fallback (Only if NSE Scraper fails)
+            if price is None:
+                logger.warning(f"NSE Scraper failed for {symbol}. Falling back to yfinance.")
+                yfinance_symbol = symbol if ".NS" in symbol or ".BO" in symbol else f"{clean_symbol}{NSE_SYMBOL_SUFFIX}"
+                ticker = yf.Ticker(yfinance_symbol)
+                df = ticker.history(period="1d", interval="1m")
+                if not df.empty:
+                    price = float(df['Close'].iloc[-1])
+                    logger.info(f"Fallback yfinance price for {symbol}: ₹{price}")
+                else:
+                    info = ticker.info
+                    price = info.get('regularMarketPrice') or info.get('currentPrice')
+            
+            return price
         except Exception as e:
-            logger.error(f"Error fetching current price for {symbol}: {e}")
+            logger.error(f"Error fetching real-time price for {symbol} from NSE: {e}")
             return None
     
     async def get_live_indices_data(self) -> Optional[List[Dict[str, Any]]]:

@@ -297,7 +297,7 @@ export const tradingAPI = {
   },
 
   /** Place a BUY or SELL order */
-  placeOrder: async (symbol, orderType, quantity, price, stopLoss = null, target = null) => {
+  placeOrder: async (symbol, orderType, quantity, price, stopLoss = null, target = null, instrumentType = 'EQUITY', strikePrice = null, expiry = null, optionType = null) => {
     const response = await api.post('/api/trading/order', {
       symbol,
       order_type: orderType,
@@ -305,6 +305,10 @@ export const tradingAPI = {
       price,
       stop_loss: stopLoss,
       target: target,
+      instrument_type: instrumentType,
+      strike_price: strikePrice,
+      expiry: expiry,
+      option_type: optionType,
     });
     return response.data;
   },

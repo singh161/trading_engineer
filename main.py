@@ -95,10 +95,21 @@ async def lifespan(app: FastAPI):
             task_manager.start_periodic_refresh(interval_minutes=3)
         )
         
-        # Start ultra-fast live price ticker (Every 15-20 seconds)
+        # Start ultra-fast live price ticker (Every 20 seconds)
         price_ticker_task = asyncio.create_task(
-            task_manager.start_live_price_ticker(interval_seconds=60)
+            task_manager.start_live_price_ticker(interval_seconds=20)
         )
+        
+        # Start AI Intelligence Scanner (Every 1 hour)
+        # Finds best stocks and sends Email/Telegram alerts
+        ai_scanner_task = asyncio.create_task(
+            task_manager.start_ai_scanner(interval_hours=1)
+        )
+
+        # Register existing trading positions for custom tracking
+        positions = TradingManager.get_positions()
+        for pos in positions:
+            task_manager.add_custom_symbol(pos['symbol'])
         
         logger.info("Application started! Preloading stocks and starting background tasks...")
     except Exception as e:
@@ -1092,6 +1103,10 @@ class TradeOrder(BaseModel):
     price: float
     stop_loss: Optional[float] = None
     target: Optional[float] = None
+    instrument_type: str = "EQUITY"  # EQUITY or OPTION
+    strike_price: Optional[float] = None
+    expiry: Optional[str] = None
+    option_type: Optional[str] = None  # CE or PE
 
 class SLTargetUpdate(BaseModel):
     symbol: str
@@ -1144,9 +1159,17 @@ async def place_trade_order(order: TradeOrder):
             price=order.price,
             stop_loss=order.stop_loss,
             target=order.target,
+            instrument_type=order.instrument_type,
+            strike_price=order.strike_price,
+            expiry=order.expiry,
+            option_type=order.option_type,
         )
         if "error" in result:
             raise HTTPException(status_code=400, detail=result["error"])
+        
+        # Add to custom tracking if it's an option or not in standard list
+        task_manager.add_custom_symbol(order.symbol)
+        
         return result
     except HTTPException:
         raise

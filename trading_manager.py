@@ -101,7 +101,11 @@ class TradingManager:
     @classmethod
     def place_order(cls, symbol: str, order_type: str, quantity: int,
                     price: float, stop_loss: Optional[float] = None,
-                    target: Optional[float] = None) -> Dict:
+                    target: Optional[float] = None,
+                    instrument_type: str = "EQUITY",
+                    strike_price: Optional[float] = None,
+                    expiry: Optional[str] = None,
+                    option_type: Optional[str] = None) -> Dict:
         """
         Place a BUY or SELL order.
         
@@ -112,6 +116,10 @@ class TradingManager:
             price: Entry price per share
             stop_loss: Optional stop loss price
             target: Optional target price
+            instrument_type: 'EQUITY' or 'OPTION'
+            strike_price: For options, the strike price
+            expiry: For options, the expiry date
+            option_type: For options, 'CE' or 'PE'
         
         Returns:
             Order confirmation dict
@@ -167,6 +175,10 @@ class TradingManager:
                     "avg_price": round(price, 2),
                     "stop_loss": stop_loss,
                     "target": target,
+                    "instrument_type": instrument_type,
+                    "strike_price": strike_price,
+                    "expiry": expiry,
+                    "option_type": option_type,
                     "entry_date": datetime.now().isoformat(),
                     "last_updated": datetime.now().isoformat(),
                 }
@@ -227,6 +239,10 @@ class TradingManager:
             "stop_loss": stop_loss,
             "target": target,
             "total_value": round(total_cost, 2),
+            "instrument_type": instrument_type,
+            "strike_price": strike_price,
+            "expiry": expiry,
+            "option_type": option_type,
             "status": "EXECUTED",
             "timestamp": datetime.now().isoformat(),
         }
@@ -304,6 +320,10 @@ class TradingManager:
                 "target": target,
                 "sl_status": sl_status,
                 "target_status": target_status,
+                "instrument_type": pos.get("instrument_type", "EQUITY"),
+                "strike_price": pos.get("strike_price"),
+                "expiry": pos.get("expiry"),
+                "option_type": pos.get("option_type"),
                 "entry_date": pos.get("entry_date"),
             })
         
